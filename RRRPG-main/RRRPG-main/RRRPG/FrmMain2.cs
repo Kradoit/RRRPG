@@ -20,6 +20,7 @@ namespace RRRPG
         private SoundPlayer soundPlayer;
         private int state;
         private Character player;
+        private bool playerAlive;
         private Character opponent;
         private bool opp1Alive;
         private Character opponent2;
@@ -75,6 +76,7 @@ namespace RRRPG
             soundPlayer.Stop();
             opp1Alive = true;
             opp2Alive = true;
+            playerAlive = true;
             player.Shutup();
             player.ShowIdle();
             opponent.ShowIdle();
@@ -93,14 +95,21 @@ namespace RRRPG
             {
                 opponent.Shutup();
                 opponent2.Shutup();
+                // why not talk on second loop
                 player.SaySmack();
                 state = 1;
             }
             else if (state == 1)
             {
-                if (opp1Alive == false && opp2Alive == false)
+                if ((opp1Alive == false && opp2Alive == false) || playerAlive == false)
                 {
                     state = -1;
+                    opponent.ShowIdle();
+                    opponent2.ShowNoWeapon();
+                    picOpponent.Visible = true;
+                    picOpponent2.Visible = true;
+                    lblOpponentSpeak.Visible = false;
+                    lblOpponentSpeak2.Visible = false;
                     btnStart.Visible = true;
                     tmrPlayMusicAfterGameOver.Enabled = true;
                     panWeaponSelect.Visible = true;
@@ -128,11 +137,8 @@ namespace RRRPG
             else if (state == 4)
             {
                 player.SayBoned();
-                btnStart.Visible = true;
-                tmrPlayMusicAfterGameOver.Enabled = true;
-                panWeaponSelect.Visible = true;
-                state = -1;
-                tmrStateMachine.Enabled = false;
+                playerAlive = false;
+                state = 1;
             }
             else if (state == 5)
             {
@@ -168,6 +174,7 @@ namespace RRRPG
             {
                 opponent.SayBoned();
                 opp1Alive = false;
+                picOpponent.Visible = false;
                 state = 10;
             }
             else if (state == 10)
@@ -204,6 +211,7 @@ namespace RRRPG
             {
                 opponent2.SayBoned();
                 opp2Alive = false;
+                picOpponent2.Visible = false;
                 // TODO: make player not visible
                 state = 1;
             }
