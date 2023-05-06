@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Version>1.1</Version>
+    <AssemblyVersion>4.2.0</AssemblyVersion>
+    <FileVersion>4.2.1</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\..\DLLs\DLLs\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\..\DLLs\DLLs\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Extensions">
+      <HintPath>..\..\..\DLLs\DLLs\System.Windows.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\DLLs\DLLs\System.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
