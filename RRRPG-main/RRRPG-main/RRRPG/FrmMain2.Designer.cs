@@ -55,18 +55,6 @@ namespace RRRPG
             picOpponent2 = new PictureBox();
             lblOpponentSpeak = new Label();
             lblOpponentSpeak2 = new Label();
-            panWeaponSelect2 = new Panel();
-            lblWeaponSelectBow2 = new Label();
-            picWeaponSelectBow2 = new PictureBox();
-            lblWeaponSelectNerfRev2 = new Label();
-            picWeaponSelectNerfRev2 = new PictureBox();
-            label5 = new Label();
-            lblWeaponSelectWaterGun2 = new Label();
-            lblWeaponSelectCorkGun2 = new Label();
-            picWeaponSelectWaterGun2 = new PictureBox();
-            picWeaponSelectCorkGun2 = new PictureBox();
-            picWeaponSelectMagicWand2 = new PictureBox();
-            lblWeaponSelectMagicWand2 = new Label();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev).BeginInit();
@@ -76,12 +64,6 @@ namespace RRRPG
             ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent2).BeginInit();
-            panWeaponSelect2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectWaterGun2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectCorkGun2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand2).BeginInit();
             SuspendLayout();
             // 
             // tmrPlayMusicAfterGameOver
@@ -115,6 +97,7 @@ namespace RRRPG
             // tmrStateMachine
             // 
             tmrStateMachine.Interval = 40;
+            tmrStateMachine.Tick += tmrDialog_Tick;
             // 
             // lblWeaponSelectBow
             // 
@@ -339,7 +322,7 @@ namespace RRRPG
             // picOpponent2
             // 
             picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent2.Location = new Point(1644, 207);
+            picOpponent2.Location = new Point(1537, 186);
             picOpponent2.Margin = new Padding(4, 5, 4, 5);
             picOpponent2.Name = "picOpponent2";
             picOpponent2.Size = new Size(584, 645);
@@ -352,7 +335,6 @@ namespace RRRPG
             lblOpponentSpeak.BackColor = Color.White;
             lblOpponentSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblOpponentSpeak.Location = new Point(1090, 75);
-            lblOpponentSpeak.Margin = new Padding(4, 0, 4, 0);
             lblOpponentSpeak.Name = "lblOpponentSpeak";
             lblOpponentSpeak.Size = new Size(312, 48);
             lblOpponentSpeak.TabIndex = 18;
@@ -363,175 +345,11 @@ namespace RRRPG
             lblOpponentSpeak2.AutoSize = true;
             lblOpponentSpeak2.BackColor = Color.White;
             lblOpponentSpeak2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponentSpeak2.Location = new Point(1961, 120);
-            lblOpponentSpeak2.Margin = new Padding(4, 0, 4, 0);
+            lblOpponentSpeak2.Location = new Point(1722, 96);
             lblOpponentSpeak2.Name = "lblOpponentSpeak2";
             lblOpponentSpeak2.Size = new Size(160, 48);
             lblOpponentSpeak2.TabIndex = 21;
             lblOpponentSpeak2.Text = "so will I!";
-            // 
-            // panWeaponSelect2
-            // 
-            panWeaponSelect2.BackColor = Color.Black;
-            panWeaponSelect2.Controls.Add(lblWeaponSelectBow2);
-            panWeaponSelect2.Controls.Add(picWeaponSelectBow2);
-            panWeaponSelect2.Controls.Add(lblWeaponSelectNerfRev2);
-            panWeaponSelect2.Controls.Add(picWeaponSelectNerfRev2);
-            panWeaponSelect2.Controls.Add(label5);
-            panWeaponSelect2.Controls.Add(lblWeaponSelectWaterGun2);
-            panWeaponSelect2.Controls.Add(lblWeaponSelectCorkGun2);
-            panWeaponSelect2.Controls.Add(picWeaponSelectWaterGun2);
-            panWeaponSelect2.Controls.Add(picWeaponSelectCorkGun2);
-            panWeaponSelect2.Controls.Add(picWeaponSelectMagicWand2);
-            panWeaponSelect2.Controls.Add(lblWeaponSelectMagicWand2);
-            panWeaponSelect2.Location = new Point(1467, 897);
-            panWeaponSelect2.Margin = new Padding(4, 5, 4, 5);
-            panWeaponSelect2.Name = "panWeaponSelect2";
-            panWeaponSelect2.Size = new Size(809, 382);
-            panWeaponSelect2.TabIndex = 22;
-            // 
-            // lblWeaponSelectBow2
-            // 
-            lblWeaponSelectBow2.AutoSize = true;
-            lblWeaponSelectBow2.BackColor = Color.Black;
-            lblWeaponSelectBow2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectBow2.ForeColor = Color.White;
-            lblWeaponSelectBow2.Location = new Point(714, 277);
-            lblWeaponSelectBow2.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectBow2.Name = "lblWeaponSelectBow2";
-            lblWeaponSelectBow2.Size = new Size(63, 32);
-            lblWeaponSelectBow2.TabIndex = 15;
-            lblWeaponSelectBow2.Text = "Bow";
-            // 
-            // picWeaponSelectBow2
-            // 
-            picWeaponSelectBow2.BackColor = Color.Black;
-            picWeaponSelectBow2.BackgroundImage = Resources.Img_Bow;
-            picWeaponSelectBow2.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectBow2.Location = new Point(666, 18);
-            picWeaponSelectBow2.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectBow2.Name = "picWeaponSelectBow2";
-            picWeaponSelectBow2.Size = new Size(143, 253);
-            picWeaponSelectBow2.TabIndex = 14;
-            picWeaponSelectBow2.TabStop = false;
-            picWeaponSelectBow2.Click += picWeaponSelectBow2_Click;
-            // 
-            // lblWeaponSelectNerfRev2
-            // 
-            lblWeaponSelectNerfRev2.AutoSize = true;
-            lblWeaponSelectNerfRev2.BackColor = Color.Black;
-            lblWeaponSelectNerfRev2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectNerfRev2.ForeColor = Color.White;
-            lblWeaponSelectNerfRev2.Location = new Point(501, 277);
-            lblWeaponSelectNerfRev2.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectNerfRev2.Name = "lblWeaponSelectNerfRev2";
-            lblWeaponSelectNerfRev2.Size = new Size(172, 32);
-            lblWeaponSelectNerfRev2.TabIndex = 13;
-            lblWeaponSelectNerfRev2.Text = "Nerf Revolver";
-            // 
-            // picWeaponSelectNerfRev2
-            // 
-            picWeaponSelectNerfRev2.BackColor = Color.Black;
-            picWeaponSelectNerfRev2.BackgroundImage = Resources.Img_Nerf_Revolver;
-            picWeaponSelectNerfRev2.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectNerfRev2.Location = new Point(511, 18);
-            picWeaponSelectNerfRev2.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectNerfRev2.Name = "picWeaponSelectNerfRev2";
-            picWeaponSelectNerfRev2.Size = new Size(143, 253);
-            picWeaponSelectNerfRev2.TabIndex = 12;
-            picWeaponSelectNerfRev2.TabStop = false;
-            picWeaponSelectNerfRev2.Click += picWeaponSelectNerfRev2_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = Color.Silver;
-            label5.Location = new Point(294, 325);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(241, 45);
-            label5.TabIndex = 11;
-            label5.Text = "Weapon Select";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblWeaponSelectWaterGun2
-            // 
-            lblWeaponSelectWaterGun2.AutoSize = true;
-            lblWeaponSelectWaterGun2.BackColor = Color.Black;
-            lblWeaponSelectWaterGun2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectWaterGun2.ForeColor = Color.White;
-            lblWeaponSelectWaterGun2.Location = new Point(369, 275);
-            lblWeaponSelectWaterGun2.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectWaterGun2.Name = "lblWeaponSelectWaterGun2";
-            lblWeaponSelectWaterGun2.Size = new Size(136, 32);
-            lblWeaponSelectWaterGun2.TabIndex = 10;
-            lblWeaponSelectWaterGun2.Text = "Water Gun";
-            // 
-            // lblWeaponSelectCorkGun2
-            // 
-            lblWeaponSelectCorkGun2.AutoSize = true;
-            lblWeaponSelectCorkGun2.BackColor = Color.Black;
-            lblWeaponSelectCorkGun2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectCorkGun2.ForeColor = Color.White;
-            lblWeaponSelectCorkGun2.Location = new Point(223, 275);
-            lblWeaponSelectCorkGun2.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectCorkGun2.Name = "lblWeaponSelectCorkGun2";
-            lblWeaponSelectCorkGun2.Size = new Size(121, 32);
-            lblWeaponSelectCorkGun2.TabIndex = 9;
-            lblWeaponSelectCorkGun2.Text = "Cork Gun";
-            // 
-            // picWeaponSelectWaterGun2
-            // 
-            picWeaponSelectWaterGun2.BackColor = Color.Black;
-            picWeaponSelectWaterGun2.BackgroundImage = Resources.Img_Water_Gun;
-            picWeaponSelectWaterGun2.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectWaterGun2.Location = new Point(360, 17);
-            picWeaponSelectWaterGun2.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectWaterGun2.Name = "picWeaponSelectWaterGun2";
-            picWeaponSelectWaterGun2.Size = new Size(143, 253);
-            picWeaponSelectWaterGun2.TabIndex = 8;
-            picWeaponSelectWaterGun2.TabStop = false;
-            picWeaponSelectWaterGun2.Click += picWeaponSelectWaterGun2_Click;
-            // 
-            // picWeaponSelectCorkGun2
-            // 
-            picWeaponSelectCorkGun2.BackColor = Color.Black;
-            picWeaponSelectCorkGun2.BackgroundImage = Resources.Img_Cork_Gun;
-            picWeaponSelectCorkGun2.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectCorkGun2.Location = new Point(209, 17);
-            picWeaponSelectCorkGun2.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectCorkGun2.Name = "picWeaponSelectCorkGun2";
-            picWeaponSelectCorkGun2.Size = new Size(143, 253);
-            picWeaponSelectCorkGun2.TabIndex = 7;
-            picWeaponSelectCorkGun2.TabStop = false;
-            picWeaponSelectCorkGun2.Click += picWeaponSelectCorkGun2_Click;
-            // 
-            // picWeaponSelectMagicWand2
-            // 
-            picWeaponSelectMagicWand2.BackColor = Color.Black;
-            picWeaponSelectMagicWand2.BackgroundImage = Resources.Img_Magic_Wand;
-            picWeaponSelectMagicWand2.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectMagicWand2.Location = new Point(18, 15);
-            picWeaponSelectMagicWand2.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectMagicWand2.Name = "picWeaponSelectMagicWand2";
-            picWeaponSelectMagicWand2.Size = new Size(183, 255);
-            picWeaponSelectMagicWand2.TabIndex = 5;
-            picWeaponSelectMagicWand2.TabStop = false;
-            picWeaponSelectMagicWand2.Click += picWeaponSelectMagicWand2_Click;
-            // 
-            // lblWeaponSelectMagicWand2
-            // 
-            lblWeaponSelectMagicWand2.AutoSize = true;
-            lblWeaponSelectMagicWand2.BackColor = Color.Black;
-            lblWeaponSelectMagicWand2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectMagicWand2.ForeColor = Color.White;
-            lblWeaponSelectMagicWand2.Location = new Point(66, 277);
-            lblWeaponSelectMagicWand2.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectMagicWand2.Name = "lblWeaponSelectMagicWand2";
-            lblWeaponSelectMagicWand2.Size = new Size(84, 32);
-            lblWeaponSelectMagicWand2.TabIndex = 6;
-            lblWeaponSelectMagicWand2.Text = "Magic";
             // 
             // FrmMain2
             // 
@@ -539,7 +357,6 @@ namespace RRRPG
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(2260, 1312);
-            Controls.Add(panWeaponSelect2);
             Controls.Add(lblOpponentSpeak2);
             Controls.Add(picOpponent2);
             Controls.Add(lblPlayerSpeak);
@@ -565,13 +382,6 @@ namespace RRRPG
             ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent).EndInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent2).EndInit();
-            panWeaponSelect2.ResumeLayout(false);
-            panWeaponSelect2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectWaterGun2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectCorkGun2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -602,17 +412,5 @@ namespace RRRPG
         private PictureBox picOpponent2;
         private Label lblOpponentSpeak;
         private Label lblOpponentSpeak2;
-        private Panel panWeaponSelect2;
-        private Label lblWeaponSelectBow2;
-        private PictureBox picWeaponSelectBow2;
-        private Label lblWeaponSelectNerfRev2;
-        private PictureBox picWeaponSelectNerfRev2;
-        private Label label5;
-        private Label lblWeaponSelectWaterGun2;
-        private Label lblWeaponSelectCorkGun2;
-        private PictureBox picWeaponSelectWaterGun2;
-        private PictureBox picWeaponSelectCorkGun2;
-        private PictureBox picWeaponSelectMagicWand2;
-        private Label lblWeaponSelectMagicWand2;
     }
 }

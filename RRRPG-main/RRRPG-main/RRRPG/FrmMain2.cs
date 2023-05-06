@@ -21,6 +21,9 @@ namespace RRRPG
         private int state;
         private Character player;
         private Character opponent;
+        private bool opp1Alive;
+        private Character opponent2;
+        private bool opp2Alive;
         private Weapon weapon;
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap;
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap2;
@@ -36,6 +39,7 @@ namespace RRRPG
             soundPlayer.PlayLooping();
             btnDoIt.Visible = false;
             lblOpponentSpeak.Visible = false;
+            lblOpponentSpeak2.Visible = false;
             lblPlayerSpeak.Visible = false;
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             state = -1;
@@ -46,15 +50,7 @@ namespace RRRPG
             {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand, lblWeaponSelectMagicWand) },
             {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev, lblWeaponSelectNerfRev) },
             };
-            weaponSelectMap2 = new() {
-            {WeaponType.BOW, (picWeaponSelectBow2, lblWeaponSelectBow2) },
-            {WeaponType.CORK_GUN, (picWeaponSelectCorkGun2,lblWeaponSelectCorkGun2) },
-            {WeaponType.WATER_GUN, (picWeaponSelectWaterGun2, lblWeaponSelectWaterGun2) },
-            {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand2, lblWeaponSelectMagicWand2) },
-            {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev2, lblWeaponSelectNerfRev2) },
-            };
             SelectWeapon(WeaponType.MAGIC_WAND);
-            SelectWeapon2(WeaponType.MAGIC_WAND);
         }
 
         private void btnDoIt_Click(object sender, EventArgs e)
@@ -77,11 +73,14 @@ namespace RRRPG
         private void btnStart_Click(object sender, EventArgs e)
         {
             soundPlayer.Stop();
+            opp1Alive = true;
+            opp2Alive = true;
             player.Shutup();
             player.ShowIdle();
             opponent.ShowIdle();
             btnStart.Visible = false;
             opponent.SaySmack();
+            opponent2.SaySmack();
             tmrStateMachine.Interval = 3500;
             tmrStateMachine.Enabled = true;
             state = 0;
@@ -93,18 +92,32 @@ namespace RRRPG
             if (state == 0)
             {
                 opponent.Shutup();
+                opponent2.Shutup();
                 player.SaySmack();
                 state = 1;
             }
             else if (state == 1)
             {
-                opponent.Shutup();
-                player.Shutup();
-                player.ShowReady();
-                opponent.ShowNoWeapon();
-                btnDoIt.Visible = true;
-                tmrStateMachine.Enabled = false;
-                state = 2;
+                if (opp1Alive == false && opp2Alive == false)
+                {
+                    state = -1;
+                    btnStart.Visible = true;
+                    tmrPlayMusicAfterGameOver.Enabled = true;
+                    panWeaponSelect.Visible = true;
+                    tmrStateMachine.Enabled = false;
+                }
+                else
+                {
+                    opponent.Shutup();
+                    opponent2.Shutup();
+                    player.Shutup();
+                    player.ShowReady();
+                    opponent.ShowNoWeapon();
+                    opponent2.ShowNoWeapon();
+                    btnDoIt.Visible = true;
+                    tmrStateMachine.Enabled = false;
+                    state = 2;
+                }
             }
             else if (state == 3)
             {
@@ -123,9 +136,16 @@ namespace RRRPG
             }
             else if (state == 5)
             {
-                player.Shutup();
-                opponent.ShowReady();
-                state = 6;
+                if (opp1Alive == true)
+                {
+                    player.Shutup();
+                    opponent.ShowReady();
+                    state = 6;
+                }
+                else
+                {
+                    state = 10;
+                }
             }
             else if (state == 6)
             {
@@ -135,7 +155,7 @@ namespace RRRPG
                 }
                 else
                 {
-                    state = 1;
+                    state = 10;
                 }
             }
             else if (state == 7)
@@ -147,11 +167,45 @@ namespace RRRPG
             else if (state == 8)
             {
                 opponent.SayBoned();
-                btnStart.Visible = true;
-                tmrPlayMusicAfterGameOver.Enabled = true;
-                panWeaponSelect.Visible = true;
-                state = -1;
-                tmrStateMachine.Enabled = false;
+                opp1Alive = false;
+                state = 10;
+            }
+            else if (state == 10)
+            {
+                if (opp2Alive == true)
+                {
+                    opponent.Shutup();
+                    opponent2.ShowReady();
+                    state = 11;
+                }
+                else
+                {
+                    state = 1;
+                }
+            }
+            else if (state == 11)
+            {
+                if (opponent2.PullTrigger(weapon))
+                {
+                    state = 12;
+                }
+                else
+                {
+                    state = 1;
+                }
+            }
+            else if (state == 12)
+            {
+                opponent2.SayOw();
+                state = 13;
+                tmrStateMachine.Interval = 2500;
+            }
+            else if (state == 13)
+            {
+                opponent2.SayBoned();
+                opp2Alive = false;
+                // TODO: make player not visible
+                state = 1;
             }
         }
 
@@ -169,24 +223,9 @@ namespace RRRPG
             weaponSelectMap[type].lbl.ForeColor = selectedColor;
             weapon = Weapon.MakeWeapon(type);
             opponent = Character.MakeOpponent(type, picOpponent, lblOpponentSpeak);
+            opponent2 = Character.MakeOpponent(type, picOpponent2, lblOpponentSpeak2);
             player = Character.MakePlayer(type, picPlayer, lblPlayerSpeak);
-        }
-
-        private void SelectWeapon2(WeaponType type)
-        {
-            Color selectedColor = Color.Yellow;
-            foreach (var weaponSel in weaponSelectMap2)
-            {
-                weaponSel.Value.pic.BackColor = Color.Black;
-                weaponSel.Value.pic.BorderStyle = BorderStyle.None;
-                weaponSel.Value.lbl.ForeColor = Color.White;
-            }
-            weaponSelectMap2[type].pic.BackColor = selectedColor;
-            weaponSelectMap2[type].pic.BorderStyle = BorderStyle.Fixed3D;
-            weaponSelectMap2[type].lbl.ForeColor = selectedColor;
-            weapon = Weapon.MakeWeapon(type);
-            opponent = Character.MakeOpponent(type, picOpponent2, lblOpponentSpeak2);
-            player = Character.MakePlayer(type, picPlayer, lblPlayerSpeak);
+            opponent2.ShowNoWeapon();
         }
 
         private void picWeaponSelectMagicWand_Click(object sender, EventArgs e)
@@ -212,31 +251,6 @@ namespace RRRPG
         private void picWeaponSelectBow_Click(object sender, EventArgs e)
         {
             SelectWeapon(WeaponType.BOW);
-        }
-
-        private void picWeaponSelectMagicWand2_Click(object sender, EventArgs e)
-        {
-            SelectWeapon2(WeaponType.MAGIC_WAND);
-        }
-
-        private void picWeaponSelectCorkGun2_Click(object sender, EventArgs e)
-        {
-            SelectWeapon2(WeaponType.CORK_GUN);
-        }
-
-        private void picWeaponSelectWaterGun2_Click(object sender, EventArgs e)
-        {
-            SelectWeapon2(WeaponType.WATER_GUN);
-        }
-
-        private void picWeaponSelectNerfRev2_Click(object sender, EventArgs e)
-        {
-            SelectWeapon2(WeaponType.NERF_REVOLVER);
-        }
-
-        private void picWeaponSelectBow2_Click(object sender, EventArgs e)
-        {
-            SelectWeapon2(WeaponType.BOW);
         }
 
         private void FrmMain2_FormClosed(object sender, FormClosedEventArgs e)
