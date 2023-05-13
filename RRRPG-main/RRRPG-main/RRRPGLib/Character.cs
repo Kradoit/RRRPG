@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using static RRRPGLib.ResourcesRef;
 using ImgState = RRRPGLib.CharacterImgStateType;
@@ -240,16 +241,16 @@ public class Character {
     c.Stats = new(luck: 0.0f, health: 100, reflex: 0.0f);
     c.imgMap = new() {
       {ImgState.IDLE, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
-      {ImgState.NO_WEAPON, Resources.GetObject("Img_Wizard_NoWeapon") as Bitmap },
-      {ImgState.READY, Resources.GetObject("Img_Wizard_Ready") as Bitmap },
-      {ImgState.KILL, Resources.GetObject("Img_Wizard_Kill") as Bitmap },
+      {ImgState.NO_WEAPON, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
+      {ImgState.READY, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
+      {ImgState.KILL, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
     };
     c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("", null) },
-      {TalkState.SAY_OW, ("", null) },
-      {TalkState.BONED, ("", null) },
-      {TalkState.GUN_WENT_OFF, ("", null) },
-      {TalkState.SURVIVED, ("", null) },
+      {TalkState.TALK_SMACK, ("I'll Give you some Tooth!", null) },
+      {TalkState.SAY_OW, ("Das an L", null) },
+      {TalkState.BONED, ("Boned and Buggard I am!", null) },
+      {TalkState.GUN_WENT_OFF, ("Unfortunate this is", null) },
+      {TalkState.SURVIVED, ("I am Eternity!", null) },
     };
     return c;
   }
@@ -258,9 +259,9 @@ public class Character {
     c.Stats = new(luck: 0.0f, health: 100, reflex: 0.0f);
     c.imgMap = new() {
       {ImgState.IDLE, Resources.GetObject("Img_Yoshi_Idle") as Bitmap },
-      {ImgState.NO_WEAPON, Resources.GetObject("Img_Wizard_NoWeapon") as Bitmap },
-      {ImgState.READY, Resources.GetObject("Img_Wizard_Ready") as Bitmap },
-      {ImgState.KILL, Resources.GetObject("Img_Wizard_Kill") as Bitmap },
+      {ImgState.NO_WEAPON, Resources.GetObject("image-removebg-preview") as Bitmap },
+      {ImgState.READY, Resources.GetObject("Img_Yoshi_Idle") as Bitmap },
+      {ImgState.KILL, Resources.GetObject("Img_Yoshi_Kill") as Bitmap },
     };
     c.dialogMap = new() {
       {TalkState.TALK_SMACK, ("", null) },
@@ -276,9 +277,9 @@ public class Character {
     c.Stats = new(luck: 0.0f, health: 100, reflex: 0.0f);
     c.imgMap = new() {
       {ImgState.IDLE, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
-      {ImgState.NO_WEAPON, Resources.GetObject("Img_Wizard_NoWeapon") as Bitmap },
-      {ImgState.READY, Resources.GetObject("Img_Wizard_Ready") as Bitmap },
-      {ImgState.KILL, Resources.GetObject("Img_Wizard_Kill") as Bitmap },
+      {ImgState.NO_WEAPON, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
+      {ImgState.READY, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
+      {ImgState.KILL, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
     };
     c.dialogMap = new() {
       {TalkState.TALK_SMACK, ("", null) },
