@@ -30,358 +30,361 @@ namespace RRRPG
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
-            lblPlayerSpeak = new Label();
-            btnStart = new Button();
-            tmrStateMachine = new System.Windows.Forms.Timer(components);
-            lblWeaponSelectBow = new Label();
-            picWeaponSelectBow = new PictureBox();
-            lblWeaponSelectNerfRev = new Label();
-            picWeaponSelectMagicWand = new PictureBox();
-            lblWeaponSelectMagicWand = new Label();
-            lblOpponent = new Label();
-            picWeaponSelectNerfRev = new PictureBox();
-            label3 = new Label();
-            lblWeaponSelectWaterGun = new Label();
-            lblWeaponSelectCorkGun = new Label();
-            picWeaponSelectWaterGun = new PictureBox();
-            picWeaponSelectCorkGun = new PictureBox();
-            panWeaponSelect = new Panel();
-            lblPlayer = new Label();
-            btnDoIt = new Button();
-            picPlayer = new PictureBox();
-            picOpponent = new PictureBox();
-            picOpponent2 = new PictureBox();
-            lblOpponentSpeak = new Label();
-            lblOpponentSpeak2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectWaterGun).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectCorkGun).BeginInit();
-            panWeaponSelect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent2).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(this.components);
+            this.lblPlayerSpeak = new Label();
+            this.btnStart = new Button();
+            this.tmrStateMachine = new System.Windows.Forms.Timer(this.components);
+            this.lblWeaponSelectBow = new Label();
+            this.picWeaponSelectBow = new PictureBox();
+            this.lblWeaponSelectNerfRev = new Label();
+            this.picWeaponSelectMagicWand = new PictureBox();
+            this.lblWeaponSelectMagicWand = new Label();
+            this.lblOpponent = new Label();
+            this.picWeaponSelectNerfRev = new PictureBox();
+            this.label3 = new Label();
+            this.lblWeaponSelectWaterGun = new Label();
+            this.lblWeaponSelectCorkGun = new Label();
+            this.picWeaponSelectWaterGun = new PictureBox();
+            this.picWeaponSelectCorkGun = new PictureBox();
+            this.panWeaponSelect = new Panel();
+            this.lblPlayer = new Label();
+            this.btnDoIt = new Button();
+            this.picOpponent = new PictureBox();
+            this.picOpponent2 = new PictureBox();
+            this.lblOpponentSpeak = new Label();
+            this.lblOpponentSpeak2 = new Label();
+            this.picPlayer = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectBow).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectMagicWand).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectNerfRev).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectWaterGun).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectCorkGun).BeginInit();
+            this.panWeaponSelect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)this.picOpponent).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picOpponent2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)this.picPlayer).BeginInit();
             SuspendLayout();
             // 
             // tmrPlayMusicAfterGameOver
             // 
-            tmrPlayMusicAfterGameOver.Interval = 2000;
+            this.tmrPlayMusicAfterGameOver.Interval = 2000;
             // 
             // lblPlayerSpeak
             // 
-            lblPlayerSpeak.AutoSize = true;
-            lblPlayerSpeak.BackColor = Color.White;
-            lblPlayerSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPlayerSpeak.Location = new Point(411, 75);
-            lblPlayerSpeak.Margin = new Padding(4, 0, 4, 0);
-            lblPlayerSpeak.Name = "lblPlayerSpeak";
-            lblPlayerSpeak.Size = new Size(425, 48);
-            lblPlayerSpeak.TabIndex = 19;
-            lblPlayerSpeak.Text = "Bite my shiny metal ass!";
+            this.lblPlayerSpeak.AutoSize = true;
+            this.lblPlayerSpeak.BackColor = Color.White;
+            this.lblPlayerSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblPlayerSpeak.Location = new Point(152, 99);
+            this.lblPlayerSpeak.Margin = new Padding(7, 0, 7, 0);
+            this.lblPlayerSpeak.Name = "lblPlayerSpeak";
+            this.lblPlayerSpeak.Size = new Size(710, 81);
+            this.lblPlayerSpeak.TabIndex = 19;
+            this.lblPlayerSpeak.Text = "Bite my shiny metal ass!";
             // 
             // btnStart
             // 
-            btnStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnStart.Location = new Point(136, 957);
-            btnStart.Margin = new Padding(4, 5, 4, 5);
-            btnStart.Name = "btnStart";
-            btnStart.Size = new Size(321, 117);
-            btnStart.TabIndex = 17;
-            btnStart.Text = "START";
-            btnStart.UseVisualStyleBackColor = true;
-            btnStart.Click += btnStart_Click;
+            this.btnStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            this.btnStart.Location = new Point(231, 1569);
+            this.btnStart.Margin = new Padding(7, 8, 7, 8);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new Size(546, 192);
+            this.btnStart.TabIndex = 17;
+            this.btnStart.Text = "START";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += this.btnStart_Click;
             // 
             // tmrStateMachine
             // 
-            tmrStateMachine.Interval = 40;
-            tmrStateMachine.Tick += tmrDialog_Tick;
+            this.tmrStateMachine.Interval = 40;
+            this.tmrStateMachine.Tick += this.tmrDialog_Tick;
             // 
             // lblWeaponSelectBow
             // 
-            lblWeaponSelectBow.AutoSize = true;
-            lblWeaponSelectBow.BackColor = Color.Black;
-            lblWeaponSelectBow.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectBow.ForeColor = Color.White;
-            lblWeaponSelectBow.Location = new Point(714, 277);
-            lblWeaponSelectBow.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectBow.Name = "lblWeaponSelectBow";
-            lblWeaponSelectBow.Size = new Size(63, 32);
-            lblWeaponSelectBow.TabIndex = 15;
-            lblWeaponSelectBow.Text = "Bow";
+            this.lblWeaponSelectBow.AutoSize = true;
+            this.lblWeaponSelectBow.BackColor = Color.Black;
+            this.lblWeaponSelectBow.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblWeaponSelectBow.ForeColor = Color.White;
+            this.lblWeaponSelectBow.Location = new Point(1214, 454);
+            this.lblWeaponSelectBow.Margin = new Padding(7, 0, 7, 0);
+            this.lblWeaponSelectBow.Name = "lblWeaponSelectBow";
+            this.lblWeaponSelectBow.Size = new Size(105, 54);
+            this.lblWeaponSelectBow.TabIndex = 15;
+            this.lblWeaponSelectBow.Text = "Bow";
             // 
             // picWeaponSelectBow
             // 
-            picWeaponSelectBow.BackColor = Color.Black;
-            picWeaponSelectBow.BackgroundImage = Resources.Img_Bow;
-            picWeaponSelectBow.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectBow.Location = new Point(666, 18);
-            picWeaponSelectBow.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectBow.Name = "picWeaponSelectBow";
-            picWeaponSelectBow.Size = new Size(143, 253);
-            picWeaponSelectBow.TabIndex = 14;
-            picWeaponSelectBow.TabStop = false;
-            picWeaponSelectBow.Click += picWeaponSelectBow_Click;
+            this.picWeaponSelectBow.BackColor = Color.Black;
+            this.picWeaponSelectBow.BackgroundImage = Resources.Img_Bow;
+            this.picWeaponSelectBow.BackgroundImageLayout = ImageLayout.Zoom;
+            this.picWeaponSelectBow.Location = new Point(1132, 30);
+            this.picWeaponSelectBow.Margin = new Padding(7, 8, 7, 8);
+            this.picWeaponSelectBow.Name = "picWeaponSelectBow";
+            this.picWeaponSelectBow.Size = new Size(243, 415);
+            this.picWeaponSelectBow.TabIndex = 14;
+            this.picWeaponSelectBow.TabStop = false;
+            this.picWeaponSelectBow.Click += this.picWeaponSelectBow_Click;
             // 
             // lblWeaponSelectNerfRev
             // 
-            lblWeaponSelectNerfRev.AutoSize = true;
-            lblWeaponSelectNerfRev.BackColor = Color.Black;
-            lblWeaponSelectNerfRev.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectNerfRev.ForeColor = Color.White;
-            lblWeaponSelectNerfRev.Location = new Point(501, 277);
-            lblWeaponSelectNerfRev.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectNerfRev.Name = "lblWeaponSelectNerfRev";
-            lblWeaponSelectNerfRev.Size = new Size(172, 32);
-            lblWeaponSelectNerfRev.TabIndex = 13;
-            lblWeaponSelectNerfRev.Text = "Nerf Revolver";
+            this.lblWeaponSelectNerfRev.AutoSize = true;
+            this.lblWeaponSelectNerfRev.BackColor = Color.Black;
+            this.lblWeaponSelectNerfRev.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblWeaponSelectNerfRev.ForeColor = Color.White;
+            this.lblWeaponSelectNerfRev.Location = new Point(852, 454);
+            this.lblWeaponSelectNerfRev.Margin = new Padding(7, 0, 7, 0);
+            this.lblWeaponSelectNerfRev.Name = "lblWeaponSelectNerfRev";
+            this.lblWeaponSelectNerfRev.Size = new Size(284, 54);
+            this.lblWeaponSelectNerfRev.TabIndex = 13;
+            this.lblWeaponSelectNerfRev.Text = "Nerf Revolver";
             // 
             // picWeaponSelectMagicWand
             // 
-            picWeaponSelectMagicWand.BackColor = Color.Black;
-            picWeaponSelectMagicWand.BackgroundImage = Resources.Img_Magic_Wand;
-            picWeaponSelectMagicWand.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectMagicWand.Location = new Point(18, 15);
-            picWeaponSelectMagicWand.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectMagicWand.Name = "picWeaponSelectMagicWand";
-            picWeaponSelectMagicWand.Size = new Size(183, 255);
-            picWeaponSelectMagicWand.TabIndex = 5;
-            picWeaponSelectMagicWand.TabStop = false;
-            picWeaponSelectMagicWand.Click += picWeaponSelectMagicWand_Click;
+            this.picWeaponSelectMagicWand.BackColor = Color.Black;
+            this.picWeaponSelectMagicWand.BackgroundImage = Resources.Img_Magic_Wand;
+            this.picWeaponSelectMagicWand.BackgroundImageLayout = ImageLayout.Zoom;
+            this.picWeaponSelectMagicWand.Location = new Point(31, 25);
+            this.picWeaponSelectMagicWand.Margin = new Padding(7, 8, 7, 8);
+            this.picWeaponSelectMagicWand.Name = "picWeaponSelectMagicWand";
+            this.picWeaponSelectMagicWand.Size = new Size(311, 418);
+            this.picWeaponSelectMagicWand.TabIndex = 5;
+            this.picWeaponSelectMagicWand.TabStop = false;
+            this.picWeaponSelectMagicWand.Click += this.picWeaponSelectMagicWand_Click;
             // 
             // lblWeaponSelectMagicWand
             // 
-            lblWeaponSelectMagicWand.AutoSize = true;
-            lblWeaponSelectMagicWand.BackColor = Color.Black;
-            lblWeaponSelectMagicWand.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectMagicWand.ForeColor = Color.White;
-            lblWeaponSelectMagicWand.Location = new Point(66, 277);
-            lblWeaponSelectMagicWand.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectMagicWand.Name = "lblWeaponSelectMagicWand";
-            lblWeaponSelectMagicWand.Size = new Size(84, 32);
-            lblWeaponSelectMagicWand.TabIndex = 6;
-            lblWeaponSelectMagicWand.Text = "Magic";
+            this.lblWeaponSelectMagicWand.AutoSize = true;
+            this.lblWeaponSelectMagicWand.BackColor = Color.Black;
+            this.lblWeaponSelectMagicWand.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblWeaponSelectMagicWand.ForeColor = Color.White;
+            this.lblWeaponSelectMagicWand.Location = new Point(112, 454);
+            this.lblWeaponSelectMagicWand.Margin = new Padding(7, 0, 7, 0);
+            this.lblWeaponSelectMagicWand.Name = "lblWeaponSelectMagicWand";
+            this.lblWeaponSelectMagicWand.Size = new Size(138, 54);
+            this.lblWeaponSelectMagicWand.TabIndex = 6;
+            this.lblWeaponSelectMagicWand.Text = "Magic";
             // 
             // lblOpponent
             // 
-            lblOpponent.AutoSize = true;
-            lblOpponent.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponent.ForeColor = Color.White;
-            lblOpponent.Location = new Point(1149, -127);
-            lblOpponent.Margin = new Padding(4, 0, 4, 0);
-            lblOpponent.Name = "lblOpponent";
-            lblOpponent.Size = new Size(190, 48);
-            lblOpponent.TabIndex = 15;
-            lblOpponent.Text = "Opponent";
+            this.lblOpponent.AutoSize = true;
+            this.lblOpponent.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblOpponent.ForeColor = Color.White;
+            this.lblOpponent.Location = new Point(1953, -208);
+            this.lblOpponent.Margin = new Padding(7, 0, 7, 0);
+            this.lblOpponent.Name = "lblOpponent";
+            this.lblOpponent.Size = new Size(318, 81);
+            this.lblOpponent.TabIndex = 15;
+            this.lblOpponent.Text = "Opponent";
             // 
             // picWeaponSelectNerfRev
             // 
-            picWeaponSelectNerfRev.BackColor = Color.Black;
-            picWeaponSelectNerfRev.BackgroundImage = Resources.Img_Nerf_Revolver;
-            picWeaponSelectNerfRev.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectNerfRev.Location = new Point(511, 18);
-            picWeaponSelectNerfRev.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectNerfRev.Name = "picWeaponSelectNerfRev";
-            picWeaponSelectNerfRev.Size = new Size(143, 253);
-            picWeaponSelectNerfRev.TabIndex = 12;
-            picWeaponSelectNerfRev.TabStop = false;
-            picWeaponSelectNerfRev.Click += picWeaponSelectNerfRev_Click;
+            this.picWeaponSelectNerfRev.BackColor = Color.Black;
+            this.picWeaponSelectNerfRev.BackgroundImage = Resources.Img_Nerf_Revolver;
+            this.picWeaponSelectNerfRev.BackgroundImageLayout = ImageLayout.Zoom;
+            this.picWeaponSelectNerfRev.Location = new Point(869, 30);
+            this.picWeaponSelectNerfRev.Margin = new Padding(7, 8, 7, 8);
+            this.picWeaponSelectNerfRev.Name = "picWeaponSelectNerfRev";
+            this.picWeaponSelectNerfRev.Size = new Size(243, 415);
+            this.picWeaponSelectNerfRev.TabIndex = 12;
+            this.picWeaponSelectNerfRev.TabStop = false;
+            this.picWeaponSelectNerfRev.Click += this.picWeaponSelectNerfRev_Click;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.Silver;
-            label3.Location = new Point(294, 325);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(241, 45);
-            label3.TabIndex = 11;
-            label3.Text = "Weapon Select";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            this.label3.AutoSize = true;
+            this.label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            this.label3.ForeColor = Color.Silver;
+            this.label3.Location = new Point(500, 533);
+            this.label3.Margin = new Padding(7, 0, 7, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new Size(401, 71);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Weapon Select";
+            this.label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblWeaponSelectWaterGun
             // 
-            lblWeaponSelectWaterGun.AutoSize = true;
-            lblWeaponSelectWaterGun.BackColor = Color.Black;
-            lblWeaponSelectWaterGun.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectWaterGun.ForeColor = Color.White;
-            lblWeaponSelectWaterGun.Location = new Point(369, 275);
-            lblWeaponSelectWaterGun.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectWaterGun.Name = "lblWeaponSelectWaterGun";
-            lblWeaponSelectWaterGun.Size = new Size(136, 32);
-            lblWeaponSelectWaterGun.TabIndex = 10;
-            lblWeaponSelectWaterGun.Text = "Water Gun";
+            this.lblWeaponSelectWaterGun.AutoSize = true;
+            this.lblWeaponSelectWaterGun.BackColor = Color.Black;
+            this.lblWeaponSelectWaterGun.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblWeaponSelectWaterGun.ForeColor = Color.White;
+            this.lblWeaponSelectWaterGun.Location = new Point(627, 451);
+            this.lblWeaponSelectWaterGun.Margin = new Padding(7, 0, 7, 0);
+            this.lblWeaponSelectWaterGun.Name = "lblWeaponSelectWaterGun";
+            this.lblWeaponSelectWaterGun.Size = new Size(224, 54);
+            this.lblWeaponSelectWaterGun.TabIndex = 10;
+            this.lblWeaponSelectWaterGun.Text = "Water Gun";
             // 
             // lblWeaponSelectCorkGun
             // 
-            lblWeaponSelectCorkGun.AutoSize = true;
-            lblWeaponSelectCorkGun.BackColor = Color.Black;
-            lblWeaponSelectCorkGun.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblWeaponSelectCorkGun.ForeColor = Color.White;
-            lblWeaponSelectCorkGun.Location = new Point(223, 275);
-            lblWeaponSelectCorkGun.Margin = new Padding(4, 0, 4, 0);
-            lblWeaponSelectCorkGun.Name = "lblWeaponSelectCorkGun";
-            lblWeaponSelectCorkGun.Size = new Size(121, 32);
-            lblWeaponSelectCorkGun.TabIndex = 9;
-            lblWeaponSelectCorkGun.Text = "Cork Gun";
+            this.lblWeaponSelectCorkGun.AutoSize = true;
+            this.lblWeaponSelectCorkGun.BackColor = Color.Black;
+            this.lblWeaponSelectCorkGun.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblWeaponSelectCorkGun.ForeColor = Color.White;
+            this.lblWeaponSelectCorkGun.Location = new Point(379, 451);
+            this.lblWeaponSelectCorkGun.Margin = new Padding(7, 0, 7, 0);
+            this.lblWeaponSelectCorkGun.Name = "lblWeaponSelectCorkGun";
+            this.lblWeaponSelectCorkGun.Size = new Size(197, 54);
+            this.lblWeaponSelectCorkGun.TabIndex = 9;
+            this.lblWeaponSelectCorkGun.Text = "Cork Gun";
             // 
             // picWeaponSelectWaterGun
             // 
-            picWeaponSelectWaterGun.BackColor = Color.Black;
-            picWeaponSelectWaterGun.BackgroundImage = Resources.Img_Water_Gun;
-            picWeaponSelectWaterGun.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectWaterGun.Location = new Point(360, 17);
-            picWeaponSelectWaterGun.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectWaterGun.Name = "picWeaponSelectWaterGun";
-            picWeaponSelectWaterGun.Size = new Size(143, 253);
-            picWeaponSelectWaterGun.TabIndex = 8;
-            picWeaponSelectWaterGun.TabStop = false;
-            picWeaponSelectWaterGun.Click += picWeaponSelectWaterGun_Click;
+            this.picWeaponSelectWaterGun.BackColor = Color.Black;
+            this.picWeaponSelectWaterGun.BackgroundImage = Resources.Img_Water_Gun;
+            this.picWeaponSelectWaterGun.BackgroundImageLayout = ImageLayout.Zoom;
+            this.picWeaponSelectWaterGun.Location = new Point(612, 28);
+            this.picWeaponSelectWaterGun.Margin = new Padding(7, 8, 7, 8);
+            this.picWeaponSelectWaterGun.Name = "picWeaponSelectWaterGun";
+            this.picWeaponSelectWaterGun.Size = new Size(243, 415);
+            this.picWeaponSelectWaterGun.TabIndex = 8;
+            this.picWeaponSelectWaterGun.TabStop = false;
+            this.picWeaponSelectWaterGun.Click += this.picWeaponSelectWaterGun_Click;
             // 
             // picWeaponSelectCorkGun
             // 
-            picWeaponSelectCorkGun.BackColor = Color.Black;
-            picWeaponSelectCorkGun.BackgroundImage = Resources.Img_Cork_Gun;
-            picWeaponSelectCorkGun.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectCorkGun.Location = new Point(209, 17);
-            picWeaponSelectCorkGun.Margin = new Padding(4, 5, 4, 5);
-            picWeaponSelectCorkGun.Name = "picWeaponSelectCorkGun";
-            picWeaponSelectCorkGun.Size = new Size(143, 253);
-            picWeaponSelectCorkGun.TabIndex = 7;
-            picWeaponSelectCorkGun.TabStop = false;
-            picWeaponSelectCorkGun.Click += picWeaponSelectCorkGun_Click;
+            this.picWeaponSelectCorkGun.BackColor = Color.Black;
+            this.picWeaponSelectCorkGun.BackgroundImage = Resources.Img_Cork_Gun;
+            this.picWeaponSelectCorkGun.BackgroundImageLayout = ImageLayout.Zoom;
+            this.picWeaponSelectCorkGun.Location = new Point(355, 28);
+            this.picWeaponSelectCorkGun.Margin = new Padding(7, 8, 7, 8);
+            this.picWeaponSelectCorkGun.Name = "picWeaponSelectCorkGun";
+            this.picWeaponSelectCorkGun.Size = new Size(243, 415);
+            this.picWeaponSelectCorkGun.TabIndex = 7;
+            this.picWeaponSelectCorkGun.TabStop = false;
+            this.picWeaponSelectCorkGun.Click += this.picWeaponSelectCorkGun_Click;
             // 
             // panWeaponSelect
             // 
-            panWeaponSelect.BackColor = Color.Black;
-            panWeaponSelect.Controls.Add(lblWeaponSelectBow);
-            panWeaponSelect.Controls.Add(picWeaponSelectBow);
-            panWeaponSelect.Controls.Add(lblWeaponSelectNerfRev);
-            panWeaponSelect.Controls.Add(picWeaponSelectNerfRev);
-            panWeaponSelect.Controls.Add(label3);
-            panWeaponSelect.Controls.Add(lblWeaponSelectWaterGun);
-            panWeaponSelect.Controls.Add(lblWeaponSelectCorkGun);
-            panWeaponSelect.Controls.Add(picWeaponSelectWaterGun);
-            panWeaponSelect.Controls.Add(picWeaponSelectCorkGun);
-            panWeaponSelect.Controls.Add(picWeaponSelectMagicWand);
-            panWeaponSelect.Controls.Add(lblWeaponSelectMagicWand);
-            panWeaponSelect.Location = new Point(530, 882);
-            panWeaponSelect.Margin = new Padding(4, 5, 4, 5);
-            panWeaponSelect.Name = "panWeaponSelect";
-            panWeaponSelect.Size = new Size(809, 382);
-            panWeaponSelect.TabIndex = 16;
+            this.panWeaponSelect.BackColor = Color.Black;
+            this.panWeaponSelect.Controls.Add(this.lblWeaponSelectBow);
+            this.panWeaponSelect.Controls.Add(this.picWeaponSelectBow);
+            this.panWeaponSelect.Controls.Add(this.lblWeaponSelectNerfRev);
+            this.panWeaponSelect.Controls.Add(this.picWeaponSelectNerfRev);
+            this.panWeaponSelect.Controls.Add(this.label3);
+            this.panWeaponSelect.Controls.Add(this.lblWeaponSelectWaterGun);
+            this.panWeaponSelect.Controls.Add(this.lblWeaponSelectCorkGun);
+            this.panWeaponSelect.Controls.Add(this.picWeaponSelectWaterGun);
+            this.panWeaponSelect.Controls.Add(this.picWeaponSelectCorkGun);
+            this.panWeaponSelect.Controls.Add(this.picWeaponSelectMagicWand);
+            this.panWeaponSelect.Controls.Add(this.lblWeaponSelectMagicWand);
+            this.panWeaponSelect.Location = new Point(901, 1446);
+            this.panWeaponSelect.Margin = new Padding(7, 8, 7, 8);
+            this.panWeaponSelect.Name = "panWeaponSelect";
+            this.panWeaponSelect.Size = new Size(1375, 626);
+            this.panWeaponSelect.TabIndex = 16;
             // 
             // lblPlayer
             // 
-            lblPlayer.AutoSize = true;
-            lblPlayer.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPlayer.ForeColor = Color.White;
-            lblPlayer.Location = new Point(365, -130);
-            lblPlayer.Margin = new Padding(4, 0, 4, 0);
-            lblPlayer.Name = "lblPlayer";
-            lblPlayer.Size = new Size(123, 48);
-            lblPlayer.TabIndex = 14;
-            lblPlayer.Text = "Player";
+            this.lblPlayer.AutoSize = true;
+            this.lblPlayer.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblPlayer.ForeColor = Color.White;
+            this.lblPlayer.Location = new Point(620, -213);
+            this.lblPlayer.Margin = new Padding(7, 0, 7, 0);
+            this.lblPlayer.Name = "lblPlayer";
+            this.lblPlayer.Size = new Size(208, 81);
+            this.lblPlayer.TabIndex = 14;
+            this.lblPlayer.Text = "Player";
             // 
             // btnDoIt
             // 
-            btnDoIt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDoIt.Location = new Point(79, 828);
-            btnDoIt.Margin = new Padding(4, 5, 4, 5);
-            btnDoIt.Name = "btnDoIt";
-            btnDoIt.Size = new Size(321, 117);
-            btnDoIt.TabIndex = 13;
-            btnDoIt.Text = "Try Your Luck!";
-            btnDoIt.UseVisualStyleBackColor = true;
-            btnDoIt.Click += btnDoIt_Click;
-            // 
-            // picPlayer
-            // 
-            picPlayer.BackgroundImageLayout = ImageLayout.Stretch;
-            picPlayer.Image = Resources.Img_Bender_Idle;
-            picPlayer.Location = new Point(26, 147);
-            picPlayer.Margin = new Padding(4, 5, 4, 5);
-            picPlayer.Name = "picPlayer";
-            picPlayer.Size = new Size(660, 571);
-            picPlayer.TabIndex = 12;
-            picPlayer.TabStop = false;
+            this.btnDoIt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.btnDoIt.Location = new Point(134, 1358);
+            this.btnDoIt.Margin = new Padding(7, 8, 7, 8);
+            this.btnDoIt.Name = "btnDoIt";
+            this.btnDoIt.Size = new Size(546, 192);
+            this.btnDoIt.TabIndex = 13;
+            this.btnDoIt.Text = "Try Your Luck!";
+            this.btnDoIt.UseVisualStyleBackColor = true;
+            this.btnDoIt.Click += this.btnDoIt_Click;
             // 
             // picOpponent
             // 
-            picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent.Location = new Point(820, 147);
-            picOpponent.Margin = new Padding(4, 5, 4, 5);
-            picOpponent.Name = "picOpponent";
-            picOpponent.Size = new Size(630, 705);
-            picOpponent.TabIndex = 11;
-            picOpponent.TabStop = false;
+            this.picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
+            this.picOpponent.Location = new Point(1394, 241);
+            this.picOpponent.Margin = new Padding(7, 8, 7, 8);
+            this.picOpponent.Name = "picOpponent";
+            this.picOpponent.Size = new Size(1071, 1156);
+            this.picOpponent.TabIndex = 11;
+            this.picOpponent.TabStop = false;
             // 
             // picOpponent2
             // 
-            picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent2.Location = new Point(1537, 186);
-            picOpponent2.Margin = new Padding(4, 5, 4, 5);
-            picOpponent2.Name = "picOpponent2";
-            picOpponent2.Size = new Size(584, 645);
-            picOpponent2.TabIndex = 20;
-            picOpponent2.TabStop = false;
+            this.picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
+            this.picOpponent2.Location = new Point(2613, 305);
+            this.picOpponent2.Margin = new Padding(7, 8, 7, 8);
+            this.picOpponent2.Name = "picOpponent2";
+            this.picOpponent2.Size = new Size(993, 1058);
+            this.picOpponent2.TabIndex = 20;
+            this.picOpponent2.TabStop = false;
             // 
             // lblOpponentSpeak
             // 
-            lblOpponentSpeak.AutoSize = true;
-            lblOpponentSpeak.BackColor = Color.White;
-            lblOpponentSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponentSpeak.Location = new Point(1090, 75);
-            lblOpponentSpeak.Name = "lblOpponentSpeak";
-            lblOpponentSpeak.Size = new Size(312, 48);
-            lblOpponentSpeak.TabIndex = 18;
-            lblOpponentSpeak.Text = "I will outlast you!";
+            this.lblOpponentSpeak.AutoSize = true;
+            this.lblOpponentSpeak.BackColor = Color.White;
+            this.lblOpponentSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblOpponentSpeak.Location = new Point(1682, 108);
+            this.lblOpponentSpeak.Margin = new Padding(5, 0, 5, 0);
+            this.lblOpponentSpeak.Name = "lblOpponentSpeak";
+            this.lblOpponentSpeak.Size = new Size(522, 81);
+            this.lblOpponentSpeak.TabIndex = 18;
+            this.lblOpponentSpeak.Text = "I will outlast you!";
             // 
             // lblOpponentSpeak2
             // 
-            lblOpponentSpeak2.AutoSize = true;
-            lblOpponentSpeak2.BackColor = Color.White;
-            lblOpponentSpeak2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponentSpeak2.Location = new Point(1722, 96);
-            lblOpponentSpeak2.Name = "lblOpponentSpeak2";
-            lblOpponentSpeak2.Size = new Size(160, 48);
-            lblOpponentSpeak2.TabIndex = 21;
-            lblOpponentSpeak2.Text = "so will I!";
+            this.lblOpponentSpeak2.AutoSize = true;
+            this.lblOpponentSpeak2.BackColor = Color.White;
+            this.lblOpponentSpeak2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            this.lblOpponentSpeak2.Location = new Point(2927, 157);
+            this.lblOpponentSpeak2.Margin = new Padding(5, 0, 5, 0);
+            this.lblOpponentSpeak2.Name = "lblOpponentSpeak2";
+            this.lblOpponentSpeak2.Size = new Size(270, 81);
+            this.lblOpponentSpeak2.TabIndex = 21;
+            this.lblOpponentSpeak2.Text = "so will I!";
+            // 
+            // picPlayer
+            // 
+            this.picPlayer.BackgroundImageLayout = ImageLayout.Stretch;
+            this.picPlayer.Image = Resources.Img_Bender_Idle;
+            this.picPlayer.Location = new Point(44, 241);
+            this.picPlayer.Margin = new Padding(7, 8, 7, 8);
+            this.picPlayer.Name = "picPlayer";
+            this.picPlayer.Size = new Size(1122, 936);
+            this.picPlayer.TabIndex = 12;
+            this.picPlayer.TabStop = false;
             // 
             // FrmMain2
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(2260, 1312);
-            Controls.Add(lblOpponentSpeak2);
-            Controls.Add(picOpponent2);
-            Controls.Add(lblPlayerSpeak);
-            Controls.Add(lblOpponentSpeak);
-            Controls.Add(btnStart);
-            Controls.Add(lblOpponent);
-            Controls.Add(panWeaponSelect);
-            Controls.Add(lblPlayer);
-            Controls.Add(btnDoIt);
-            Controls.Add(picPlayer);
-            Controls.Add(picOpponent);
+            ClientSize = new Size(3244, 2108);
+            Controls.Add(this.lblOpponentSpeak2);
+            Controls.Add(this.picOpponent2);
+            Controls.Add(this.lblPlayerSpeak);
+            Controls.Add(this.lblOpponentSpeak);
+            Controls.Add(this.btnStart);
+            Controls.Add(this.lblOpponent);
+            Controls.Add(this.panWeaponSelect);
+            Controls.Add(this.lblPlayer);
+            Controls.Add(this.btnDoIt);
+            Controls.Add(this.picPlayer);
+            Controls.Add(this.picOpponent);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "FrmMain2";
             Text = "Form1";
             FormClosed += FrmMain2_FormClosed;
             Load += FrmMain2_Load;
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectWaterGun).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picWeaponSelectCorkGun).EndInit();
-            panWeaponSelect.ResumeLayout(false);
-            panWeaponSelect.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectBow).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectMagicWand).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectNerfRev).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectWaterGun).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picWeaponSelectCorkGun).EndInit();
+            this.panWeaponSelect.ResumeLayout(false);
+            this.panWeaponSelect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)this.picOpponent).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picOpponent2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.picPlayer).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -407,10 +410,10 @@ namespace RRRPG
         private Panel panWeaponSelect;
         private Label lblPlayer;
         private Button btnDoIt;
-        private PictureBox picPlayer;
         private PictureBox picOpponent;
         private PictureBox picOpponent2;
         private Label lblOpponentSpeak;
         private Label lblOpponentSpeak2;
+        private PictureBox picPlayer;
     }
 }

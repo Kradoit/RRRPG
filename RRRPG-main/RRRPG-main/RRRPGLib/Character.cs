@@ -68,15 +68,28 @@ public class Character {
     c.Shutup();
     return c;
   }
-
-  /// <summary>
-  /// Create a player with the appropriate animations and dialog for the given weapon
-  /// </summary>
-  /// <param name="weaponType">Type of weapon to create the player for</param>
-  /// <param name="pic">PictureBox to hold the image of the player</param>
-  /// <param name="lblTalk">Label to hold the player's dialog</param>
-  /// <returns></returns>
-  public static Character MakePlayer(WeaponType weaponType, PictureBox pic, Label lblTalk) {
+    public static Character MakeOpponent(WeaponType weaponType, PictureBox pic)
+    {
+        Character c = weaponType switch
+        {
+            WeaponType.MAGIC_WAND => MakeMagicWandOpponent(),
+            WeaponType.NERF_REVOLVER => MakeNerfRevolverOpponent(),
+            WeaponType.BOW => MakeBowOpponent(),
+            WeaponType.CORK_GUN => MakeCorkGunOpponent(),
+            WeaponType.WATER_GUN => MakeWaterGunOpponent(),
+        };
+        c.pic = pic;
+        c.ShowIdle();
+        return c;
+    }
+    /// <summary>
+    /// Create a player with the appropriate animations and dialog for the given weapon
+    /// </summary>
+    /// <param name="weaponType">Type of weapon to create the player for</param>
+    /// <param name="pic">PictureBox to hold the image of the player</param>
+    /// <param name="lblTalk">Label to hold the player's dialog</param>
+    /// <returns></returns>
+    public static Character MakePlayer(WeaponType weaponType, PictureBox pic, Label lblTalk) {
     Character c = weaponType switch {
       WeaponType.MAGIC_WAND => MakeMagicWandPlayer(),
       WeaponType.NERF_REVOLVER => MakeNerfRevolverPlayer(),
@@ -91,12 +104,45 @@ public class Character {
     return c;
   }
 
-  /// <summary>
-  /// Handles what happens when the character pulls the trigger of the weapon
-  /// </summary>
-  /// <param name="weapon">Weapon in play</param>
-  /// <returns>True if the character got shot, false otherwise</returns>
-  public bool PullTrigger(Weapon weapon) {
+    public static Character MakePlayer(WeaponType weaponType, PictureBox pic)
+    {
+        Character c = weaponType switch
+        {
+            WeaponType.MAGIC_WAND => MakeMagicWandPlayer(),
+            WeaponType.NERF_REVOLVER => MakeNerfRevolverPlayer(),
+            WeaponType.BOW => MakeBowPlayer(),
+            WeaponType.CORK_GUN => MakeCorkGunPlayer(),
+            WeaponType.WATER_GUN => MakeWaterGunPlayer(),
+        };
+        c.pic = pic;
+        c.ShowIdle();
+        return c;
+    }
+    /// <summary>
+    /// function to set pictureBox
+    /// </summary>
+    /// <param name="pic">pictureBox</param>
+    public void setPic(PictureBox pic)
+    {
+        this.pic = pic;
+        this.ShowIdle();
+    }
+    /// <summary>
+    /// function for setting label
+    /// </summary>
+    /// <param name="lab">label</param>
+    public void setText(Label lab)
+    {
+        this.lblTalk = lblTalk;
+        this.Shutup();
+    }
+
+    /// <summary>
+    /// Handles what happens when the character pulls the trigger of the weapon
+    /// </summary>
+    /// <param name="weapon">Weapon in play</param>
+    /// <returns>True if the character got shot, false otherwise</returns>
+    public bool PullTrigger(Weapon weapon) {
     var result = weapon.PullTrigger(this);
     //Say(result.ToString());
     switch (result) {

@@ -17,9 +17,9 @@ public partial class FrmTitle : Form
         ResourcesRef.Resources = Resources.ResourceManager;
         Hide();
         soundPlayer.Stop();
-        FrmMain frmMain = new FrmMain();
-        frmMain.ShowDialog();
-        FormManager.openForms.Add(frmMain);
+        characterSelect CharacterSelect = new characterSelect();
+        CharacterSelect.ShowDialog();
+        FormManager.openForms.Add(CharacterSelect);
     }
     private void button1_Click(object sender, EventArgs e)
     {
