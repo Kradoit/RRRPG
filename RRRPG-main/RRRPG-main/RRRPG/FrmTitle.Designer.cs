@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTitle));
             btnPlay = new Button();
             button1 = new Button();
+            buttonSettings = new Button();
             SuspendLayout();
             // 
             // btnPlay
@@ -41,10 +42,10 @@
             btnPlay.FlatStyle = FlatStyle.Popup;
             btnPlay.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnPlay.ForeColor = Color.Black;
-            btnPlay.Location = new Point(124, 1269);
-            btnPlay.Margin = new Padding(7, 8, 7, 8);
+            btnPlay.Location = new Point(73, 774);
+            btnPlay.Margin = new Padding(4, 5, 4, 5);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new Size(607, 208);
+            btnPlay.Size = new Size(395, 127);
             btnPlay.TabIndex = 0;
             btnPlay.Text = "Singleplayer";
             btnPlay.UseVisualStyleBackColor = false;
@@ -58,28 +59,40 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(189, 1522);
-            button1.Margin = new Padding(7, 8, 7, 8);
+            button1.Location = new Point(111, 928);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(607, 208);
+            button1.Size = new Size(357, 127);
             button1.TabIndex = 1;
             button1.Text = "Multiplayer";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // buttonSettings
+            // 
+            buttonSettings.Font = new Font("Segoe UI", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSettings.Location = new Point(88, 1105);
+            buttonSettings.Name = "buttonSettings";
+            buttonSettings.Size = new Size(299, 106);
+            buttonSettings.TabIndex = 2;
+            buttonSettings.Text = "Settings";
+            buttonSettings.UseVisualStyleBackColor = true;
+            buttonSettings.Click += buttonSettings_Click;
+            // 
             // FrmTitle
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImage = Properties.Resources.Img_Title;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(2380, 1981);
+            ClientSize = new Size(1599, 1240);
+            Controls.Add(buttonSettings);
             Controls.Add(button1);
             Controls.Add(btnPlay);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(7, 8, 7, 8);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "FrmTitle";
             Text = "Russian Roulette RPG";
             FormClosed += FrmTitle_FormClosed;
@@ -91,5 +104,6 @@
 
         private Button btnPlay;
         private Button button1;
+        private Button buttonSettings;
     }
 }
