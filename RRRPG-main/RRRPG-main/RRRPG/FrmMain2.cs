@@ -212,7 +212,6 @@ namespace RRRPG
                 opponent2.SayBoned();
                 opp2Alive = false;
                 picOpponent2.Visible = false;
-                // TODO: make player not visible
                 state = 1;
             }
         }
