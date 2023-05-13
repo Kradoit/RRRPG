@@ -20,22 +20,56 @@ namespace RRRPGLib
             thread.Start(Network);
         }
         // function for the listenerthred
-        public static void listen(object Network)
+        public static void listen(object network)
         {
+            var Network = (MultiPlayer)network;
             // check if you are host
-            
+            if (Network.isHost)
+            {
+                // listen for users
+                while (true)
+                {
+                    // loop for a few seconds waiting for a response
+                    for (int x = 0; x < 5 && Network.ips.Length < 2; x++)
+                    {
+                        // check if you have recieved data
+                        if (Network.udpClient.Available > 0)
+                        {
+                            // get the data and check it 
+                            byte[] data = Network.udpClient.Receive(ref Network.endPoint);
+                            string sData = (System.Text.Encoding.ASCII.GetString(data));
+
+                            // get the ip
+                            string ip = Network.endPoint.Address.ToString();
+                            
+                            // check that you recieved the correct confirmation message
+                            if (sData == "hello")
+                            {
+                                // save the ip address to the list
+                                Network.ips[Network.ips.Length - 1] = ip;
+                            }
+                            // send a response
+                            Network.sendMessage("hola", ip);
+                        }
+                        Thread.Sleep(100);
+                    }
+                }
+
+            }
         }
         // function to start the thread
     }
     public class MultiPlayer
     {
+        public String[] ips = new string[1];
+        public int test = 0;
         // store the name of the user
         public string name = "host";
 
         // open a udp socket 
-        UdpClient udpClient = new UdpClient(25565);
+        public UdpClient udpClient = new UdpClient(25565);
         // make an open endpoint
-        IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 25565);
+        public IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 25565);
 
         // thead for handeling the network
         listener networkThread;
@@ -44,11 +78,10 @@ namespace RRRPGLib
         public bool isHost = false;
 
         // init function
-        public MultiPlayer()
+        public static void startListening(ref MultiPlayer Network)
         {
             // make the thread
-            //networkThread = new listener(this);
-
+            Network.networkThread = new listener(ref Network);
         }
         // function to host a game
         public void hostGame()
@@ -58,26 +91,24 @@ namespace RRRPGLib
         }
 
         // function to send a string to an ip
-        private void sendMessage(string message, string ip)
+        public void sendMessage(string message, string ip)
         {
             // convert the message intop bytes
             byte[] mess = Encoding.ASCII.GetBytes(message);
             // send the message
             udpClient.Send(Encoding.ASCII.GetBytes(message), message.Length, ip, 25565);
-
         }
 
         // function called to join
         // function called to ping for servers
-        public string[] scan()
+        public List<string> scan()
         {
             // ping all local on 25565 (ping 255.255.255.255)
             this.sendMessage("hello", "255.255.255.255");
-            // make a list of strings
-            String[] ips = new string[1];
 
+            List<string> ips = new List<string>();
             // loop for a few seconds waiting for a response
-            for (int x = 0; x < 5 && ips.Length < 2; x++)
+            for (int x = 0; x < 3; x++)
             {
                 // check if you have recieved data
                 if (this.udpClient.Available > 0)
@@ -90,9 +121,11 @@ namespace RRRPGLib
                     if (sData == "hola")
                     {
                         // save the ip address to the list
-                        ips[ips.Length - 1] = this.endPoint.Address.ToString();
+                        ips.Add(this.endPoint.Address.ToString());
+                        break;
                     }
                 }
+                Thread.Sleep(1000);
             }
             return ips;
         }

@@ -57,6 +57,7 @@ public class Character {
   /// <param name="lblTalk">Label to hold the opponent's dialog</param>
   /// <returns>The opponent created</returns>
   public static Character MakeOpponent(WeaponType weaponType, PictureBox pic, Label lblTalk) {
+    
     Character c = weaponType switch {
       WeaponType.MAGIC_WAND => MakeMagicWandOpponent(),
       WeaponType.NERF_REVOLVER => MakeNerfRevolverOpponent(),
@@ -264,11 +265,12 @@ public class Character {
     return c;
   }
   private static Character MakeBowOpponent() {
+    var test = Resources.GetObject("Img_Yoshi_Idle");
     Character c = new Character();
     c.Stats = new(luck: 0.0f, health: 100, reflex: 0.0f);
     c.imgMap = new() {
       {ImgState.IDLE, Resources.GetObject("Img_Yoshi_Idle") as Bitmap },
-      {ImgState.NO_WEAPON, Resources.GetObject("image-removebg-preview") as Bitmap },
+      {ImgState.NO_WEAPON, Resources.GetObject("Img_Yoshi_NoWeapon") as Bitmap },
       {ImgState.READY, Resources.GetObject("Img_Yoshi_Idle") as Bitmap },
       {ImgState.KILL, Resources.GetObject("Img_Yoshi_Kill") as Bitmap },
     };

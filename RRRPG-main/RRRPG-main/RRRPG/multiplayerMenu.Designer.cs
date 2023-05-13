@@ -42,7 +42,7 @@ namespace RRRPG
             button2 = new Button();
             nameBox = new TextBox();
             label1 = new Label();
-            listBox1 = new ListBox();
+            serverList = new ListBox();
             label3 = new Label();
             button1 = new Button();
             SuspendLayout();
@@ -131,16 +131,16 @@ namespace RRRPG
             label1.TabIndex = 23;
             label1.Text = "Name";
             // 
-            // listBox1
+            // serverList
             // 
-            listBox1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 89;
-            listBox1.Location = new Point(985, 358);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(575, 449);
-            listBox1.TabIndex = 24;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            serverList.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            serverList.FormattingEnabled = true;
+            serverList.ItemHeight = 89;
+            serverList.Location = new Point(985, 358);
+            serverList.Name = "serverList";
+            serverList.Size = new Size(575, 449);
+            serverList.TabIndex = 24;
+            serverList.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // label3
             // 
@@ -176,7 +176,7 @@ namespace RRRPG
             ClientSize = new Size(3244, 2108);
             Controls.Add(button1);
             Controls.Add(label3);
-            Controls.Add(listBox1);
+            Controls.Add(serverList);
             Controls.Add(label1);
             Controls.Add(nameBox);
             Controls.Add(button2);
@@ -210,7 +210,7 @@ namespace RRRPG
         private Button button2;
         private TextBox nameBox;
         private Label label1;
-        private ListBox listBox1;
+        private ListBox serverList;
         private Label label3;
         private Button button1;
     }

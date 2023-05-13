@@ -1,6 +1,7 @@
 ﻿using RRRPG.Properties;
 using RRRPGLib;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -82,17 +83,26 @@ namespace RRRPG
         private void reload(object sender, EventArgs e)
         {
             // scan for servers
+            var ips = Network.scan();
 
+            // remove all of the current servers
+            serverList.Items.Clear();
+
+            // loop through and add the ips to the list
+            foreach (string ip in ips) {
+                serverList.Items.Add(ip);
+            }
         }
         // function to host the game
         private void hostGame(object sender, EventArgs e)
         {
             // set the text of the hostname
-            if(nameBox.Text != "")
+            if (nameBox.Text != "")
                 Network.name = nameBox.Text;
 
             // set the network to host
             Network.hostGame();
+            MultiPlayer.startListening(ref Network);
 
             // open the chracter select page with networking
             characterSelect();
