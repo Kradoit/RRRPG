@@ -133,7 +133,7 @@ public class Character {
     /// <param name="lab">label</param>
     public void setText(Label lab)
     {
-        this.lblTalk = lblTalk;
+        this.lblTalk = lab;
         this.Shutup();
     }
 

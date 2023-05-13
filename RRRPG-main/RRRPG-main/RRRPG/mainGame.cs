@@ -12,21 +12,29 @@ namespace RRRPG
         private Character opponent;
         private Character opponent2;
         private Weapon weapon;
+        private bool opp1Alive = true;
+        private bool opp2Alive = true;
+        private bool playerAlive = true;
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap;
 
+        private bool threePlayer = false;
         private void start()
         {
 
             soundPlayer.Stop();
+            opp1Alive = true;
+            opp2Alive = true;
+            playerAlive = true;
             player.Shutup();
             player.ShowIdle();
             opponent.ShowIdle();
             btnStart.Visible = false;
             opponent.SaySmack();
+            if(this.threePlayer)
+                opponent2.SaySmack();
             tmrStateMachine.Interval = 3500;
             tmrStateMachine.Enabled = true;
             state = 0;
-            panWeaponSelect.Visible = false;
         }
         public mainGame(Character player, Character opponent, Character opponent2)
         {
@@ -35,7 +43,7 @@ namespace RRRPG
 
             this.player = player;
             this.opponent = opponent;
-            this.opponent2 = opponent2;;
+            //this.opponent2 = opponent2;;
 
         }
 
@@ -50,6 +58,11 @@ namespace RRRPG
 
             this.player.setPic(picPlayer);
             this.opponent.setPic(picOpponent);
+
+            this.player.setText(lblPlayer);
+            this.opponent.setText(lblOpponent);
+
+            start();
         }
         private void btnStart_Click(object sender, EventArgs e)
         {

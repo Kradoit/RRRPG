@@ -2,7 +2,7 @@
 
 namespace RRRPG
 {
-    partial class characterSelect
+    partial class CharacterSelect
     {
         /// <summary>
         /// Required designer variable.

@@ -15,7 +15,7 @@ using static System.Windows.Forms.AxHost;
 
 namespace RRRPG
 {
-    public partial class characterSelect : Form
+    public partial class CharacterSelect : Form
     {
         private SoundPlayer soundPlayer;
         private Character player;
@@ -27,17 +27,17 @@ namespace RRRPG
 
         private int selectedPlayer = 1;
         private bool multiplayer = false;
-        private multiPlayer Network;
+        private MultiPlayer Network;
 
 
         // base init without mutiplayer
-        public characterSelect()
+        public CharacterSelect()
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
         }
         // init with multiplayer 
-        public characterSelect(multiPlayer Network)
+        public CharacterSelect(MultiPlayer Network)
         {
             InitializeComponent();
             this.Network = Network;
