@@ -9,20 +9,52 @@ using static System.Windows.Forms.AxHost;
 
 namespace RRRPGLib
 {
+    class listener
+    {
+        Thread thread;
+        // init function
+        public listener(ref MultiPlayer Network)
+        {
+            // make and start the thread
+            Thread thread = new Thread(new ParameterizedThreadStart(listen));
+            thread.Start(Network);
+        }
+        // function for the listenerthred
+        public static void listen(object Network)
+        {
+            // check if you are host
+            
+        }
+        // function to start the thread
+    }
     public class MultiPlayer
     {
+        // store the name of the user
+        public string name = "host";
+
         // open a udp socket 
         UdpClient udpClient = new UdpClient(25565);
         // make an open endpoint
         IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 25565);
 
+        // thead for handeling the network
+        listener networkThread;
+
         // hold weather or not this is the host
         public bool isHost = false;
 
+        // init function
+        public MultiPlayer()
+        {
+            // make the thread
+            //networkThread = new listener(this);
+
+        }
         // function to host a game
-        private void hostGame()
+        public void hostGame()
         {
             // make a thread to listen for new players
+            isHost = true;
         }
 
         // function to send a string to an ip

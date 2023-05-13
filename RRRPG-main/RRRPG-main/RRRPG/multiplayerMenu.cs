@@ -18,101 +18,37 @@ namespace RRRPG
     public partial class multiplayerMenu : Form
     {
         private SoundPlayer soundPlayer;
-        private Character player;
-        private Character opponent;
-        private Character opponent2;
-        private Weapon weapon;
-        private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap;
-        private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap2;
-
-        private int selectedPlayer = 1;
-        private bool multiplayer = false;
         private MultiPlayer Network;
 
+        // function to character select
+        private void characterSelect()
+        {
+            ResourcesRef.Resources = Resources.ResourceManager;
+            Hide();
+            CharacterSelect characterSelect = new CharacterSelect(Network);
+            soundPlayer.Stop();
+            characterSelect.ShowDialog();
+            FormManager.openForms.Add(characterSelect);
+        }
 
         // base init without mutiplayer
         public multiplayerMenu()
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
+
+            // make the network object
+            Network = new MultiPlayer();
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {
             soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
             soundPlayer.PlayLooping();
-            weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
-            weaponSelectMap = new() {
-            {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
-            {WeaponType.CORK_GUN, (picWeaponSelectCorkGun,lblWeaponSelectCorkGun) },
-            {WeaponType.WATER_GUN, (picWeaponSelectWaterGun, lblWeaponSelectWaterGun) },
-            {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand, lblWeaponSelectMagicWand) },
-            {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev, lblWeaponSelectNerfRev) },
-            };
         }
 
-
-        private void SelectWeapon(WeaponType type)
+        private void selectHost(object sender, EventArgs e)
         {
-            Color selectedColor = Color.Yellow;
-            foreach (var weaponSel in weaponSelectMap)
-            {
-                weaponSel.Value.pic.BackColor = Color.Black;
-                weaponSel.Value.pic.BorderStyle = BorderStyle.None;
-                weaponSel.Value.lbl.ForeColor = Color.White;
-            }
-            weaponSelectMap[type].pic.BackColor = selectedColor;
-            weaponSelectMap[type].pic.BorderStyle = BorderStyle.Fixed3D;
-            weaponSelectMap[type].lbl.ForeColor = selectedColor;
 
-            weapon = Weapon.MakeWeapon(type);
-
-            // check which box is active
-            switch (this.selectedPlayer)
-            {
-                case 2:
-                    {
-                        this.player = Character.MakeOpponent(type, picPlayer);
-                        this.player.ShowNoWeapon();
-                    }
-                    break;
-                case 1:
-                    {
-                        this.opponent2 = Character.MakeOpponent(type, picOpponent);
-                        this.opponent2.ShowNoWeapon();
-                    }
-                    break;
-                case 3:
-                    {
-                        this.opponent = Character.MakeOpponent(type, picOpponent2);
-                        this.opponent.ShowNoWeapon();
-                    }
-                    break;
-            }
-        }
-
-        private void picWeaponSelectMagicWand_Click(object sender, EventArgs e)
-        {
-            SelectWeapon(WeaponType.MAGIC_WAND);
-        }
-
-        private void picWeaponSelectCorkGun_Click(object sender, EventArgs e)
-        {
-            SelectWeapon(WeaponType.CORK_GUN);
-        }
-
-        private void picWeaponSelectWaterGun_Click(object sender, EventArgs e)
-        {
-            SelectWeapon(WeaponType.WATER_GUN);
-        }
-
-        private void picWeaponSelectNerfRev_Click(object sender, EventArgs e)
-        {
-            SelectWeapon(WeaponType.NERF_REVOLVER);
-        }
-
-        private void picWeaponSelectBow_Click(object sender, EventArgs e)
-        {
-            SelectWeapon(WeaponType.BOW);
         }
 
         private void FrmMain2_FormClosed(object sender, FormClosedEventArgs e)
@@ -122,52 +58,44 @@ namespace RRRPG
         }
 
 
-        private void lblPlayerSpeak_Click(object sender, EventArgs e)
-        {
-        }
-        private void setBorder(PictureBox box)
-        {
-            foreach (var pic in Controls)
-            {
-                if (pic.GetType() == typeof(PictureBox))
-                {
-                    var pic2 = (PictureBox)pic;
-                    pic2.BackColor = Color.Black;
-                }
-            }
-            box.BackColor = Color.Yellow;
-        }
-        private void selectPlayer(object sender, EventArgs e)
-        {
-            selectedPlayer = 2;
-            var picBox = (PictureBox)sender;
-            setBorder(picBox);
-        }
-        private void selectOpponent(object sender, EventArgs e)
-        {
-            selectedPlayer = 1;
-            var picBox = (PictureBox)sender;
-            setBorder(picBox);
-        }
-        private void selectOpponent2(object sender, EventArgs e)
-        {
-            selectedPlayer = 3;
-            var picBox = (PictureBox)sender;
-            setBorder(picBox);
-        }
-
         private void btnStart_Click(object sender, EventArgs e)
         {
-            var p1 = this.player;
-            var p2 = this.opponent;
-            var p3 = this.opponent2;
+            // check
+            characterSelect();
+        }
 
-            ResourcesRef.Resources = Resources.ResourceManager;
-            Hide();
-            mainGame MainGame = new mainGame(p1, p2, p3);
-            soundPlayer.Stop();
-            MainGame.ShowDialog();
-            FormManager.openForms.Add(MainGame);
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reload(object sender, EventArgs e)
+        {
+            // scan for servers
+
+        }
+        // function to host the game
+        private void hostGame(object sender, EventArgs e)
+        {
+            // set the text of the hostname
+            if(nameBox.Text != "")
+                Network.name = nameBox.Text;
+
+            // set the network to host
+            Network.hostGame();
+
+            // open the chracter select page with networking
+            characterSelect();
         }
     }
 
