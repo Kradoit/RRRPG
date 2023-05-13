@@ -43,5 +43,15 @@ public partial class FrmTitle : Form
         FormManager.openForms.Remove(this);
         FormManager.CloseAll();
     }
+    /// multiplayer button
+    private void button2_Click(object sender, EventArgs e)
+    {
+        ResourcesRef.Resources = Resources.ResourceManager;
+        Hide();
+        soundPlayer.Stop();
+        multiplayerMenue multiplayerMenue = new multiplayerMenue();
+        multiplayerMenue.ShowDialog();
+        FormManager.openForms.Add(multiplayerMenue);
 
+    }
 }
