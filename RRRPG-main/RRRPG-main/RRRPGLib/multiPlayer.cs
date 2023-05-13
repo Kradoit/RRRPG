@@ -16,6 +16,15 @@ namespace RRRPGLib
         // make an open endpoint
         IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 25565);
 
+        // hold weather or not this is the host
+        public bool isHost = false;
+
+        // function to host a game
+        private void hostGame()
+        {
+            // make a thread to listen for new players
+        }
+
         // function to send a string to an ip
         private void sendMessage(string message, string ip)
         {

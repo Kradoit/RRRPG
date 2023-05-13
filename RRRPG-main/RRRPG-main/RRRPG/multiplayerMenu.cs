@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -16,7 +15,7 @@ using static System.Windows.Forms.AxHost;
 
 namespace RRRPG
 {
-    public partial class CharacterSelect : Form
+    public partial class multiplayerMenu : Form
     {
         private SoundPlayer soundPlayer;
         private Character player;
@@ -32,18 +31,10 @@ namespace RRRPG
 
 
         // base init without mutiplayer
-        public CharacterSelect()
+        public multiplayerMenu()
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
-        }
-        // init with multiplayer 
-        public CharacterSelect(MultiPlayer Network)
-        {
-            InitializeComponent();
-            this.Network = Network;
-            this.multiplayer = true;
-
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {
@@ -86,14 +77,14 @@ namespace RRRPG
                     break;
                 case 1:
                     {
-                        this.opponent = Character.MakeOpponent(type, picOpponent);
-                        this.opponent.ShowNoWeapon();
+                        this.opponent2 = Character.MakeOpponent(type, picOpponent);
+                        this.opponent2.ShowNoWeapon();
                     }
                     break;
                 case 3:
                     {
-                        this.opponent2 = Character.MakeOpponent(type, picOpponent2);
-                        this.opponent2.ShowNoWeapon();
+                        this.opponent = Character.MakeOpponent(type, picOpponent2);
+                        this.opponent.ShowNoWeapon();
                     }
                     break;
             }
@@ -146,7 +137,6 @@ namespace RRRPG
             }
             box.BackColor = Color.Yellow;
         }
-        // functions to select which character to select
         private void selectPlayer(object sender, EventArgs e)
         {
             selectedPlayer = 2;
@@ -168,32 +158,13 @@ namespace RRRPG
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // check that they have at least a player and a opponent
-            if(player == null)
-            {
-                MessageBox.Show("You must choose a character");
-                return;
-            }
-            if (opponent == null)
-            {
-                MessageBox.Show("You must choose an opponent");
-                return;
-            }
+            var p1 = this.player;
+            var p2 = this.opponent;
+            var p3 = this.opponent2;
 
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
-            mainGame MainGame;
-            // check if its one or two player
-            if (opponent2 == null)
-                MainGame = new mainGame(player, opponent);
-            else
-                MainGame = new mainGame(player, opponent, opponent2);
-
-            
-            if(multiplayer){
-                MainGame.setMultiplayer(Network);
-            };
-
+            mainGame MainGame = new mainGame(p1, p2, p3);
             soundPlayer.Stop();
             MainGame.ShowDialog();
             FormManager.openForms.Add(MainGame);

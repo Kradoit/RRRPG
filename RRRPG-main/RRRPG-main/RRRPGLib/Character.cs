@@ -16,12 +16,13 @@ public class Character {
   /// Holds the stats for this character
   /// </summary>
   public Stats Stats { get; private set; }
-  #endregion
+    #endregion
 
-  #region Private Fields / Properties
+    #region Private Fields / Properties
   private FortitudeType fortitude;
   private PictureBox pic;
   private Label lblTalk;
+    private Weapon weapon;
   private Dictionary<ImgState, Bitmap> imgMap;
   private Dictionary<TalkState, (string dialog, UnmanagedMemoryStream audio)> dialogMap;
   #endregion
@@ -63,6 +64,8 @@ public class Character {
       WeaponType.CORK_GUN => MakeCorkGunOpponent(),
       WeaponType.WATER_GUN => MakeWaterGunOpponent(),
     };
+    // make the weapon too 
+    c.weapon = Weapon.MakeWeapon(weaponType);
     c.pic = pic;
     c.lblTalk = lblTalk;
     c.ShowIdle();
@@ -79,6 +82,8 @@ public class Character {
             WeaponType.CORK_GUN => MakeCorkGunOpponent(),
             WeaponType.WATER_GUN => MakeWaterGunOpponent(),
         };
+        // make the weapon too 
+        c.weapon = Weapon.MakeWeapon(weaponType);
         c.pic = pic;
         c.ShowIdle();
         return c;
@@ -98,12 +103,14 @@ public class Character {
       WeaponType.CORK_GUN => MakeCorkGunPlayer(),
       WeaponType.WATER_GUN => MakeWaterGunPlayer(),
     };
+    // make the weapon too 
+    c.weapon = Weapon.MakeWeapon(weaponType);
     c.pic = pic;
     c.lblTalk = lblTalk;
     c.ShowIdle();
     c.Shutup();
     return c;
-  }
+}
 
     public static Character MakePlayer(WeaponType weaponType, PictureBox pic)
     {
@@ -115,6 +122,8 @@ public class Character {
             WeaponType.CORK_GUN => MakeCorkGunPlayer(),
             WeaponType.WATER_GUN => MakeWaterGunPlayer(),
         };
+        // make the weapon too 
+        c.weapon = Weapon.MakeWeapon(weaponType);
         c.pic = pic;
         c.ShowIdle();
         return c;
@@ -123,7 +132,7 @@ public class Character {
     /// function to set pictureBox
     /// </summary>
     /// <param name="pic">pictureBox</param>
-    public void setPic(PictureBox pic)
+    public void setPic(ref PictureBox pic)
     {
         this.pic = pic;
         this.ShowIdle();
@@ -132,7 +141,7 @@ public class Character {
     /// function for setting label
     /// </summary>
     /// <param name="lab">label</param>
-    public void setText(Label lab)
+    public void setText(ref Label lab)
     {
         this.lblTalk = lab;
         this.Shutup();
@@ -143,7 +152,7 @@ public class Character {
     /// </summary>
     /// <param name="weapon">Weapon in play</param>
     /// <returns>True if the character got shot, false otherwise</returns>
-    public bool PullTrigger(Weapon weapon) {
+    public bool PullTrigger() {
     var result = weapon.PullTrigger(this);
     //Say(result.ToString());
     switch (result) {
@@ -274,19 +283,19 @@ public class Character {
   }
   private static Character MakeNerfRevolverOpponent() {
     Character c = new Character();
-    c.Stats = new(luck: 0.0f, health: 100, reflex: 0.0f);
+    c.Stats = new(luck: 0.5f, health: 100, reflex: 0.3f);
     c.imgMap = new() {
-      {ImgState.IDLE, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
-      {ImgState.NO_WEAPON, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
-      {ImgState.READY, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
-      {ImgState.KILL, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
+      {ImgState.IDLE, Resources.GetObject("Img_Bender_Idle") as Bitmap },
+      {ImgState.NO_WEAPON, Resources.GetObject("Img_Bender_Idle") as Bitmap },
+      {ImgState.READY, Resources.GetObject("img_bender_ready_revolver") as Bitmap },
+      {ImgState.KILL, Resources.GetObject("img_bender_kill_revolver") as Bitmap },
     };
-    c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("", null) },
-      {TalkState.SAY_OW, ("", null) },
-      {TalkState.BONED, ("", null) },
-      {TalkState.GUN_WENT_OFF, ("", null) },
-      {TalkState.SURVIVED, ("", null) },
+        c.dialogMap = new() {
+      {TalkState.TALK_SMACK, ("Bite my shiny metal ass!", Resources.GetStream("Snd_Bender_BiteMyShinyMetalAss")) },
+      {TalkState.SAY_OW, ("Ow ow ow!!!", null) },
+      {TalkState.BONED, ("Oh, I'm boned!", Resources.GetStream("Snd_Bender_ImBoned")) },
+      {TalkState.GUN_WENT_OFF, ("Oh My God!", Resources.GetStream("Snd_Bender_OhMyGod")) },
+      {TalkState.SURVIVED, ("Hahahaha!", Resources.GetStream("Snd_Bender_Laugh")) },
     };
     return c;
   }

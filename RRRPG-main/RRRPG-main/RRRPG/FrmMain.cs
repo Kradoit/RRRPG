@@ -93,7 +93,7 @@ namespace RRRPG
             }
             else if (state == 6)
             {
-                if (opponent.PullTrigger(weapon))
+                if (opponent.PullTrigger())
                 {
                     state = 7;
                 }
@@ -121,7 +121,7 @@ namespace RRRPG
 
         private void btnDoIt_Click(object sender, EventArgs e)
         {
-            if (player.PullTrigger(weapon))
+            if (player.PullTrigger())
             {
                 state = 3;
                 tmrStateMachine.Interval = 2200;

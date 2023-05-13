@@ -56,7 +56,7 @@ namespace RRRPG
 
         private void btnDoIt_Click(object sender, EventArgs e)
         {
-            if (player.PullTrigger(weapon))
+            if (player.PullTrigger())
             {
                 state = 3;
                 tmrStateMachine.Interval = 2200;
@@ -87,6 +87,7 @@ namespace RRRPG
             tmrStateMachine.Enabled = true;
             state = 0;
             panWeaponSelect.Visible = false;
+            btnDoIt.Visible = true;
         }
 
         private void tmrDialog_Tick(object sender, EventArgs e)
@@ -155,7 +156,7 @@ namespace RRRPG
             }
             else if (state == 6)
             {
-                if (opponent.PullTrigger(weapon))
+                if (opponent.PullTrigger())
                 {
                     state = 7;
                 }
@@ -192,7 +193,7 @@ namespace RRRPG
             }
             else if (state == 11)
             {
-                if (opponent2.PullTrigger(weapon))
+                if (opponent2.PullTrigger())
                 {
                     state = 12;
                 }

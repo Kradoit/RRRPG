@@ -26,9 +26,9 @@ public partial class FrmTitle : Form
         ResourcesRef.Resources = Resources.ResourceManager;
         Hide();
         soundPlayer.Stop();
-        FrmMain2 frmMain2 = new FrmMain2();
-        frmMain2.ShowDialog();
-        FormManager.openForms.Add(frmMain2);
+        multiplayerMenu MultiplayerMenu = new multiplayerMenu();
+        MultiplayerMenu.ShowDialog();
+        FormManager.openForms.Add(MultiplayerMenu);
     }
 
     private void FrmTitle_Load(object sender, EventArgs e)

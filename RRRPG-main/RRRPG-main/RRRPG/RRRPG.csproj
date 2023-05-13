@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="multiplayerMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="CharacterSelect.cs">
       <SubType>Form</SubType>
     </Compile>

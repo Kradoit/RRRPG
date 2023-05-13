@@ -41,12 +41,12 @@
             btnPlay.FlatStyle = FlatStyle.Popup;
             btnPlay.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnPlay.ForeColor = Color.Black;
-            btnPlay.Location = new Point(73, 774);
-            btnPlay.Margin = new Padding(4, 5, 4, 5);
+            btnPlay.Location = new Point(124, 1269);
+            btnPlay.Margin = new Padding(7, 8, 7, 8);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new Size(336, 127);
+            btnPlay.Size = new Size(607, 208);
             btnPlay.TabIndex = 0;
-            btnPlay.Text = "PlayV1";
+            btnPlay.Text = "Singleplayer";
             btnPlay.UseVisualStyleBackColor = false;
             btnPlay.Click += btnPlay_Click;
             // 
@@ -58,28 +58,28 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(111, 928);
-            button1.Margin = new Padding(4, 5, 4, 5);
+            button1.Location = new Point(189, 1522);
+            button1.Margin = new Padding(7, 8, 7, 8);
             button1.Name = "button1";
-            button1.Size = new Size(336, 127);
+            button1.Size = new Size(607, 208);
             button1.TabIndex = 1;
-            button1.Text = "PlayV2";
+            button1.Text = "Multiplayer";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // FrmTitle
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImage = Properties.Resources.Img_Title;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1400, 1208);
+            ClientSize = new Size(2380, 1981);
             Controls.Add(button1);
             Controls.Add(btnPlay);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(7, 8, 7, 8);
             Name = "FrmTitle";
             Text = "Russian Roulette RPG";
             FormClosed += FrmTitle_FormClosed;

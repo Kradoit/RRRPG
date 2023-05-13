@@ -93,6 +93,16 @@ namespace RRRPG.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_bender_kill_revolver {
+            get {
+                object obj = ResourceManager.GetObject("img_bender_kill_revolver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Img_Bender_Kill_WaterGun {
             get {
                 object obj = ResourceManager.GetObject("Img_Bender_Kill_WaterGun", resourceCulture);
@@ -106,6 +116,16 @@ namespace RRRPG.Properties {
         internal static System.Drawing.Bitmap Img_Bender_Ready_MagicWand {
             get {
                 object obj = ResourceManager.GetObject("Img_Bender_Ready_MagicWand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_bender_ready_revolver {
+            get {
+                object obj = ResourceManager.GetObject("img_bender_ready_revolver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +216,16 @@ namespace RRRPG.Properties {
         internal static System.Drawing.Bitmap Img_Nerf_Revolver {
             get {
                 object obj = ResourceManager.GetObject("Img_Nerf_Revolver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_nerf_revolver1 {
+            get {
+                object obj = ResourceManager.GetObject("img_nerf_revolver1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

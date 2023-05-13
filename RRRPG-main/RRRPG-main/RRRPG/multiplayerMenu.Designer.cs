@@ -2,7 +2,7 @@
 
 namespace RRRPG
 {
-    partial class CharacterSelect
+    partial class multiplayerMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,6 @@ namespace RRRPG
             panWeaponSelect = new Panel();
             lblPlayer = new Label();
             picOpponent = new PictureBox();
-            picOpponent2 = new PictureBox();
             picPlayer = new PictureBox();
             lblOpponentSpeak = new Label();
             text3 = new Label();
@@ -61,7 +60,6 @@ namespace RRRPG
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectCorkGun).BeginInit();
             panWeaponSelect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picOpponent).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
             SuspendLayout();
             // 
@@ -284,6 +282,7 @@ namespace RRRPG
             // picOpponent
             // 
             picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
+            picOpponent.Image = Resources.Img_Bender_Idle;
             picOpponent.Location = new Point(369, 439);
             picOpponent.Margin = new Padding(7, 8, 7, 8);
             picOpponent.Name = "picOpponent";
@@ -291,17 +290,6 @@ namespace RRRPG
             picOpponent.TabIndex = 12;
             picOpponent.TabStop = false;
             picOpponent.MouseClick += selectOpponent;
-            // 
-            // picOpponent2
-            // 
-            picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent2.Location = new Point(2443, 439);
-            picOpponent2.Margin = new Padding(7, 8, 7, 8);
-            picOpponent2.Name = "picOpponent2";
-            picOpponent2.Size = new Size(697, 849);
-            picOpponent2.TabIndex = 20;
-            picOpponent2.TabStop = false;
-            picOpponent2.MouseClick += selectOpponent2;
             // 
             // picPlayer
             // 
@@ -313,6 +301,9 @@ namespace RRRPG
             picPlayer.TabIndex = 11;
             picPlayer.TabStop = false;
             picPlayer.MouseClick += selectPlayer;
+            // 
+            // picOpponent2
+            // 
             // 
             // lblOpponentSpeak
             // 
@@ -338,7 +329,7 @@ namespace RRRPG
             text3.TabIndex = 21;
             text3.Text = "opponent 2";
             // 
-            // CharacterSelect
+            // characterSelect
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -355,7 +346,7 @@ namespace RRRPG
             Controls.Add(picOpponent);
             Controls.Add(picPlayer);
             Margin = new Padding(5);
-            Name = "CharacterSelect";
+            Name = "characterSelect";
             Text = "Form1";
             FormClosed += FrmMain2_FormClosed;
             Load += FrmMain2_Load;
@@ -367,8 +358,8 @@ namespace RRRPG
             panWeaponSelect.ResumeLayout(false);
             panWeaponSelect.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picOpponent).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picOpponent2).EndInit();
             ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picOpponent2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
