@@ -9,36 +9,58 @@ using static System.Windows.Forms.AxHost;
 using System.Media;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Linq;
 
 namespace RRRPGLib
 {
-    class listener
+    public class listener
     {
         // threads
         Thread hostThread;
         Thread lobyThread;
 
         // init function
-        public listener(ref MultiPlayer Network)
+        public listener(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
         {
+            List<Object> variables = new List<Object> {
+                Network,
+                Opponent,
+                Opponent2,
+                OpponentText,
+                Opponent2Text,
+            };
             // make and start the thread
             hostThread = new Thread(new ParameterizedThreadStart(listen));
-            hostThread.Start(Network);
+            hostThread.Start(variables);
         }
         // function to start the loby thread
-        public void startLobby(ref object network, ref PictureBox Player, ref PictureBox Opponent, ref PictureBox Opponent2)
+        public void startLobby(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
         {
-            // cast the 
-            var Network = (MultiPlayer)network;
+            OpponentText.Text = "test";
+            List<Object> variables = new List<Object> { 
+                Network,
+                Opponent,
+                Opponent2,
+                OpponentText,
+                Opponent2Text,
+            };
+
             // make and start the thread
-            Thread thread = new Thread(new ParameterizedThreadStart(listen));
-            thread.Start(Network);
+            lobyThread = new Thread(new ParameterizedThreadStart(lobyListener));
+            lobyThread.Start(variables);
         }
 
         // function for the listenerthred
-        public static void listen(object network)
+        public static void listen(object objects)
         {
-            var Network = (MultiPlayer)network;
+            // cast  objects
+            var Objects = (List<Object>)objects;
+            var Network = (MultiPlayer)Objects[0];
+            var Opponent = (PictureBox)Objects[1];
+            var Opponent2 = (PictureBox)Objects[2];
+            var OpponentText = (Label)Objects[3];
+            var Opponent2Text = (Label)Objects[4];
+
             // listen for users
             while (true)
             {
@@ -55,12 +77,24 @@ namespace RRRPGLib
                         // get the ip
                         string ip = Network.endPoint.Address.ToString();
 
+                        // split up the message
+                        string[] message = sData.Split((char)127);
+
                         // check that you recieved the correct confirmation message
-                        if (sData == "join")
+                        if (message[0] == "join")
                         {
                             // save the ip address to the list
                             Network.ips[Network.ips.Length - 1] = ip;
                         }
+                        // set their name
+                        if(Network.ips.Length == 0)
+                        {
+                            OpponentText.Text = message[1];
+                        }else if(Network.ips.Length == 1)
+                        {
+                            Opponent2Text.Text = message[1];
+                        }
+                        //else if(sData.Split() == "")
                         // send a response
                         Network.sendMessage("hola", ip);
                     }
@@ -69,32 +103,30 @@ namespace RRRPGLib
             }
         }
         // function to handel the lobby
-        public static void lobyListener(object network, PictureBox Player, PictureBox Opponent, PictureBox Opponent2)
+        public static void lobyListener(object objects)
         {
-            // cast network object
-            var Network = (MultiPlayer)network;
+            // cast  objects
+            var Objects = (List<Object>)objects;
+            var Network = (MultiPlayer)Objects[0];
+            var Opponent = (PictureBox)Objects[1];
+            var Opponent2 = (PictureBox)Objects[2];
+            var OpponentText = (Label)Objects[3];
+            var Opponent2Text = (Label)Objects[4];
 
             // check if you are host
             if (Network.isHost)
             {
-
+                // listen for the other users selecting their characters
             }
             else
             {
+                // listen for the host sending users
 
             }
         }
     }
     public class MultiPlayer
     {
-        PictureBox Player;
-        PictureBox Opponent1;
-        PictureBox Opponent2;
-
-        Label playerText;
-        Label OpponentText;
-        Label Opponent2Text;
-
         public String[] ips = new string[1];
         public int test = 0;
         // store the name of the user
@@ -107,16 +139,16 @@ namespace RRRPGLib
         public IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 25565);
 
         // thead for handeling the network
-        listener networkThread;
+        public listener networkThread;
 
         // hold weather or not this is the host
         public bool isHost = false;
 
         // init function
-        public static void startListening(ref MultiPlayer Network)
+        public static void hostListener(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
         {
             // make the thread
-            Network.networkThread = new listener(ref Network);
+            Network.networkThread = new listener(ref Network, ref  Opponent, ref  Opponent2, ref  OpponentText, ref  Opponent2Text);
         }
         // function to host a game
         public void hostGame()
@@ -165,10 +197,11 @@ namespace RRRPGLib
             return ips;
         }
         // function to join the server
-        public void join(string ip)
+        public void join(string ip, string name)
         {
             hostIp = ip;
-            sendMessage("join", ip);
+            this.name = name;
+            sendMessage("join" + (char)127 + name, ip);
         }
 
         // function to set the labels and picture boxes

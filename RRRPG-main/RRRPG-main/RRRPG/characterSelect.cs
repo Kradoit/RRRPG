@@ -1,4 +1,5 @@
-﻿using RRRPG.Properties;
+﻿using Microsoft.VisualBasic.Devices;
+using RRRPG.Properties;
 using RRRPGLib;
 using System;
 using System.Collections.Generic;
@@ -43,12 +44,22 @@ namespace RRRPG
             picOpponent.MouseClick += selectOpponent;
         }
         // init with multiplayer 
-        public CharacterSelect(MultiPlayer Network)
+        public CharacterSelect(ref MultiPlayer Network)
         {
             InitializeComponent();
+
+            // save the network values
             this.Network = Network;
             this.multiplayer = true;
 
+            // run the host thread if host
+            if (this.Network.isHost)
+            {
+                MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
+            }
+
+            // run the network thread
+            this.Network.networkThread.startLobby(ref Network, ref picOpponent, ref picOpponent2, ref lblOpponentSpeak, ref text3);
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {

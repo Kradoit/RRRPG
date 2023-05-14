@@ -26,7 +26,7 @@ namespace RRRPG
         {
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
-            CharacterSelect characterSelect = new CharacterSelect(Network);
+            CharacterSelect characterSelect = new CharacterSelect(ref Network);
             soundPlayer.Stop();
             characterSelect.ShowDialog();
             FormManager.openForms.Add(characterSelect);
@@ -56,13 +56,13 @@ namespace RRRPG
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // if youre not the host then get the ip and save it to network
+            // if youre not the host then tell the host youre joining
             if(!Network.isHost)
             {
                 // check if they have selected an item
                 if (serverList.SelectedItem!=null)
                 {
-                    Network.join(serverList.GetItemText(serverList.SelectedItem));
+                    Network.join(serverList.GetItemText(serverList.SelectedItem), nameBox.Text);
                 }
             }    
             // check
@@ -106,7 +106,6 @@ namespace RRRPG
 
             // set the network to host
             Network.hostGame();
-            MultiPlayer.startListening(ref Network);
 
             // open the chracter select page with networking
             characterSelect();
