@@ -15,6 +15,14 @@ namespace RRRPGLib
 {
     public class listener
     {
+        // function to set the text of a label
+        public static void setText(Label label, string text)
+        {
+            label.Invoke(new MethodInvoker(delegate
+            {
+                label.Text = text;
+            }));
+        }
         // threads
         Thread hostThread;
         Thread lobyThread;
@@ -85,14 +93,15 @@ namespace RRRPGLib
                         {
                             // save the ip address to the list
                             Network.ips[Network.ips.Length - 1] = ip;
-                        }
-                        // set their name
-                        if(Network.ips.Length == 0)
-                        {
-                            OpponentText.Text = message[1];
-                        }else if(Network.ips.Length == 1)
-                        {
-                            Opponent2Text.Text = message[1];
+                            // set their name
+                            if (Network.ips.Length == 1)
+                            {
+                                setText(OpponentText,message[0]);
+                            }
+                            else if (Network.ips.Length == 1)
+                            {
+                                setText(Opponent2Text, message[0]);
+                            }
                         }
                         //else if(sData.Split() == "")
                         // send a response
