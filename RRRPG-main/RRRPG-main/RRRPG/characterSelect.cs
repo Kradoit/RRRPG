@@ -12,6 +12,7 @@ using System.Media;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
 
@@ -80,7 +81,6 @@ namespace RRRPG
                     userStateMachine.Enabled = true;
                 }
             }
-            text3.Text = "--------";
             // run the network thread
             //if (multiplayer)
             //text3.Text = "--------";
@@ -126,6 +126,17 @@ namespace RRRPG
                         this.opponent2.ShowNoWeapon();
                     }
                     break;
+            }
+            // send the data to other users
+            if (multiplayer)
+            {
+                if (Network.isHost)
+                {
+                    Network.broadCast(type.ToString());
+                }else
+                {
+                    Network.sendMessage(type.ToString());
+                }
             }
         }
 
@@ -252,7 +263,6 @@ namespace RRRPG
         // host function
         private void host(object sender, EventArgs e)
         {
-            text3.Text = "123123";
             Network.checkForUsers(ref player1, ref text3);
         }
         private void checkForData(object sender, EventArgs e)

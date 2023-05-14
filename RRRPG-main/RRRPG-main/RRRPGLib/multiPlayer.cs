@@ -10,6 +10,7 @@ using System.Media;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
+using System.ComponentModel.Design;
 
 namespace RRRPGLib
 {
@@ -157,6 +158,8 @@ namespace RRRPGLib
     }
     public class MultiPlayer
     {
+        private String[] rawUserData = new String[3];
+
         public WeaponType Opponent;
         public WeaponType Opponent2;
         public string opponentName;
@@ -164,10 +167,15 @@ namespace RRRPGLib
 
         public bool waiting = true;
         public List<String> ips = new List<string>();
+        public int[] ids = new int[2];
         public int test = 0;
+
         // store the name of the user
         public string name = "host";
         public string hostIp = "none";
+        public int ip = 0;
+        public int OpponentId = -1;
+        public int OpponentId2 = -1;
 
         // open a udp socket 
         public UdpClient udpClient = new UdpClient(25565);
@@ -200,6 +208,15 @@ namespace RRRPGLib
             byte[] mess = Encoding.ASCII.GetBytes(message);
             // send the message
             udpClient.Send(Encoding.ASCII.GetBytes(message), message.Length, ip, 25565);
+        }
+
+        // function to send a string to an ip
+        public void sendMessage(string message)
+        {
+            // convert the message intop bytes
+            byte[] mess = Encoding.ASCII.GetBytes(message);
+            // send the message
+            udpClient.Send(Encoding.ASCII.GetBytes(message), message.Length, hostIp, 25565);
         }
 
         // function called to join
@@ -236,8 +253,7 @@ namespace RRRPGLib
         public void join(string ip, string name)
         {
             hostIp = ip;
-            this.name = name;
-            sendMessage("join" + (char)127 + name, ip);
+            sendMessage("join", ip);
         }
 
         // function to wait to start
@@ -271,41 +287,34 @@ namespace RRRPGLib
                 // get the ip
                 string ip = endPoint.Address.ToString();
 
-                // split up the message
-                string[] message = sData.Split((char)127);
-                // check they sent a name
-                if (message.Length < 2 || message[1] == "")
-                {
-                    message = new string[] { message[0], "player " + (this.ips.Count + 1).ToString() };
-                }
-
-                // check that you recieved the correct confirmation message
-                if (message[0] == "join")
-                {
+                // they are joining
+                if(sData == "join")
+                { 
                     // save the ip address to the list
                     ips.Add(ip);
-                    // set their name
-                    if (ips.Count == 1)
+                    // return their id
+                    sendMessage(ips.Count.ToString(), ip);
+                }else
+                {
+                    // split up the message
+                    string[] message = sData.Split((char)127);
+                    // save the data to the id
+                    if (ips.IndexOf(ip) == 0)
                     {
-                        // set and save the name
-                        OpponentText.Text = message[1];
-                        opponentName = message[1];
-                        // send your name
-                        sendMessage("name" + (char)127 + name, ip);
+                        Opponent = (WeaponType)(int.Parse(message[0]));
+                        opponentName = message[2];
+                        sendMessage("0" + (char)127 + sData, ip);
+                        rawUserData[0] = sData;
                     }
-                    else if (ips.Count == 2)
+                    else
                     {
-                        // set and save the name
-                        Opponent2Text.Text = message[1];
-                        opponentName2 = message[1];
-
-                        // send your name and the opponent name
-                        sendMessage("name" + (char)127 + name, ip);
-                        sendMessage("name" + (char)127 + opponentName, ip);
-                        // send the new opponent name to the old opponent
-                        sendMessage("name" + (char)127 + message[1], ips[0]);
+                        Opponent2 = (WeaponType)(int.Parse(message[0]));
+                        opponentName2 = message[2];
+                        sendMessage("1" + (char)127 + sData, ip);
+                        rawUserData[1] = sData;
                     }
                 }
+                
                 // send a response
                 sendMessage("hola", ip);
             }
@@ -320,35 +329,31 @@ namespace RRRPGLib
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
 
+                // get ip
+                string ip = endPoint.Address.ToString();
+
                 // split up the message
                 string[] message = sData.Split((char)127);
 
-                switch (message[0])
+                // give the user a number and save the data
+                if (message[0] == "0")
                 {
-                    case "name":
-                        {
-                            if (Name1 == null)
-                            {
-                                this.opponentName = message[1];
-                                Name1.Text = message[1];
-                            }
-                            else
-                            {
-                                this.opponentName2 = message[1];
-                                Name1.Text = message[1];
-                            }
-                            break;
-                        }
-                    case "char":
-                        {
-                            if (op1 == null)
-                                op1 = Character.MakeOpponent((WeaponType)(int.Parse(message[1])));
-                            else if (op2 == null)
-                                op2 = Character.MakeOpponent((WeaponType)(int.Parse(message[1])));
-                            break;
-                        }
+                    Opponent = (WeaponType)(int.Parse(message[1]));
+                    opponentName = message[2];
+                    sendMessage(sData + (char)127 + "0", ip);
+                    OpponentId = int.Parse(message[0]);
+                } else if (message[0] == "2" || message[0] == "3")
+                {
+                    Opponent2 = (WeaponType)(int.Parse(message[1]));
+                    opponentName2 = message[2];
+                    sendMessage(sData + (char)127 + "1", ip);
+                    OpponentId2 = int.Parse(message[0]);
                 }
             }
+        }
+        public void sendHostData(WeaponType character)
+        {
+
         }
     }
 }
