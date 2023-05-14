@@ -68,12 +68,12 @@ namespace RRRPG
             //
             // host state timer
             //
-            hostStateMachine.Interval = 1;
+            hostStateMachine.Interval = 2;
             hostStateMachine.Tick += host;
             //
             // user state timer
             //
-            userStateMachine.Interval = 1;
+            userStateMachine.Interval = 2;
             userStateMachine.Tick += checkForData;
             // 
             // tmrPlayMusicAfterGameOver

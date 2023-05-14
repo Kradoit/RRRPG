@@ -215,7 +215,7 @@ namespace RRRPG
                     return;
                 }
                 // check if you are host
-                if(Network.isHost && ((Network.rawUserData[0] != "" && Network.rawUserData[1] != "") && (Network.rawUserData[2] != "" || Network.ips.Count <=2)))
+                if(Network.isHost && ((opponent != null || opponent2 != null))
                 {
                     MessageBox.Show("You must wait for all users to choose a character");
                     return;
@@ -268,11 +268,12 @@ namespace RRRPG
             Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
 
             // set the labels if the characters were set
+            /*
             if(opponent != null)
                 opponent.setPic(ref picOpponent);
             if(opponent != null)
                 opponent2.setPic(ref picOpponent2);
-
+            */
         }
     }
 

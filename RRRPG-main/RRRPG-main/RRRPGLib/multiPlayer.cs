@@ -181,7 +181,7 @@ namespace RRRPGLib
                             sendMessage("1" + (char)127 + sData, ip);
                             rawUserData[1] = sData;
                         }
-                        else
+                        else if (message[0] == "2")
                         {
                             var test = message[0];
                             var test2 = message[1];
@@ -216,13 +216,11 @@ namespace RRRPGLib
                 {
                     Opponent = convertType.convertToWeapon(int.Parse(message[1]));
                     opponentName = message[2];
-                    sendMessage(sData + (char)127 + "0", ip);
                     OpponentId = int.Parse(message[0]);
                 } else if (message[0] == "2" || message[0] == "3")
                 {
                     Opponent2 = convertType.convertToWeapon(int.Parse(message[1]));
                     opponentName2 = message[2];
-                    sendMessage(sData + (char)127 + "1", ip);
                     OpponentId2 = int.Parse(message[0]);
                 }
             }
@@ -231,6 +229,7 @@ namespace RRRPGLib
         {
             if (name == "")
                 name = this.id.ToString();
+            var test = this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name;
             sendMessage(this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name);
         }
     }

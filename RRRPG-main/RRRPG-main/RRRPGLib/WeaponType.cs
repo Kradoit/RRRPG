@@ -34,16 +34,16 @@ public enum WeaponType {
 }
 public class convertType
 {
-    public static int convertToInt(WeaponType weapon)
+    public static string convertToInt(WeaponType weapon)
     {
         switch (weapon)
         {
-            case WeaponType.MAGIC_WAND: return 0; break;
-            case WeaponType.NERF_REVOLVER: return 1; break;
-            case WeaponType.BOW: return 2; break;
-            case WeaponType.CORK_GUN: return 3; break;
-            case WeaponType.WATER_GUN: return 4; break;
-            default: return -1; break;
+            case WeaponType.MAGIC_WAND: return "0"; break;
+            case WeaponType.NERF_REVOLVER: return "1"; break;
+            case WeaponType.BOW: return "2"; break;
+            case WeaponType.CORK_GUN: return "3"; break;
+            case WeaponType.WATER_GUN: return "4"; break;
+            default: return "-1"; break;
         }
     }
     public static WeaponType convertToWeapon(int weapon)
