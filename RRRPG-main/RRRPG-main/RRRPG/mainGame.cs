@@ -374,32 +374,16 @@ namespace RRRPG
                 }
                 else if (state == 1)
                 {
-                    if (playerAlive == false)
+                    if((!threePlayer && (opp1Alive == false || playerAlive == false))||(threePlayer && (opp1Alive == false && opp2Alive == false) || (playerAlive == false && opp2Alive == false) || (opp1Alive == false && playerAlive == false)))
                     {
-                        state = -1;
-                        opponent.ShowIdle();
-                        Network.sendCommand(1, "showIdle");
-                        if (threePlayer)
-                        {
-                            opponent2.ShowNoWeapon();
-                        }
-                        /*
-                        picOpponent.Visible = true;
-                        if (threePlayer)
-                            picOpponent2.Visible = true;
-                        lblOpponent.Visible = false;
-                        if (threePlayer)
-                            lblOpponent2.Visible = false;
-                        btnStart.Visible = true;
-                        tmrPlayMusicAfterGameOver.Enabled = true;
-                        tmrMultiplayer.Enabled = false;
-                        */
-                        state = 0; 
-                    }
-                    else if((opp1Alive == false && opp2Alive == false) || (playerAlive == false && opp2Alive == false) || (opp1Alive == false && playerAlive == false))
-                    {
+                        // end the game
                         Network.sendCommand(-1, "endGame");
-                    }else
+
+                        tmrMultiplayer.Enabled = false;
+
+                        MessageBox.Show("The game has ended");
+                    }
+                    else
                     {
                         Network.sendCommand(-1, "shutUp");
                         Network.sendCommand(-2, "shutUp");
@@ -488,7 +472,10 @@ namespace RRRPG
                     {
                         opponent.Shutup();
                         if (threePlayer)
+                        {
                             opponent2.ShowReady();
+                            Network.sendCommand(2, "showReady");
+                        }
                         state = 11;
                     }
                     else
@@ -656,6 +643,12 @@ namespace RRRPG
                         }
                     case "takeTurn":
                         {
+                            break;
+                        }
+                    case "endGame":
+                        {
+
+                            MessageBox.Show("The game has ended");
                             break;
                         }
                     case null: { break; }
