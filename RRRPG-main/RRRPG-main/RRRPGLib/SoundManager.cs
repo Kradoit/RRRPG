@@ -10,6 +10,7 @@ namespace RRRPGLib;
 /// </summary>
 public static class SoundManager {
   private static readonly SoundPlayer sndPlayer;
+  public static int currTrack = 0;
 
   static SoundManager() {
     sndPlayer = new();

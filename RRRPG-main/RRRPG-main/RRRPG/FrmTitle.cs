@@ -41,8 +41,11 @@ public partial class FrmTitle : Form
 
     private void FrmTitle_Load(object sender, EventArgs e)
     {
-        soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music_3);
-        soundPlayer.PlayLooping();
+        if (SoundManager.currTrack == 0)
+        {
+            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music_3);
+            soundPlayer.PlayLooping();
+        }
         FormManager.openForms.Add(this);
     }
 
