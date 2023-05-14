@@ -78,7 +78,7 @@ namespace RRRPGLib
 
             List<string> ips = new List<string>();
             // loop for a few seconds waiting for a response
-            for (int x = 0; x < 3; x++)
+            for (int x = 0; x < 5; x++)
             {
                 // check if you have recieved data
                 if (this.udpClient.Available > 0)
@@ -95,7 +95,7 @@ namespace RRRPGLib
                         break;
                     }
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
             return ips;
         }
@@ -117,6 +117,7 @@ namespace RRRPGLib
                     if("hola" != sData)
                         id = int.Parse(sData);
                 }
+                Thread.Sleep(20);
             }
 
         }
@@ -163,7 +164,15 @@ namespace RRRPGLib
 
                         // return their id
                         sendMessage(((int)ips.Count).ToString(), ip);
-                        // they are scanning for a server
+
+                        Thread.Sleep(2000);
+                        // send the user all of the data
+                        foreach(var x in rawUserData)
+                        {
+                            sendMessage(x, ip);
+                        }
+
+                     // they are scanning for a server
                     }
                     else if (sData == "hello")
                     {
@@ -214,16 +223,16 @@ namespace RRRPGLib
 
                 // split up the message
                 string[] message = sData.Split((char)127);
-
-                // give the user a number and save the data
+                var test = message[0];
+                // check the id and save the data
                 if (message[0] == "0")
                 {
-                    Opponent = convertType.convertToWeapon(int.Parse(message[1]));
+                    op1 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName = message[2];
                     OpponentId = int.Parse(message[0]);
                 } else if (message[0] == "2" || message[0] == "3")
                 {
-                    Opponent2 = convertType.convertToWeapon(int.Parse(message[1]));
+                    op2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName2 = message[2];
                     OpponentId2 = int.Parse(message[0]);
                 }
@@ -234,7 +243,11 @@ namespace RRRPGLib
             if (name == "")
                 name = this.id.ToString();
             var message = this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name;
-
+            
+            // save the raw user data
+            if(isHost)
+                rawUserData[0] = message;
+            
             if (isHost)
                 broadCast(message);
             else
