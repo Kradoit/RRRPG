@@ -88,7 +88,7 @@ namespace RRRPGLib
                     string sData = (System.Text.Encoding.ASCII.GetString(data));
                     Console.Write(sData);
                     // check that you recieved the correct confirmation message
-                    if (sData == "hola")
+                    if (sData == "hola" && sData.Length == 1)
                     {
                         // save the ip address to the list
                         ips.Add(this.endPoint.Address.ToString());
@@ -165,11 +165,12 @@ namespace RRRPGLib
                         // return their id
                         sendMessage(((int)ips.Count).ToString(), ip);
 
-                        Thread.Sleep(2000);
+                        Thread.Sleep(1000);
                         // send the user all of the data
                         foreach(var x in rawUserData)
                         {
-                            sendMessage(x, ip);
+                            if(x!= null)
+                                sendMessage(x, ip);
                         }
 
                      // they are scanning for a server
