@@ -309,6 +309,12 @@ namespace RRRPGLib
                     ips.Add(ip);
                     // return their id
                     sendMessage(ips.Count.ToString(), ip);
+                // they are scanning for a server
+                }else if(sData == "hello")
+                {
+                    // send a response
+                    sendMessage("hola", ip);
+                // they are sending their user data and requesting an id
                 }else
                 {
                     // split up the message
@@ -329,9 +335,6 @@ namespace RRRPGLib
                         rawUserData[2] = sData;
                     }
                 }
-                
-                // send a response
-                sendMessage("hola", ip);
             }
         }
         // function to check for data
