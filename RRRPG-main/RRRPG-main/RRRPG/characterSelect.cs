@@ -260,7 +260,7 @@ namespace RRRPG
         // host function
         private void host(object sender, EventArgs e)
         {
-            Network.checkForUsers(ref player1, ref text3);
+            Network.checkForUsers(ref player1, ref text3, opponent, opponent2, picOpponent, picOpponent2);
         }
         private void checkForData(object sender, EventArgs e)
         {
