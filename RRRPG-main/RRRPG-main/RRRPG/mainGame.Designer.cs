@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            PictureBox picOpponent;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGame));
             btnDoIt = new Button();
             label3 = new Label();
@@ -53,10 +54,10 @@
             // btnDoIt
             // 
             btnDoIt.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            btnDoIt.Location = new Point(355, 1414);
-            btnDoIt.Margin = new Padding(7, 8, 7, 8);
+            btnDoIt.Location = new Point(209, 862);
+            btnDoIt.Margin = new Padding(4, 5, 4, 5);
             btnDoIt.Name = "btnDoIt";
-            btnDoIt.Size = new Size(546, 192);
+            btnDoIt.Size = new Size(321, 117);
             btnDoIt.TabIndex = 2;
             btnDoIt.Text = "Try Your Luck!";
             btnDoIt.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -79,9 +80,8 @@
             // btnStart
             // 
             btnStart.Location = new Point(0, 0);
-            btnStart.Margin = new Padding(5);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(128, 38);
+            btnStart.Size = new Size(75, 23);
             btnStart.TabIndex = 11;
             // 
             // tmrStateMachine
@@ -104,19 +104,18 @@
             lblOpponent2.AutoSize = true;
             lblOpponent2.BackColor = Color.White;
             lblOpponent2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponent2.Location = new Point(2931, 272);
-            lblOpponent2.Margin = new Padding(5, 0, 5, 0);
+            lblOpponent2.Location = new Point(1724, 166);
             lblOpponent2.Name = "lblOpponent2";
-            lblOpponent2.Size = new Size(0, 81);
+            lblOpponent2.Size = new Size(0, 48);
             lblOpponent2.TabIndex = 33;
             // 
             // picOpponent2
             // 
             picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent2.Location = new Point(2617, 420);
-            picOpponent2.Margin = new Padding(7, 8, 7, 8);
+            picOpponent2.Location = new Point(1539, 256);
+            picOpponent2.Margin = new Padding(4, 5, 4, 5);
             picOpponent2.Name = "picOpponent2";
-            picOpponent2.Size = new Size(993, 1058);
+            picOpponent2.Size = new Size(584, 645);
             picOpponent2.TabIndex = 32;
             picOpponent2.TabStop = false;
             picOpponent2.Click += pictureBox1_Click;
@@ -126,10 +125,10 @@
             lblPlayer.AutoSize = true;
             lblPlayer.BackColor = Color.White;
             lblPlayer.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPlayer.Location = new Point(156, 214);
-            lblPlayer.Margin = new Padding(7, 0, 7, 0);
+            lblPlayer.Location = new Point(92, 130);
+            lblPlayer.Margin = new Padding(4, 0, 4, 0);
             lblPlayer.Name = "lblPlayer";
-            lblPlayer.Size = new Size(0, 81);
+            lblPlayer.Size = new Size(0, 48);
             lblPlayer.TabIndex = 31;
             // 
             // lblOpponent
@@ -137,20 +136,19 @@
             lblOpponent.AutoSize = true;
             lblOpponent.BackColor = Color.White;
             lblOpponent.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponent.Location = new Point(1686, 223);
-            lblOpponent.Margin = new Padding(5, 0, 5, 0);
+            lblOpponent.Location = new Point(992, 136);
             lblOpponent.Name = "lblOpponent";
-            lblOpponent.Size = new Size(0, 81);
+            lblOpponent.Size = new Size(0, 48);
             lblOpponent.TabIndex = 30;
             // 
             // picPlayer
             // 
             picPlayer.BackgroundImageLayout = ImageLayout.Stretch;
             picPlayer.Image = Properties.Resources.Img_Bender_Idle;
-            picPlayer.Location = new Point(48, 356);
-            picPlayer.Margin = new Padding(7, 8, 7, 8);
+            picPlayer.Location = new Point(28, 217);
+            picPlayer.Margin = new Padding(4, 5, 4, 5);
             picPlayer.Name = "picPlayer";
-            picPlayer.Size = new Size(1122, 936);
+            picPlayer.Size = new Size(660, 571);
             picPlayer.TabIndex = 29;
             picPlayer.TabStop = false;
             // 
@@ -160,9 +158,10 @@
             name1.BackColor = Color.White;
             name1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name1.ForeColor = Color.Black;
-            name1.Location = new Point(1768, 21);
+            name1.Location = new Point(1040, 13);
+            name1.Margin = new Padding(2, 0, 2, 0);
             name1.Name = "name1";
-            name1.Size = new Size(0, 89);
+            name1.Size = new Size(0, 54);
             name1.TabIndex = 34;
             // 
             // playerName
@@ -171,9 +170,10 @@
             playerName.BackColor = Color.White;
             playerName.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             playerName.ForeColor = Color.Black;
-            playerName.Location = new Point(489, 9);
+            playerName.Location = new Point(288, 5);
+            playerName.Margin = new Padding(2, 0, 2, 0);
             playerName.Name = "playerName";
-            playerName.Size = new Size(146, 89);
+            playerName.Size = new Size(87, 54);
             playerName.TabIndex = 35;
             playerName.Text = "You";
             // 
@@ -183,27 +183,28 @@
             name2.BackColor = Color.White;
             name2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name2.ForeColor = Color.Black;
-            name2.Location = new Point(2864, 49);
+            name2.Location = new Point(1685, 30);
+            name2.Margin = new Padding(2, 0, 2, 0);
             name2.Name = "name2";
-            name2.Size = new Size(0, 89);
+            name2.Size = new Size(0, 54);
             name2.TabIndex = 36;
             // 
             // picOpponent
             // 
             picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent.Location = new Point(1398, 356);
-            picOpponent.Margin = new Padding(7, 8, 7, 8);
+            picOpponent.Location = new Point(822, 217);
+            picOpponent.Margin = new Padding(4, 5, 4, 5);
             picOpponent.Name = "picOpponent";
-            picOpponent.Size = new Size(1071, 1156);
+            picOpponent.Size = new Size(630, 705);
             picOpponent.TabIndex = 28;
             picOpponent.TabStop = false;
             // 
             // mainGame
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(3244, 2108);
+            ClientSize = new Size(1784, 1341);
             Controls.Add(name2);
             Controls.Add(playerName);
             Controls.Add(name1);
@@ -216,7 +217,7 @@
             Controls.Add(btnStart);
             Controls.Add(btnDoIt);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(7, 8, 7, 8);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "mainGame";
             Text = "Russian Roulette RPG";
             FormClosed += FrmMain_FormClosed;

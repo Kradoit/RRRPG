@@ -99,7 +99,7 @@ namespace RRRPG
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
-            
+
             // set variables
             this.Network = Network;
             this.player = player;
@@ -147,7 +147,8 @@ namespace RRRPG
             else if (SoundManager.currTrack == 1)
             {
                 soundPlayer = new SoundPlayer(Resources.BabyShark);
-            } else if (SoundManager.currTrack == 2)
+            }
+            else if (SoundManager.currTrack == 2)
             {
                 soundPlayer = new SoundPlayer(Resources.ComfortablyNumb);
             }
@@ -392,7 +393,7 @@ namespace RRRPG
                 {
                     Network.sendCommand(-1, "shutUp");
                     opponent.Shutup();
-                    if(threePlayer)
+                    if (threePlayer)
                         opponent2.Shutup();
                     // why not talk on second loop
                     player.SaySmack();
@@ -401,7 +402,7 @@ namespace RRRPG
                 }
                 else if (state == 1)
                 {
-                    if((!threePlayer && (opp1Alive == false || playerAlive == false))||(threePlayer && (opp1Alive == false && opp2Alive == false) || (playerAlive == false && opp2Alive == false) || (opp1Alive == false && playerAlive == false)))
+                    if ((!threePlayer && (opp1Alive == false || playerAlive == false)) || (threePlayer && (opp1Alive == false && opp2Alive == false) || (playerAlive == false && opp2Alive == false) || (opp1Alive == false && playerAlive == false)))
                     {
                         // end the game
                         Network.sendCommand(-1, "endGame");
@@ -560,7 +561,8 @@ namespace RRRPG
                 if (rawData == null || lastCommand.Equals(rawData))
                 {
                     return;
-                }else
+                }
+                else
                 {
                     lastCommand = rawData;
                 }
@@ -571,28 +573,31 @@ namespace RRRPG
                 if (playerId == -1)
                 {
                     player = null;
-                }else if (playerId == -2)
+                }
+                else if (playerId == -2)
                 {
                     player = this.player;
                 }
                 else if (playerId == Network.id)
                 {
                     player = this.player;
-                }else if (playerId == Network.OpponentId)
+                }
+                else if (playerId == Network.OpponentId)
                 {
                     player = opponent;
-                }else if (playerId == Network.OpponentId2)
+                }
+                else if (playerId == Network.OpponentId2)
                 {
                     player = opponent2;
                 }
-                
+
                 // do the command
                 switch (data[1])
                 {
                     case "showIdle":
                         {
-                            if(player != null)
-                               player.ShowIdle();
+                            if (player != null)
+                                player.ShowIdle();
                             else
                             {
                                 opponent.ShowIdle();
