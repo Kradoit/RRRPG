@@ -106,7 +106,7 @@ namespace RRRPGLib
             sendMessage("join", ip);
 
             // get your id
-            for (int x = 0; x < 5; x++)
+            for (int x = 0; x < 10; x++)
             {
                 // check if you have recieved data
                 if (udpClient.Available > 0)
@@ -160,7 +160,7 @@ namespace RRRPGLib
                     {
                         // save the ip address to the list
                         ips.Add(ip);
-                        var test = ((int)ips.Count).ToString();
+
                         // return their id
                         sendMessage(((int)ips.Count).ToString(), ip);
                         // they are scanning for a server

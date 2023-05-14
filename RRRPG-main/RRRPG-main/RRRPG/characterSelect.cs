@@ -69,6 +69,7 @@ namespace RRRPG
             // make multiplayer edits
             if (multiplayer)
             {
+                btnStart.Text = "Select";
                 // set the text to not be visible
                 player1.Text = "";
                 text3.Text = "";
