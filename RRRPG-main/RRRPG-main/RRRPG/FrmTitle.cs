@@ -30,11 +30,22 @@ public partial class FrmTitle : Form
         MultiplayerMenu.ShowDialog();
         FormManager.openForms.Add(MultiplayerMenu);
     }
+    private void buttonSettings_Click(object sender, EventArgs e)
+    {
+        ResourcesRef.Resources = Resources.ResourceManager;
+        Hide();
+        settings Settings = new settings();
+        Settings.ShowDialog();
+        FormManager.openForms.Add(Settings);
+    }
 
     private void FrmTitle_Load(object sender, EventArgs e)
     {
-        soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music_3);
-        soundPlayer.PlayLooping();
+        if (SoundManager.currTrack == 0)
+        {
+            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music_3);
+            soundPlayer.PlayLooping();
+        }
         FormManager.openForms.Add(this);
     }
 
@@ -43,5 +54,4 @@ public partial class FrmTitle : Form
         FormManager.openForms.Remove(this);
         FormManager.CloseAll();
     }
-
 }
