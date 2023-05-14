@@ -116,6 +116,12 @@ namespace RRRPG
             lblPlayer.Visible = false;
             state = -1;
 
+            // start multiplayer loop
+            tmrMultiplayer.Interval = 1;
+            tmrMultiplayer.Enabled = true;
+
+            start();
+
             // set player objects
             this.player.setText(ref lblPlayer);
             this.player.setPic(ref picPlayer);
@@ -128,12 +134,6 @@ namespace RRRPG
                 this.opponent2.setPic(ref picOpponent2);
                 this.opponent2.setText(ref lblOpponent2);
             }
-
-            // start multiplayer loop
-            tmrMultiplayer.Interval = 1;
-            tmrMultiplayer.Enabled = true;
-
-            start();
         }
 
         private void tmrDialog_Tick(object sender, EventArgs e)
