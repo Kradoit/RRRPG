@@ -276,21 +276,24 @@ namespace RRRPG
 
         private void multiStart_Click(object sender, EventArgs e)
         {
-            // check that everyone is ready
-            if (player == null)
+            if (Network.isHost)
             {
-                MessageBox.Show("You must choose a character");
-                return;
-            }
-            // check if you are host
-            if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
-            {
-                MessageBox.Show("You must wait for all users to choose a character");
-                return;
-            }
+                // check that everyone is ready
+                if (player == null)
+                {
+                    MessageBox.Show("You must choose a character");
+                    return;
+                }
+                // check if you are host
+                if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
+                {
+                    MessageBox.Show("You must wait for all users to choose a character");
+                    return;
+                }
 
-            // notify the users
-            Network.broadCast("GOGOGO");
+                // notify the users
+                Network.broadCast("GOGOGO");
+            }
 
             mainGame MainGame;
 
