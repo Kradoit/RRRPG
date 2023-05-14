@@ -300,9 +300,9 @@ namespace RRRPG
             // start the game
             // check if its one or two player
             if (opponent2 == null)
-                MainGame = new mainGame(player, opponent);
+                MainGame = new mainGame(Network, player, opponent);
             else
-                MainGame = new mainGame(player, opponent, opponent2);
+                MainGame = new mainGame(Network, player, opponent, opponent2);
 
             MainGame.setMultiplayer(Network);
 

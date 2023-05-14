@@ -1,6 +1,9 @@
+using Microsoft.VisualBasic.Devices;
 using RRRPG.Properties;
 using RRRPGLib;
+using System.ComponentModel;
 using System.Media;
+using System.Numerics;
 
 namespace RRRPG
 {
@@ -61,17 +64,28 @@ namespace RRRPG
 
         }
 
-        public mainGame(Character player, MultiPlayer Network)
+        public mainGame(MultiPlayer Network, Character player, Character opponent, Character opponent2)
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
 
             this.Network = Network;
             this.player = player;
+            this.opponent = opponent;
+            this.opponent2 = opponent2;
             this.multiPlayer = true;
+            this.threePlayer = true;
+        }
+        public mainGame(MultiPlayer Network, Character player, Character opponent)
+        {
+            InitializeComponent();
+            FormManager.openForms.Add(this);
 
-            this.player.setPic(ref picPlayer);
-
+            this.Network = Network;
+            this.player = player;
+            this.opponent = opponent;
+            this.multiPlayer = true;
+            this.threePlayer = false;
         }
         public mainGame(Character player, Character opponent, Character opponent2)
         {
@@ -98,16 +112,13 @@ namespace RRRPG
             this.player.setText(ref lblPlayer);
             this.player.setPic(ref picPlayer);
 
-            if (!multiPlayer)
-            {
-                this.opponent.setPic(ref picOpponent);
-                this.opponent.setText(ref lblOpponent);
+            this.opponent.setPic(ref picOpponent);
+            this.opponent.setText(ref lblOpponent);
 
-                if (this.threePlayer)
-                {
-                    this.opponent2.setPic(ref picOpponent2);
-                    this.opponent2.setText(ref lblOpponent2);
-                }
+            if (this.threePlayer)
+            {
+                this.opponent2.setPic(ref picOpponent2);
+                this.opponent2.setText(ref lblOpponent2);
             }
             else
             {
