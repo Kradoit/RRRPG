@@ -290,7 +290,6 @@ namespace RRRPG
             picOpponent.Size = new Size(649, 797);
             picOpponent.TabIndex = 12;
             picOpponent.TabStop = false;
-            picOpponent.MouseClick += selectOpponent;
             // 
             // picOpponent2
             // 
@@ -301,7 +300,6 @@ namespace RRRPG
             picOpponent2.Size = new Size(697, 849);
             picOpponent2.TabIndex = 20;
             picOpponent2.TabStop = false;
-            picOpponent2.MouseClick += selectOpponent2;
             // 
             // picPlayer
             // 
@@ -312,7 +310,6 @@ namespace RRRPG
             picPlayer.Size = new Size(639, 805);
             picPlayer.TabIndex = 11;
             picPlayer.TabStop = false;
-            picPlayer.MouseClick += selectPlayer;
             // 
             // lblOpponentSpeak
             // 

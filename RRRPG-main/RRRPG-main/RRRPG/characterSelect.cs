@@ -36,6 +36,11 @@ namespace RRRPG
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
+
+            // add click buttons
+            picPlayer.MouseClick += selectPlayer;
+            picOpponent2.MouseClick += selectOpponent2;
+            picOpponent.MouseClick += selectOpponent;
         }
         // init with multiplayer 
         public CharacterSelect(MultiPlayer Network)

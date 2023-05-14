@@ -47,11 +47,6 @@ namespace RRRPG
             soundPlayer.PlayLooping();
         }
 
-        private void selectHost(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmMain2_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormManager.openForms.Remove(this);
@@ -61,6 +56,15 @@ namespace RRRPG
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            // if youre not the host then get the ip and save it to network
+            if(!Network.isHost)
+            {
+                // check if they have selected an item
+                if (serverList.SelectedItem!=null)
+                {
+                    Network.join(serverList.GetItemText(serverList.SelectedItem));
+                }
+            }    
             // check
             characterSelect();
         }
