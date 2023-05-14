@@ -321,16 +321,17 @@ namespace RRRPGLib
                     // split up the message
                     string[] message = sData.Split((char)127);
                     // save the data to the id
-                    if (ips.IndexOf(ip) == 0)
+                    if (message[0] == "2")
                     {
-                        Opponent = (WeaponType)(int.Parse(message[0]));
+                        Opponent = (WeaponType)(int.Parse(message[1]));
                         opponentName = message[2];
-                        sendMessage("0" + (char)127 + sData, ip);
+                        sendMessage("2" + (char)127 + sData, ip);
                         rawUserData[1] = sData;
                     }
                     else
                     {
-                        Opponent2 = (WeaponType)(int.Parse(message[0]));
+                        var test = message[1];
+                        Opponent2 = (WeaponType)(int.Parse(message[1]));
                         opponentName2 = message[2];
                         sendMessage("1" + (char)127 + sData, ip);
                         rawUserData[2] = sData;

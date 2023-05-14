@@ -64,7 +64,9 @@ namespace RRRPG
                 {
                     Network.join(serverList.GetItemText(serverList.SelectedItem));
                 }
-            }    
+            }
+            // save the name
+            Network.name = nameBox.Text;
             // move to next form
             characterSelect();
         }
