@@ -62,7 +62,7 @@ namespace RRRPG
                 // check if they have selected an item
                 if (serverList.SelectedItem!=null)
                 {
-                    Network.join(serverList.GetItemText(serverList.SelectedItem), nameBox.Text);
+                    Network.join(serverList.GetItemText(serverList.SelectedItem));
                 }
             }    
             // move to next form

@@ -251,7 +251,7 @@ namespace RRRPGLib
             return ips;
         }
         // function to join the server
-        public void join(string ip, string name)
+        public void join(string ip)
         {
             hostIp = ip;
             sendMessage("join", ip);
@@ -265,7 +265,8 @@ namespace RRRPGLib
                     byte[] data = udpClient.Receive(ref endPoint);
                     string sData = (System.Text.Encoding.ASCII.GetString(data));
 
-                    id = int.Parse(sData);
+                    if("hola" != sData)
+                        id = int.Parse(sData);
                 }
             }
 
@@ -289,7 +290,7 @@ namespace RRRPGLib
                 sendMessage(message, ip);
             }
         }
-        // function to check for labels
+        // function to check for users
         public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text)
         {
             // check if you have recieved data
