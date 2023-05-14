@@ -373,14 +373,7 @@ namespace RRRPGLib
         }
         public void sendUserData(WeaponType character)
         {
-            if (isHost)
-            {
-                broadCast("0" + (char)(127) + character.ToString() + (char)(127) + name);
-            }
-            else
-            {
-                sendMessage(this.id + (char)(127) + character.ToString() + (char)(127) + name);
-            }
+            sendMessage(this.id + (char)(127) + character.ToString() + (char)(127) + name);
         }
     }
 }
