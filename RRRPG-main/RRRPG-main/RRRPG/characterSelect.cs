@@ -76,9 +76,11 @@ namespace RRRPG
                 // run the host event handeler if host
                 if (this.Network.isHost)
                 {
+                    multiStart.Visible = true;
                     hostStateMachine.Enabled = true;
                     //MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
-                }else if (multiplayer)
+                }
+                else if (multiplayer)
                 {
                     userStateMachine.Enabled = true;
                 }
@@ -206,7 +208,6 @@ namespace RRRPG
         private void btnStart_Click(object sender, EventArgs e)
         {
             ResourcesRef.Resources = Resources.ResourceManager;
-            mainGame MainGame;
 
             if (multiplayer)
             {
@@ -216,7 +217,7 @@ namespace RRRPG
                     return;
                 }
                 // check if you are host
-                if(Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
+                if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
                 {
                     MessageBox.Show("You must wait for all users to choose a character");
                     return;
@@ -233,6 +234,7 @@ namespace RRRPG
                     return;
                 }
 
+                mainGame MainGame;
                 // check if its one or two player
                 if (opponent2 == null)
                     MainGame = new mainGame(player, opponent);
@@ -266,15 +268,48 @@ namespace RRRPG
         private void checkForData(object sender, EventArgs e)
         {
             // check for data
-            Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
+            var ready = Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
 
             // set the labels if the characters were set
-            
-            if(opponent != null)
+
+            if (opponent != null)
                 opponent.setPic(ref picOpponent);
-            if(opponent2 != null)
+            if (opponent2 != null)
                 opponent2.setPic(ref picOpponent2);
-            
+
+            // check if ready
+            if(ready == 1)
+            {
+                multiStart_Click();
+            }
+
+        }
+
+        private void multiStart_Click()
+        {
+            // check that everyone is ready
+            if(player != null && opponent != null && (opponent2 != null || Network.ips.Count == 1))
+            {
+                // notify the users
+                Network.broadCast("GOGOGO");
+
+                mainGame MainGame;
+
+                // start the game
+                // check if its one or two player
+                if (opponent2 == null)
+                    MainGame = new mainGame(player, opponent);
+                else
+                    MainGame = new mainGame(player, opponent, opponent2);
+
+                MainGame.setMultiplayer(Network);
+
+                Hide();
+
+                soundPlayer.Stop();
+                MainGame.ShowDialog();
+                FormManager.openForms.Add(MainGame);
+            }
         }
     }
 

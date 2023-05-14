@@ -211,7 +211,7 @@ namespace RRRPGLib
             }
         }
         // function to check for data
-        public void checkForData(ref Label Name1, ref Label name2, ref Character op1, ref Character op2)//, ref PictureBox pic1, ref PictureBox pic2)//ref Label message1, ref Label message2)
+        public int checkForData(ref Label Name1, ref Label name2, ref Character op1, ref Character op2)//, ref PictureBox pic1, ref PictureBox pic2)//ref Label message1, ref Label message2)
         {
             // check if you have recieved data
             if (udpClient.Available > 0)
@@ -220,6 +220,11 @@ namespace RRRPGLib
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
 
+                // check for start
+                if(sData == "GOGOGO")
+                {
+                    return 1;
+                }
                 // get ip
                 string ip = endPoint.Address.ToString();
 
@@ -239,6 +244,7 @@ namespace RRRPGLib
                     OpponentId2 = int.Parse(message[0]);
                 }
             }
+            return 0;
         }
         public void sendUserData(WeaponType character)
         {
