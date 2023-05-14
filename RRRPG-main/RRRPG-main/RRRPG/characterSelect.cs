@@ -252,7 +252,12 @@ namespace RRRPG
         // host function
         private void host(object sender, EventArgs e)
         {
-            Network.checkForUsers(ref player1, ref text3, opponent, opponent2, picOpponent, picOpponent2);
+            Network.checkForUsers(ref player1, ref text3, ref opponent, ref opponent2);
+
+            if (opponent != null)
+                opponent.setPic(ref picOpponent);
+            if (opponent2 != null)
+                opponent2.setPic(ref picOpponent2);
         }
         private void checkForData(object sender, EventArgs e)
         {
@@ -285,7 +290,7 @@ namespace RRRPG
                     return;
                 }
                 // check if you are host
-                if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
+                if (opponent == null || (opponent2 == null && Network.ips.Count == 2))
                 {
                     MessageBox.Show("You must wait for all users to choose a character");
                     return;

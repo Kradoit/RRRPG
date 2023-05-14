@@ -143,7 +143,7 @@ namespace RRRPGLib
         private string lastMessage = "";
         private string lastIp = "";
         // function to check for users
-        public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text, Character Opponent, Character Opponent2, PictureBox op1, PictureBox op2)
+        public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text, ref Character Opponent, ref Character Opponent2)
         {
             // check if you have recieved data
             if (udpClient.Available > 0)
@@ -181,7 +181,7 @@ namespace RRRPGLib
                         sendMessage("hola", ip);
                         // they are sending their user data and requesting an id
                     }
-                    else
+                    else // they are ending character information
                     {
                         // split up the message
                         string[] message = sData.Split((char)127);
@@ -189,7 +189,7 @@ namespace RRRPGLib
                         // save the data to the id
                         if (message[0] == "1")
                         {
-                            Opponent = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])), op1);
+                            Opponent = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                             opponentName = message[2];
                             if(ips.Count>1)
                                 sendMessage("1" + (char)127 + sData, ips[1]);
@@ -199,7 +199,7 @@ namespace RRRPGLib
                         {
                             var test22 = message[0];
                             var test2 = message[1];
-                            Opponent2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])), op2);
+                            Opponent2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                             opponentName2 = message[2];
                             sendMessage("2" + (char)127 + sData, ips[0]);
                             rawUserData[2] = sData;
