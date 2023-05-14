@@ -215,7 +215,7 @@ namespace RRRPG
                     return;
                 }
                 // check if you are host
-                if(Network.isHost && ((opponent != null || opponent2 != null))
+                if(Network.isHost && ((opponent != null || opponent2 != null)))
                 {
                     MessageBox.Show("You must wait for all users to choose a character");
                     return;
