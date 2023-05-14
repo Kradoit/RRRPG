@@ -376,7 +376,7 @@ namespace RRRPGLib
         {
             if (name == "")
                 name = this.id.ToString();
-            sendMessage(this.id + (char)127 + character.ToString() + (char)127 + name);
+            sendMessage(this.id.ToString() + (char)127 + character.ToString() + (char)127 + name);
         }
     }
 }
