@@ -61,8 +61,11 @@ namespace RRRPG
                 playerAlive = true;
 
                 Network.sendCommand(0, "showIdle");
+                player.ShowIdle();
                 Network.sendCommand(1, "showIdle");
-                Network.sendCommand(-1, "SaySmack");
+                opponent.ShowIdle();
+                Network.sendCommand(-1, "saySmack");
+
 
                 tmrStateMachine.Interval = 3500;
                 tmrStateMachine.Enabled = true;
@@ -337,7 +340,151 @@ namespace RRRPG
             // check for a new command
             if (Network.isHost)
             {
-
+                if (state == 0)
+                {
+                    Network.sendCommand(1, "shutUp");
+                    opponent.Shutup();
+                    if (threePlayer)
+                    {
+                        opponent2.Shutup();
+                        Network.sendCommand(2, "shutUp");
+                    }
+                    // why not talk on second loop
+                    player.SaySmack();
+                    Network.sendCommand(0, "saySmack");
+                    state = 1;
+                }
+                else if (state == 1)
+                {
+                    if ((opp1Alive == false && opp2Alive == false) || playerAlive == false)
+                    {
+                        state = -1;
+                        opponent.ShowIdle();
+                        Network.sendCommand(1, "showIdle");
+                        if (threePlayer)
+                            opponent2.ShowNoWeapon();
+                        picOpponent.Visible = true;
+                        if (threePlayer)
+                            picOpponent2.Visible = true;
+                        lblOpponent.Visible = false;
+                        if (threePlayer)
+                            lblOpponent2.Visible = false;
+                        btnStart.Visible = true;
+                        tmrPlayMusicAfterGameOver.Enabled = true;
+                        tmrMultiplayer.Interval = 10;
+                        tmrStateMachine.Enabled = false;
+                    }
+                    else
+                    {
+                        opponent.Shutup();
+                        if (threePlayer)
+                            opponent2.Shutup();
+                        player.Shutup();
+                        player.ShowReady();
+                        opponent.ShowNoWeapon();
+                        if (threePlayer)
+                            opponent2.ShowNoWeapon();
+                        btnDoIt.Visible = true;
+                        tmrStateMachine.Enabled = false;
+                        state = 2;
+                    }
+                }
+                else if (state == 3)
+                {
+                    player.SayOw();
+                    state = 4;
+                    tmrStateMachine.Interval = 2500;
+                }
+                else if (state == 4)
+                {
+                    player.SayBoned();
+                    playerAlive = false;
+                    state = 1;
+                }
+                else if (state == 5)
+                {
+                    if (opp1Alive == true)
+                    {
+                        player.Shutup();
+                        opponent.ShowReady();
+                        state = 6;
+                    }
+                    else
+                    {
+                        state = 10;
+                    }
+                }
+                else if (state == 6)
+                {
+                    if (opponent.PullTrigger())
+                    {
+                        state = 7;
+                    }
+                    else
+                    {
+                        state = 10;
+                    }
+                }
+                else if (state == 7)
+                {
+                    opponent.SayOw();
+                    state = 8;
+                    tmrStateMachine.Interval = 2500;
+                }
+                else if (state == 8)
+                {
+                    opponent.SayBoned();
+                    opp1Alive = false;
+                    picOpponent.Visible = false;
+                    state = 10;
+                }
+                else if (state == 10)
+                {
+                    if (opp2Alive == true)
+                    {
+                        opponent.Shutup();
+                        if (threePlayer)
+                            opponent2.ShowReady();
+                        state = 11;
+                    }
+                    else
+                    {
+                        state = 1;
+                    }
+                }
+                else if (state == 11)
+                {
+                    if (opponent2.PullTrigger())
+                    {
+                        state = 12;
+                    }
+                    else
+                    {
+                        state = 1;
+                    }
+                }
+                else if (state == 12)
+                {
+                    opponent2.SayOw();
+                    state = 13;
+                    tmrStateMachine.Interval = 2500;
+                }
+                else if (state == 13)
+                {
+                    opponent2.SayBoned();
+                    opp2Alive = false;
+                    picOpponent2.Visible = false;
+                    state = 1;
+                }
+                if (!playerAlive && !multiPlayer)
+                {
+                    // end game and put button to return to main menue
+                }
+                else
+                {
+                    // end game and keep watching
+                }
+                // check if everyone is dead and end game
             }
             else
             {
@@ -347,6 +494,8 @@ namespace RRRPG
                 {
                     return;
                 }
+                Character Test = opponent;
+                Test.SaySmack();
                 // do the command
                 switch (data[1])
                 {
