@@ -88,7 +88,7 @@ namespace RRRPGLib
                     string sData = (System.Text.Encoding.ASCII.GetString(data));
                     Console.Write(sData);
                     // check that you recieved the correct confirmation message
-                    if (sData == "hola" && sData.Length == 1)
+                    if (sData == "hola")
                     {
                         // save the ip address to the list
                         ips.Add(this.endPoint.Address.ToString());
@@ -114,7 +114,7 @@ namespace RRRPGLib
                     byte[] data = udpClient.Receive(ref endPoint);
                     string sData = (System.Text.Encoding.ASCII.GetString(data));
 
-                    if("hola" != sData)
+                    if("hola" != sData && sData.Length == 1)
                         id = int.Parse(sData);
                 }
                 Thread.Sleep(20);
@@ -191,8 +191,9 @@ namespace RRRPGLib
                         {
                             Opponent = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])), op1);
                             opponentName = message[2];
-                            sendMessage("1" + (char)127 + sData, ip);
-                            rawUserData[1] = sData;
+                            if(ips.Count>1)
+                                sendMessage("1" + (char)127 + sData, ips[1]);
+                                rawUserData[1] = sData;
                         }
                         else if (message[0] == "2")
                         {
@@ -200,7 +201,7 @@ namespace RRRPGLib
                             var test2 = message[1];
                             Opponent2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])), op2);
                             opponentName2 = message[2];
-                            sendMessage("2" + (char)127 + sData, ip);
+                            sendMessage("2" + (char)127 + sData, ips[0]);
                             rawUserData[2] = sData;
                         }
                     }
