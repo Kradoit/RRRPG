@@ -16,7 +16,6 @@ public partial class FrmTitle : Form
     {
         ResourcesRef.Resources = Resources.ResourceManager;
         Hide();
-        soundPlayer.Stop();
         CharacterSelect characterSelect = new CharacterSelect();
         characterSelect.ShowDialog();
         FormManager.openForms.Add(characterSelect);
@@ -25,7 +24,6 @@ public partial class FrmTitle : Form
     {
         ResourcesRef.Resources = Resources.ResourceManager;
         Hide();
-        soundPlayer.Stop();
         multiplayerMenu MultiplayerMenu = new multiplayerMenu();
         MultiplayerMenu.ShowDialog();
         FormManager.openForms.Add(MultiplayerMenu);

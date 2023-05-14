@@ -140,7 +140,17 @@ namespace RRRPG
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
+            if (SoundManager.currTrack == 0)
+            {
+                soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
+            }
+            else if (SoundManager.currTrack == 1)
+            {
+                soundPlayer = new SoundPlayer(Resources.BabyShark);
+            } else if (SoundManager.currTrack == 2)
+            {
+                soundPlayer = new SoundPlayer(Resources.ComfortablyNumb);
+            }
             soundPlayer.PlayLooping();
             btnDoIt.Visible = false;
             lblOpponent.Visible = false;

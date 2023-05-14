@@ -1,4 +1,5 @@
 ﻿using RRRPGLib;
+using System.Diagnostics;
 using System.Drawing.Text;
 using System.Media;
 
@@ -29,4 +30,9 @@ public static class SoundManager {
       // couldn't play sound, oh well
     }
   }
+
+    public static void Stop()
+    {
+        sndPlayer?.Stop();
+    }
 }

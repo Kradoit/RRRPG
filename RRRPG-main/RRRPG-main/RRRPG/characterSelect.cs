@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+using RRRPGLib;
 
 namespace RRRPG
 {
@@ -56,8 +57,6 @@ namespace RRRPG
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {
-            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
-            soundPlayer.PlayLooping();
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             weaponSelectMap = new() {
             {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
@@ -240,7 +239,7 @@ namespace RRRPG
 
                 Hide();
 
-                soundPlayer.Stop();
+                SoundManager.Stop();
                 MainGame.ShowDialog();
                 FormManager.openForms.Add(MainGame);
             }
@@ -321,7 +320,6 @@ namespace RRRPG
             soundPlayer.Stop();
             MainGame.ShowDialog();
             FormManager.openForms.Add(MainGame);
-            
         }
     }
 
