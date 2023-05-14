@@ -196,8 +196,6 @@ public class Character {
                 ShowKill();
                 SayGunWentOff();
                 rtnVal =  true;
-                ShowNoWeapon();
-                SaySurvived();
                 break;
             case PullTriggerResult.MISFIRE:
             case PullTriggerResult.WENT_OFF_BUT_DODGED:

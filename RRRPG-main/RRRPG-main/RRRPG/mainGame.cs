@@ -51,7 +51,14 @@ namespace RRRPG
                 tmrStateMachine.Interval = 3500;
                 tmrStateMachine.Enabled = true;
                 state = 0;
-            }else if (Network.isHost)
+                opp1Alive = true;
+                if (this.threePlayer)
+                    opp2Alive = true;
+                else
+                    opp2Alive = false;
+                playerAlive = true;
+            }
+            else if (Network.isHost)
             {
                 opp1Alive = true;
                 if (this.threePlayer)
@@ -309,8 +316,9 @@ namespace RRRPG
             if (multiPlayer && !Network.isHost)
             {
                 // send that you pulled the trigger
+                Network.sendMessage("go");
             }
-            else
+            else if (Network.isHost)
             {
                 if (player.PullTrigger(Network, 0))
                 {
@@ -324,8 +332,8 @@ namespace RRRPG
                     tmrMultiplayer.Interval = 1500;
                     tmrMultiplayer.Enabled = true;
                 }
-                btnDoIt.Visible = false;
             }
+            btnDoIt.Visible = false;
         }
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
