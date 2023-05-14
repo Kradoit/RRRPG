@@ -169,6 +169,7 @@ namespace RRRPGLib
         public List<String> ips = new List<string>();
         public int[] ids = new int[2];
         public int test = 0;
+        public int id = 0;
 
         // store the name of the user
         public string name = "host";
@@ -254,6 +255,20 @@ namespace RRRPGLib
         {
             hostIp = ip;
             sendMessage("join", ip);
+
+            // get your id
+            for (int x = 0; x < 5; x++)
+            {
+                // check if you have recieved data
+                if (udpClient.Available > 0)
+                {
+                    byte[] data = udpClient.Receive(ref endPoint);
+                    string sData = (System.Text.Encoding.ASCII.GetString(data));
+
+                    id = int.Parse(sData);
+                }
+            }
+
         }
 
         // function to wait to start
@@ -304,14 +319,14 @@ namespace RRRPGLib
                         Opponent = (WeaponType)(int.Parse(message[0]));
                         opponentName = message[2];
                         sendMessage("0" + (char)127 + sData, ip);
-                        rawUserData[0] = sData;
+                        rawUserData[1] = sData;
                     }
                     else
                     {
                         Opponent2 = (WeaponType)(int.Parse(message[0]));
                         opponentName2 = message[2];
                         sendMessage("1" + (char)127 + sData, ip);
-                        rawUserData[1] = sData;
+                        rawUserData[2] = sData;
                     }
                 }
                 
@@ -351,9 +366,16 @@ namespace RRRPGLib
                 }
             }
         }
-        public void sendHostData(WeaponType character)
+        public void sendUserData(WeaponType character)
         {
-
+            if (isHost)
+            {
+                broadCast("0" + (char)(127) + character.ToString() + (char)(127) + name);
+            }
+            else
+            {
+                sendMessage(this.id + (char)(127) + character.ToString() + (char)(127) + name);
+            }
         }
     }
 }
