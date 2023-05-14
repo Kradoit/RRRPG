@@ -330,7 +330,8 @@ namespace RRRPGLib
                     }
                     else
                     {
-                        var test = message[1];
+                        var test = message[0];
+                        var test2 = message[1];
                         Opponent2 = (WeaponType)(int.Parse(message[1]));
                         opponentName2 = message[2];
                         sendMessage("1" + (char)127 + sData, ip);
@@ -373,7 +374,9 @@ namespace RRRPGLib
         }
         public void sendUserData(WeaponType character)
         {
-            sendMessage(this.id + (char)(127) + character.ToString() + (char)(127) + name);
+            if (name == "")
+                name = this.id.ToString();
+            sendMessage(this.id + (char)127 + character.ToString() + (char)127 + name);
         }
     }
 }
