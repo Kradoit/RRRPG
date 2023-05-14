@@ -140,6 +140,7 @@ namespace RRRPGLib
             }
         }
         private string lastMessage = "";
+        private string lastIp = "";
         // function to check for users
         public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text, Character Opponent, Character Opponent2, PictureBox op1, PictureBox op2)
         {
@@ -149,7 +150,7 @@ namespace RRRPGLib
                 // get the data and check it 
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
-                if (sData != lastMessage)
+                if (!(sData == lastMessage && lastIp == this.endPoint.Address.ToString()))
                 {
                     // get the ip
                     string ip = endPoint.Address.ToString();
@@ -159,8 +160,9 @@ namespace RRRPGLib
                     {
                         // save the ip address to the list
                         ips.Add(ip);
+                        var test = ((int)ips.Count).ToString();
                         // return their id
-                        sendMessage(ips.Count.ToString(), ip);
+                        sendMessage(((int)ips.Count).ToString(), ip);
                         // they are scanning for a server
                     }
                     else if (sData == "hello")
@@ -173,6 +175,7 @@ namespace RRRPGLib
                     {
                         // split up the message
                         string[] message = sData.Split((char)127);
+                        var test = message[0];
                         // save the data to the id
                         if (message[0] == "1")
                         {
@@ -183,7 +186,7 @@ namespace RRRPGLib
                         }
                         else if (message[0] == "2")
                         {
-                            var test = message[0];
+                            var test22 = message[0];
                             var test2 = message[1];
                             Opponent2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])), op2);
                             opponentName2 = message[2];
@@ -192,6 +195,7 @@ namespace RRRPGLib
                         }
                     }
                     lastMessage = sData;
+                    lastIp = this.endPoint.Address.ToString();
                 }
             }
         }
@@ -229,8 +233,12 @@ namespace RRRPGLib
         {
             if (name == "")
                 name = this.id.ToString();
-            var test = this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name;
-            sendMessage(this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name);
+            var message = this.id.ToString() + (char)127 + convertType.convertToInt(character) + (char)127 + name;
+
+            if (isHost)
+                broadCast(message);
+            else
+                sendMessage(message);
         }
     }
 }
