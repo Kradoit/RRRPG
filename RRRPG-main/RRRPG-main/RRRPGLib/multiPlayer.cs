@@ -291,7 +291,7 @@ namespace RRRPGLib
                         OpponentText.Text = message[1];
                         opponentName = message[1];
                         // send your name
-                        sendMessage(name, ip);
+                        sendMessage("name" + (char)127 + name, ip);
                     }
                     else if (ips.Count == 2)
                     {
@@ -300,10 +300,10 @@ namespace RRRPGLib
                         opponentName2 = message[1];
 
                         // send your name and the opponent name
-                        sendMessage(name, ip);
-                        sendMessage(opponentName, ip);
+                        sendMessage("name" + (char)127 + name, ip);
+                        sendMessage("name" + (char)127 + opponentName, ip);
                         // send the new opponent name to the old opponent
-                        sendMessage(message[1], ips[0]);
+                        sendMessage("name" + (char)127 + message[1], ips[0]);
                     }
                 }
                 // send a response
@@ -328,15 +328,23 @@ namespace RRRPGLib
                     case "name":
                         {
                             if (Name1 == null)
+                            {
+                                this.opponentName = message[1];
                                 Name1.Text = message[1];
+                            }
                             else
+                            {
+                                this.opponentName2 = message[1];
                                 Name1.Text = message[1];
+                            }
                             break;
                         }
                     case "char":
                         {
-                            //if (op1 == null)
-                            //op1 = Character.MakeOpponent((WeaponType)(int.Parse(message[1]), pic1);
+                            if (op1 == null)
+                                op1 = Character.MakeOpponent((WeaponType)(int.Parse(message[1])));
+                            else if (op2 == null)
+                                op2 = Character.MakeOpponent((WeaponType)(int.Parse(message[1])));
                             break;
                         }
                 }

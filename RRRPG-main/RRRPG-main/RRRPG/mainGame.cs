@@ -110,9 +110,10 @@ namespace RRRPG
                 }
             }
             else
+            {
+                tmrMultiplayer.Interval = 1;
                 tmrMultiplayer.Enabled = true;
-            lblPlayer.Text = "-----";
-
+            }
             start();
         }
 

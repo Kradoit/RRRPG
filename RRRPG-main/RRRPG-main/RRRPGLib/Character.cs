@@ -72,7 +72,7 @@ public class Character {
     c.ShowIdle();
     c.Shutup();
     return c;
-  }
+    }
     public static Character MakeOpponent(WeaponType weaponType, PictureBox pic)
     {
         Character c = weaponType switch
@@ -87,6 +87,20 @@ public class Character {
         c.weapon = Weapon.MakeWeapon(weaponType);
         c.pic = pic;
         c.ShowIdle();
+        return c;
+    }
+    public static Character MakeOpponent(WeaponType weaponType)
+    {
+        Character c = weaponType switch
+        {
+            WeaponType.MAGIC_WAND => MakeMagicWandOpponent(),
+            WeaponType.NERF_REVOLVER => MakeNerfRevolverOpponent(),
+            WeaponType.BOW => MakeBowOpponent(),
+            WeaponType.CORK_GUN => MakeCorkGunOpponent(),
+            WeaponType.WATER_GUN => MakeWaterGunOpponent(),
+        };
+        // make the weapon too 
+        c.weapon = Weapon.MakeWeapon(weaponType);
         return c;
     }
     /// <summary>
