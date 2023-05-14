@@ -68,18 +68,21 @@ namespace RRRPG
             if (multiplayer)
             {
                 // set the text to not be visible
-                player1.Visible = false;
-                text3.Visible = false;
-                // run the host thread if host
+                player1.Text = "";
+                text3.Text = "";
+                // run the host event handeler if host
                 if (this.Network.isHost)
                 {
-                    MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
+                    hostStateMachine.Enabled = true;
+                    //MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
                 }
             }
-
+            text3.Text = "--------";
             // run the network thread
-            //if(multiplayer)
-                //this.Network.networkThread.startLobby(ref Network, ref picOpponent, ref picOpponent2, ref lblOpponentSpeak, ref text3);
+            //if (multiplayer)
+            //text3.Text = "--------";
+            //hostStateMachine.Enabled = true;
+            //this.Network.networkThread.startLobby(ref Network, ref picOpponent, ref picOpponent2, ref lblOpponentSpeak, ref text3);
 
         }
 
@@ -243,6 +246,20 @@ namespace RRRPG
             FormManager.CloseAll();
         }
 
+        // host function
+        private void host(object sender, EventArgs e)
+        {
+            text3.Text = "123123";
+            Network.checkForUsers(ref player1, ref text3);
+        }
+        private void checkForData(object sender, EventArgs e)
+        {
+            // check for data
+            Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
+            
+            // set the labels
+
+        }
     }
 
 }

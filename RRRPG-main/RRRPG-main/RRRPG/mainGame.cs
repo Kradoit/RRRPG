@@ -99,7 +99,16 @@ namespace RRRPG
             this.player.setPic(ref picPlayer);
 
             if (!multiPlayer)
-                setOpponentFormObjects();
+            {
+                this.opponent.setPic(ref picOpponent);
+                this.opponent.setText(ref lblOpponent);
+
+                if (this.threePlayer)
+                {
+                    this.opponent2.setPic(ref picOpponent2);
+                    this.opponent2.setText(ref lblOpponent2);
+                }
+            }
             else
                 tmrMultiplayer.Enabled = true;
             lblPlayer.Text = "-----";
@@ -286,18 +295,7 @@ namespace RRRPG
         {
 
         }
-        private void setOpponentFormObjects()
-        {
-            this.opponent.setPic(ref picOpponent);
-            this.opponent.setText(ref lblOpponent);
-
-            if (this.threePlayer)
-            {
-                this.opponent2.setPic(ref picOpponent2);
-                this.opponent2.setText(ref lblOpponent2);
-            }
-
-        }
+ 
         private void checkForStart(object sender, EventArgs e)
         {
             // check if there are any new users

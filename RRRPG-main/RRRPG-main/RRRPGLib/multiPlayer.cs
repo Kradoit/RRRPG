@@ -42,21 +42,22 @@ namespace RRRPGLib
             hostThread.Start(variables);
         }
         // function to start the loby thread
-        public void startLobby(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
-        {
-            OpponentText.Text = "test";
-            List<Object> variables = new List<Object> { 
-                Network,
-                Opponent,
-                Opponent2,
-                OpponentText,
-                Opponent2Text,
-            };
+        /*
+    public void startLobby(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
+    {
+        OpponentText.Text = "test";
+        List<Object> variables = new List<Object> { 
+            Network,
+            Opponent,
+            Opponent2,
+            OpponentText,
+            Opponent2Text,
+        };
 
-            // make and start the thread
-            lobbyThread = new Thread(new ParameterizedThreadStart(lobbyListener));
-            lobbyThread.Start(variables);
-        }
+        // make and start the thread
+        lobbyThread = new Thread(new ParameterizedThreadStart(lobbyListener));
+        lobbyThread.Start(variables);
+    }*/
 
         // function for the listenerthred
         public static void listen(object objects)
@@ -88,7 +89,7 @@ namespace RRRPGLib
                         // split up the message
                         string[] message = sData.Split((char)127);
                         // check they sent a name
-                        if(message.Length <=0 || message[1] == "")
+                        if (message.Length <= 0 || message[1] == "")
                         {
                             message[1] = "player " + (ip.Length + 1).ToString();
                         }
@@ -102,7 +103,7 @@ namespace RRRPGLib
                             if (Network.ips.Length == 1)
                             {
                                 // set and save the name
-                                setText(OpponentText,message[1]);
+                                setText(OpponentText, message[1]);
                                 Network.opponentName = message[1];
                                 // send your name
                                 Network.sendMessage(Network.name, ip);
@@ -128,6 +129,7 @@ namespace RRRPGLib
             }
         }
         // function to handel the lobby
+        /*
         public static void lobbyListener(object objects)
         {
             // cast  objects
@@ -148,7 +150,7 @@ namespace RRRPGLib
                 // listen for the host sending users
 
             }
-        }
+        }*/
     }
     public class MultiPlayer
     {
@@ -179,7 +181,7 @@ namespace RRRPGLib
         public static void hostListener(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
         {
             // make the thread
-            Network.networkThread = new listener(ref Network, ref  Opponent, ref  Opponent2, ref  OpponentText, ref  Opponent2Text);
+            Network.networkThread = new listener(ref Network, ref Opponent, ref Opponent2, ref OpponentText, ref Opponent2Text);
         }
         // function to host a game
         public void hostGame()
@@ -248,11 +250,94 @@ namespace RRRPGLib
         public void broadCast(string message)
         {
             // loop through the ip addresses
-            foreach(string ip in ips)
+            foreach (string ip in ips)
             {
                 sendMessage(message, ip);
             }
         }
+        // function to check for labels
+        public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text)
+        {
+            // check if you have recieved data
+            if (udpClient.Available > 0)
+            {
+                // get the data and check it 
+                byte[] data = udpClient.Receive(ref endPoint);
+                string sData = (System.Text.Encoding.ASCII.GetString(data));
 
+                // get the ip
+                string ip = endPoint.Address.ToString();
+
+                // split up the message
+                string[] message = sData.Split((char)127);
+                // check they sent a name
+                if (message.Length < 2 || message[1] == "")
+                {
+                    message = new string[] { message[0], "player " + (ips.Length + 1).ToString() };
+                }
+
+                // check that you recieved the correct confirmation message
+                if (message[0] == "join")
+                {
+                    // save the ip address to the list
+                    ips[ips.Length - 1] = ip;
+                    // set their name
+                    if (ips.Length == 1)
+                    {
+                        // set and save the name
+                        OpponentText.Text = message[1];
+                        opponentName = message[1];
+                        // send your name
+                        sendMessage(name, ip);
+                    }
+                    else if (ips.Length == 2)
+                    {
+                        // set and save the name
+                        Opponent2Text.Text = message[1];
+                        opponentName2 = message[1];
+
+                        // send your name and the opponent name
+                        sendMessage(name, ip);
+                        sendMessage(opponentName, ip);
+                        // send the new opponent name to the old opponent
+                        sendMessage(message[1], ips[0]);
+                    }
+                }
+                // send a response
+                sendMessage("hola", ip);
+            }
+        }
+        // function to check for data
+        public void checkForData(ref Label Name1, ref Label name2, ref Character op1, ref Character op2)//, ref PictureBox pic1, ref PictureBox pic2)//ref Label message1, ref Label message2)
+        {
+            // check if you have recieved data
+            if (udpClient.Available > 0)
+            {
+                // get the data and check it 
+                byte[] data = udpClient.Receive(ref endPoint);
+                string sData = (System.Text.Encoding.ASCII.GetString(data));
+
+                // split up the message
+                string[] message = sData.Split((char)127);
+
+                switch (message[0])
+                {
+                    case "name":
+                        {
+                            if (Name1 == null)
+                                Name1.Text = message[1];
+                            else
+                                Name1.Text = message[1];
+                            break;
+                        }
+                    case "char":
+                        {
+                            //if (op1 == null)
+                            //op1 = Character.MakeOpponent((WeaponType)(int.Parse(message[1]), pic1);
+                            break;
+                        }
+                }
+            }
+        }
     }
 }

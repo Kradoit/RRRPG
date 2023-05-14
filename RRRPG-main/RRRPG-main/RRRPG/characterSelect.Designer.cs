@@ -34,7 +34,8 @@ namespace RRRPG
             tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
             player1 = new Label();
             btnStart = new Button();
-            tmrStateMachine = new System.Windows.Forms.Timer(components);
+            hostStateMachine = new System.Windows.Forms.Timer(components);
+            userStateMachine = new System.Windows.Forms.Timer(components);
             lblWeaponSelectBow = new Label();
             picWeaponSelectBow = new PictureBox();
             lblWeaponSelectNerfRev = new Label();
@@ -64,6 +65,16 @@ namespace RRRPG
             ((System.ComponentModel.ISupportInitialize)picOpponent2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
             SuspendLayout();
+            //
+            // host state timer
+            //
+            hostStateMachine.Interval = 1;
+            hostStateMachine.Tick += host;
+            //
+            // user state timer
+            //
+            userStateMachine.Interval = 1;
+            userStateMachine.Tick += checkForData;
             // 
             // tmrPlayMusicAfterGameOver
             // 
@@ -376,7 +387,8 @@ namespace RRRPG
         private System.Windows.Forms.Timer tmrPlayMusicAfterGameOver;
         private Label player1;
         private Button btnStart;
-        private System.Windows.Forms.Timer tmrStateMachine;
+        private System.Windows.Forms.Timer hostStateMachine;
+        private System.Windows.Forms.Timer userStateMachine;
         private Label lblWeaponSelectBow;
         private PictureBox picWeaponSelectBow;
         private Label lblWeaponSelectNerfRev;
