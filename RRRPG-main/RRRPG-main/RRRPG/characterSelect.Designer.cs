@@ -55,6 +55,7 @@ namespace RRRPG
             picPlayer = new PictureBox();
             lblOpponentSpeak = new Label();
             text3 = new Label();
+            multiStart = new Button();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev).BeginInit();
@@ -344,12 +345,26 @@ namespace RRRPG
             text3.TabIndex = 21;
             text3.Text = "opponent 2";
             // 
+            // multiStart
+            // 
+            multiStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            multiStart.Location = new Point(231, 1319);
+            multiStart.Margin = new Padding(7, 8, 7, 8);
+            multiStart.Name = "multiStart";
+            multiStart.Size = new Size(546, 192);
+            multiStart.TabIndex = 22;
+            multiStart.Text = "START";
+            multiStart.UseVisualStyleBackColor = true;
+            multiStart.Visible = false;
+            multiStart.Click += multiStart_Click;
+            // 
             // CharacterSelect
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1715, 1346);
+            ClientSize = new Size(3244, 2108);
+            Controls.Add(multiStart);
             Controls.Add(text3);
             Controls.Add(picOpponent2);
             Controls.Add(player1);
@@ -405,5 +420,6 @@ namespace RRRPG
         private PictureBox picOpponent2;
         private Label lblOpponentSpeak;
         private Label text3;
+        private Button multiStart;
     }
 }
