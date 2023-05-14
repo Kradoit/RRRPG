@@ -33,7 +33,7 @@ namespace RRRPG
         {
             soundPlayer.Stop();
             // run if not multiplayer or if host said to go
-            if (!multiPlayer || !Network.waiting)
+            if (!multiPlayer)
             {
                 opp1Alive = true;
                 if (this.threePlayer)
@@ -312,17 +312,17 @@ namespace RRRPG
             }
             else
             {
-                if (player.PullTrigger())
+                if (player.PullTrigger(Network, 0))
                 {
                     state = 3;
-                    tmrStateMachine.Interval = 2200;
-                    tmrStateMachine.Enabled = true;
+                    tmrMultiplayer.Interval = 2200;
+                    tmrMultiplayer.Enabled = true;
                 }
                 else
                 {
                     state = 5;
-                    tmrStateMachine.Interval = 1500;
-                    tmrStateMachine.Enabled = true;
+                    tmrMultiplayer.Interval = 1500;
+                    tmrMultiplayer.Enabled = true;
                 }
                 btnDoIt.Visible = false;
             }
