@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+using RRRPGLib;
 
 namespace RRRPG
 {
@@ -56,8 +57,6 @@ namespace RRRPG
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {
-            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
-            soundPlayer.PlayLooping();
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             weaponSelectMap = new() {
             {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
@@ -78,7 +77,8 @@ namespace RRRPG
                 {
                     hostStateMachine.Enabled = true;
                     //MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
-                }else if (multiplayer)
+                }
+                else if (multiplayer)
                 {
                     userStateMachine.Enabled = true;
                 }
@@ -216,7 +216,7 @@ namespace RRRPG
                     return;
                 }
                 // check if you are host
-                if(Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
+                if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
                 {
                     MessageBox.Show("You must wait for all users to choose a character");
                     return;
@@ -247,7 +247,7 @@ namespace RRRPG
 
                 Hide();
 
-                soundPlayer.Stop();
+                SoundManager.Stop();
                 MainGame.ShowDialog();
                 FormManager.openForms.Add(MainGame);
             }
@@ -269,12 +269,12 @@ namespace RRRPG
             Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
 
             // set the labels if the characters were set
-            
-            if(opponent != null)
+
+            if (opponent != null)
                 opponent.setPic(ref picOpponent);
-            if(opponent2 != null)
+            if (opponent2 != null)
                 opponent2.setPic(ref picOpponent2);
-            
+
         }
     }
 
