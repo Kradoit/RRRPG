@@ -158,7 +158,7 @@ namespace RRRPGLib
     }
     public class MultiPlayer
     {
-        private String[] rawUserData = new String[3];
+        public String[] rawUserData = new String[3];
 
         public WeaponType Opponent;
         public WeaponType Opponent2;

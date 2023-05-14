@@ -20,6 +20,7 @@ namespace RRRPG
 {
     public partial class CharacterSelect : Form
     {
+        private WeaponType weaponType;
         private SoundPlayer soundPlayer;
         private Character player;
         private Character opponent;
@@ -127,16 +128,10 @@ namespace RRRPG
                     }
                     break;
             }
-            // send the data to other users
+            // save the type
             if (multiplayer)
             {
-                if (Network.isHost)
-                {
-                    Network.broadCast(type.ToString());
-                }else
-                {
-                    Network.sendMessage(type.ToString());
-                }
+                weaponType = type;
             }
         }
 
@@ -211,7 +206,6 @@ namespace RRRPG
         {
             ResourcesRef.Resources = Resources.ResourceManager;
             mainGame MainGame;
-            Hide();
 
             if (multiplayer)
             {
@@ -220,12 +214,13 @@ namespace RRRPG
                     MessageBox.Show("You must choose a character");
                     return;
                 }
-
-                MainGame = new mainGame(player, Network);
-
-                soundPlayer.Stop();
-                MainGame.ShowDialog();
-                FormManager.openForms.Add(MainGame);
+                // check if you are host
+                if(Network.isHost && ((Network.rawUserData[0] != "" && Network.rawUserData[1] != "") && (Network.rawUserData[2] != "" || Network.ips.Count <=2)))
+                {
+                    MessageBox.Show("You must wait for all users to choose a character");
+                    return;
+                }
+                Network.sendUserData(weaponType);
             }
             else
             {
@@ -248,6 +243,8 @@ namespace RRRPG
                 {
                     MainGame.setMultiplayer(Network);
                 };
+
+                Hide();
 
                 soundPlayer.Stop();
                 MainGame.ShowDialog();
