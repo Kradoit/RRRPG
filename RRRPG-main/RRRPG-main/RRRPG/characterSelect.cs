@@ -299,6 +299,9 @@ namespace RRRPG
                 // notify the users
                 Network.broadCast("GOGOGO");
             }
+            // stop state machines
+            hostStateMachine.Enabled = false;
+            userStateMachine.Enabled = false;
 
             mainGame MainGame;
 

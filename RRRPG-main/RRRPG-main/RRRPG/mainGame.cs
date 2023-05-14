@@ -343,7 +343,10 @@ namespace RRRPG
             {
                 // get a command from the server
                 var data = Network.getCurrentCommand();
-                
+                if(data == null)
+                {
+                    return;
+                }
                 // do the command
                 switch (data[1])
                 {
