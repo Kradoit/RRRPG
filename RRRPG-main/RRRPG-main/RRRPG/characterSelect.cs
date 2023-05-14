@@ -27,7 +27,7 @@ namespace RRRPG
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap;
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap2;
 
-        private int selectedPlayer = 1;
+        private int selectedPlayer = 2;
         private bool multiplayer = false;
         private MultiPlayer Network;
 
@@ -44,7 +44,7 @@ namespace RRRPG
             picOpponent.MouseClick += selectOpponent;
         }
         // init with multiplayer 
-        public CharacterSelect(ref MultiPlayer Network)
+        public CharacterSelect(MultiPlayer Network)
         {
             InitializeComponent();
 
@@ -64,15 +64,22 @@ namespace RRRPG
             {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand, lblWeaponSelectMagicWand) },
             {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev, lblWeaponSelectNerfRev) },
             };
-
-            // run the host thread if host
-            if (this.Network.isHost)
+            // make multiplayer edits
+            if (multiplayer)
             {
-                MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
+                // set the text to not be visible
+                player1.Visible = false;
+                text3.Visible = false;
+                // run the host thread if host
+                if (this.Network.isHost)
+                {
+                    MultiPlayer.hostListener(ref Network, ref picOpponent, ref picOpponent2, ref player1, ref text3);
+                }
             }
 
             // run the network thread
-            this.Network.networkThread.startLobby(ref Network, ref picOpponent, ref picOpponent2, ref lblOpponentSpeak, ref text3);
+            //if(multiplayer)
+                //this.Network.networkThread.startLobby(ref Network, ref picOpponent, ref picOpponent2, ref lblOpponentSpeak, ref text3);
 
         }
 
@@ -185,36 +192,57 @@ namespace RRRPG
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            // check that they have at least a player and a opponent
-            if(player == null)
-            {
-                MessageBox.Show("You must choose a character");
-                return;
-            }
-            if (opponent == null)
-            {
-                MessageBox.Show("You must choose an opponent");
-                return;
-            }
-
             ResourcesRef.Resources = Resources.ResourceManager;
-            Hide();
             mainGame MainGame;
-            // check if its one or two player
-            if (opponent2 == null)
-                MainGame = new mainGame(player, opponent);
+            Hide();
+
+            if (multiplayer)
+            {
+                if (player == null)
+                {
+                    MessageBox.Show("You must choose a character");
+                    return;
+                }
+
+                MainGame = new mainGame(player, Network);
+
+                soundPlayer.Stop();
+                MainGame.ShowDialog();
+                FormManager.openForms.Add(MainGame);
+            }
             else
-                MainGame = new mainGame(player, opponent, opponent2);
+            {
+                // check that they have at least a player and a opponent
 
-            
-            if(multiplayer){
-                MainGame.setMultiplayer(Network);
-            };
+                if (opponent == null)
+                {
+                    MessageBox.Show("You must choose an opponent");
+                    return;
+                }
 
-            soundPlayer.Stop();
-            MainGame.ShowDialog();
-            FormManager.openForms.Add(MainGame);
+                // check if its one or two player
+                if (opponent2 == null)
+                    MainGame = new mainGame(player, opponent);
+                else
+                    MainGame = new mainGame(player, opponent, opponent2);
+
+
+                if (multiplayer)
+                {
+                    MainGame.setMultiplayer(Network);
+                };
+
+                soundPlayer.Stop();
+                MainGame.ShowDialog();
+                FormManager.openForms.Add(MainGame);
+            }
         }
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormManager.openForms.Remove(this);
+            FormManager.CloseAll();
+        }
+
     }
 
 }

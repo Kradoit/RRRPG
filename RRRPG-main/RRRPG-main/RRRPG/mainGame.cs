@@ -28,24 +28,27 @@ namespace RRRPG
         }
         private void start()
         {
-
-            soundPlayer.Stop();
-            opp1Alive = true;
-            if (this.threePlayer)
-                opp2Alive = true;
-            else
-                opp2Alive = false;
-            playerAlive = true;
-            player.Shutup();
-            player.ShowIdle();
-            opponent.ShowIdle();
-            btnStart.Visible = false;
-            opponent.SaySmack();
-            if (this.threePlayer)
-                opponent2.SaySmack();
-            tmrStateMachine.Interval = 3500;
-            tmrStateMachine.Enabled = true;
-            state = 0;
+            // run if not multiplayer or if host said to go
+            if (!multiPlayer || !Network.waiting)
+            {
+                soundPlayer.Stop();
+                opp1Alive = true;
+                if (this.threePlayer)
+                    opp2Alive = true;
+                else
+                    opp2Alive = false;
+                playerAlive = true;
+                player.Shutup();
+                player.ShowIdle();
+                opponent.ShowIdle();
+                btnStart.Visible = false;
+                opponent.SaySmack();
+                if (this.threePlayer)
+                    opponent2.SaySmack();
+                tmrStateMachine.Interval = 3500;
+                tmrStateMachine.Enabled = true;
+                state = 0;
+            }
         }
         public mainGame(Character player, Character opponent)
         {
@@ -58,6 +61,18 @@ namespace RRRPG
 
         }
 
+        public mainGame(Character player, MultiPlayer Network)
+        {
+            InitializeComponent();
+            FormManager.openForms.Add(this);
+
+            this.Network = Network;
+            this.player = player;
+            this.multiPlayer = true;
+
+            this.player.setPic(ref picPlayer);
+
+        }
         public mainGame(Character player, Character opponent, Character opponent2)
         {
             InitializeComponent();
@@ -79,17 +94,15 @@ namespace RRRPG
             lblPlayer.Visible = false;
             state = -1;
 
-            this.player.setPic(ref picPlayer);
-            this.opponent.setPic(ref picOpponent);
-
+            // set player objects
             this.player.setText(ref lblPlayer);
-            this.opponent.setText(ref lblOpponent);
+            this.player.setPic(ref picPlayer);
 
-            if (this.threePlayer)
-            {
-                this.opponent2.setPic(ref picOpponent2);
-                this.opponent2.setText(ref lblOpponent2);
-            }
+            if (!multiPlayer)
+                setOpponentFormObjects();
+            else
+                tmrMultiplayer.Enabled = true;
+            lblPlayer.Text = "-----";
 
             start();
         }
@@ -99,7 +112,7 @@ namespace RRRPG
             if (state == 0)
             {
                 opponent.Shutup();
-                if(threePlayer)
+                if (threePlayer)
                     opponent2.Shutup();
                 // why not talk on second loop
                 player.SaySmack();
@@ -121,6 +134,7 @@ namespace RRRPG
                         lblOpponent2.Visible = false;
                     btnStart.Visible = true;
                     tmrPlayMusicAfterGameOver.Enabled = true;
+                    tmrMultiplayer.Interval = 10;
                     tmrStateMachine.Enabled = false;
                 }
                 else
@@ -270,6 +284,23 @@ namespace RRRPG
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+        private void setOpponentFormObjects()
+        {
+            this.opponent.setPic(ref picOpponent);
+            this.opponent.setText(ref lblOpponent);
+
+            if (this.threePlayer)
+            {
+                this.opponent2.setPic(ref picOpponent2);
+                this.opponent2.setText(ref lblOpponent2);
+            }
+
+        }
+        private void checkForStart(object sender, EventArgs e)
+        {
+            // check if there are any new users
 
         }
     }

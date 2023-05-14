@@ -25,7 +25,7 @@ namespace RRRPGLib
         }
         // threads
         Thread hostThread;
-        Thread lobyThread;
+        Thread lobbyThread;
 
         // init function
         public listener(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
@@ -54,8 +54,8 @@ namespace RRRPGLib
             };
 
             // make and start the thread
-            lobyThread = new Thread(new ParameterizedThreadStart(lobyListener));
-            lobyThread.Start(variables);
+            lobbyThread = new Thread(new ParameterizedThreadStart(lobbyListener));
+            lobbyThread.Start(variables);
         }
 
         // function for the listenerthred
@@ -87,6 +87,11 @@ namespace RRRPGLib
 
                         // split up the message
                         string[] message = sData.Split((char)127);
+                        // check they sent a name
+                        if(message.Length <=0 || message[1] == "")
+                        {
+                            message[1] = "player " + (ip.Length + 1).ToString();
+                        }
 
                         // check that you recieved the correct confirmation message
                         if (message[0] == "join")
@@ -96,14 +101,25 @@ namespace RRRPGLib
                             // set their name
                             if (Network.ips.Length == 1)
                             {
-                                setText(OpponentText,message[0]);
+                                // set and save the name
+                                setText(OpponentText,message[1]);
+                                Network.opponentName = message[1];
+                                // send your name
+                                Network.sendMessage(Network.name, ip);
                             }
-                            else if (Network.ips.Length == 1)
+                            else if (Network.ips.Length == 2)
                             {
-                                setText(Opponent2Text, message[0]);
+                                // set and save the name
+                                setText(Opponent2Text, message[1]);
+                                Network.opponentName2 = message[1];
+
+                                // send your name and the opponent name
+                                Network.sendMessage(Network.name, ip);
+                                Network.sendMessage(Network.opponentName, ip);
+                                // send the new opponent name to the old opponent
+                                Network.sendMessage(message[1], Network.ips[0]);
                             }
                         }
-                        //else if(sData.Split() == "")
                         // send a response
                         Network.sendMessage("hola", ip);
                     }
@@ -112,7 +128,7 @@ namespace RRRPGLib
             }
         }
         // function to handel the lobby
-        public static void lobyListener(object objects)
+        public static void lobbyListener(object objects)
         {
             // cast  objects
             var Objects = (List<Object>)objects;
@@ -136,6 +152,12 @@ namespace RRRPGLib
     }
     public class MultiPlayer
     {
+        public WeaponType Opponent;
+        public WeaponType Opponent2;
+        public string opponentName;
+        public string opponentName2;
+
+        public bool waiting = true;
         public String[] ips = new string[1];
         public int test = 0;
         // store the name of the user
@@ -213,7 +235,24 @@ namespace RRRPGLib
             sendMessage("join" + (char)127 + name, ip);
         }
 
-        // function to set the labels and picture boxes
+        // function to wait to start
+        public void waitForStart()
+        {
+            while (this.waiting)
+            {
+                Thread.Sleep(100);
+            }
+        }
+
+        // function to broadcast a message
+        public void broadCast(string message)
+        {
+            // loop through the ip addresses
+            foreach(string ip in ips)
+            {
+                sendMessage(message, ip);
+            }
+        }
 
     }
 }

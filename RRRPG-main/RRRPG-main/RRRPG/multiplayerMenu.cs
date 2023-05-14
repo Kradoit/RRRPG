@@ -26,7 +26,7 @@ namespace RRRPG
         {
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
-            CharacterSelect characterSelect = new CharacterSelect(ref Network);
+            CharacterSelect characterSelect = new CharacterSelect(Network);
             soundPlayer.Stop();
             characterSelect.ShowDialog();
             FormManager.openForms.Add(characterSelect);
@@ -65,7 +65,7 @@ namespace RRRPG
                     Network.join(serverList.GetItemText(serverList.SelectedItem), nameBox.Text);
                 }
             }    
-            // check
+            // move to next form
             characterSelect();
         }
 

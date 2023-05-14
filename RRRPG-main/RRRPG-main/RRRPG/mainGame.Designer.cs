@@ -29,32 +29,27 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            PictureBox picOpponent;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGame));
             btnDoIt = new Button();
             label3 = new Label();
             btnStart = new Button();
             tmrStateMachine = new System.Windows.Forms.Timer(components);
+            tmrMultiplayer = new System.Windows.Forms.Timer(components);
             tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
             lblOpponent2 = new Label();
             picOpponent2 = new PictureBox();
             lblPlayer = new Label();
             lblOpponent = new Label();
             picPlayer = new PictureBox();
+            name1 = new Label();
+            playerName = new Label();
+            name2 = new Label();
             picOpponent = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)picOpponent).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picPlayer).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picOpponent).BeginInit();
             SuspendLayout();
-            // 
-            // picOpponent
-            // 
-            picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent.Location = new Point(1398, 356);
-            picOpponent.Margin = new Padding(7, 8, 7, 8);
-            picOpponent.Name = "picOpponent";
-            picOpponent.Size = new Size(1071, 1156);
-            picOpponent.TabIndex = 28;
-            picOpponent.TabStop = false;
             // 
             // btnDoIt
             // 
@@ -95,6 +90,11 @@
             tmrStateMachine.Interval = 40;
             tmrStateMachine.Tick += tmrDialog_Tick;
             // 
+            // tmrMultiplayer
+            // 
+            tmrMultiplayer.Interval = 40;
+            tmrMultiplayer.Tick += checkForStart;
+            // 
             // tmrPlayMusicAfterGameOver
             // 
             tmrPlayMusicAfterGameOver.Interval = 2000;
@@ -113,14 +113,14 @@
             // 
             // picOpponent2
             // 
-            this.picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
-            this.picOpponent2.Location = new Point(2617, 420);
-            this.picOpponent2.Margin = new Padding(7, 8, 7, 8);
-            this.picOpponent2.Name = "picOpponent2";
-            this.picOpponent2.Size = new Size(993, 1058);
-            this.picOpponent2.TabIndex = 32;
-            this.picOpponent2.TabStop = false;
-            this.picOpponent2.Click += this.pictureBox1_Click;
+            picOpponent2.BackgroundImageLayout = ImageLayout.Stretch;
+            picOpponent2.Location = new Point(2617, 420);
+            picOpponent2.Margin = new Padding(7, 8, 7, 8);
+            picOpponent2.Name = "picOpponent2";
+            picOpponent2.Size = new Size(993, 1058);
+            picOpponent2.TabIndex = 32;
+            picOpponent2.TabStop = false;
+            picOpponent2.Click += pictureBox1_Click;
             // 
             // lblPlayer
             // 
@@ -155,12 +155,59 @@
             picPlayer.TabIndex = 29;
             picPlayer.TabStop = false;
             // 
+            // picOpponent
+            // 
+            picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
+            picOpponent.Location = new Point(1398, 356);
+            picOpponent.Margin = new Padding(7, 8, 7, 8);
+            picOpponent.Name = "picOpponent";
+            picOpponent.Size = new Size(1071, 1156);
+            picOpponent.TabIndex = 28;
+            picOpponent.TabStop = false;
+            // 
+            // name1
+            // 
+            name1.AutoSize = true;
+            name1.BackColor = Color.White;
+            name1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            name1.ForeColor = Color.Black;
+            name1.Location = new Point(268, 21);
+            name1.Name = "name1";
+            name1.Size = new Size(0, 89);
+            name1.TabIndex = 34;
+            // 
+            // playerName
+            // 
+            playerName.AutoSize = true;
+            playerName.BackColor = Color.White;
+            playerName.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            playerName.ForeColor = Color.Black;
+            playerName.Location = new Point(1868, 21);
+            playerName.Name = "playerName";
+            playerName.Size = new Size(146, 89);
+            playerName.TabIndex = 35;
+            playerName.Text = "You";
+            // 
+            // name2
+            // 
+            name2.AutoSize = true;
+            name2.BackColor = Color.White;
+            name2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            name2.ForeColor = Color.Black;
+            name2.Location = new Point(2864, 49);
+            name2.Name = "name2";
+            name2.Size = new Size(0, 89);
+            name2.TabIndex = 36;
+            // 
             // mainGame
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(3244, 2108);
+            Controls.Add(name2);
+            Controls.Add(playerName);
+            Controls.Add(name1);
             Controls.Add(lblOpponent2);
             Controls.Add(picOpponent2);
             Controls.Add(lblPlayer);
@@ -175,9 +222,9 @@
             Text = "Russian Roulette RPG";
             FormClosed += FrmMain_FormClosed;
             Load += FrmMain_Load;
-            ((System.ComponentModel.ISupportInitialize)picOpponent).EndInit();
             ((System.ComponentModel.ISupportInitialize)picOpponent2).EndInit();
             ((System.ComponentModel.ISupportInitialize)picPlayer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picOpponent).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,6 +233,7 @@
         private Button btnDoIt;
         private Button btnStart;
         private System.Windows.Forms.Timer tmrStateMachine;
+        private System.Windows.Forms.Timer tmrMultiplayer;
         private Label label3;
         private Label lblWeaponSelectBow;
         private Label lblWeaponSelectNerfRev;
@@ -196,5 +244,8 @@
         private Label lblOpponent;
         private PictureBox picPlayer;
         private PictureBox picOpponent;
+        private Label name1;
+        private Label playerName;
+        private Label name2;
     }
 }
