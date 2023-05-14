@@ -280,12 +280,12 @@ namespace RRRPG
             // check if ready
             if(ready == 1)
             {
-                multiStart_Click();
+                multiStart_Click(null, null);
             }
 
         }
 
-        private void multiStart_Click()
+        private void multiStart_Click(object sender, EventArgs e)
         {
             // check that everyone is ready
             if(player != null && opponent != null && (opponent2 != null || Network.ips.Count == 1))
