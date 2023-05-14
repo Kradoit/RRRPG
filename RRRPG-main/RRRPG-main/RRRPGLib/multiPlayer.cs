@@ -273,9 +273,10 @@ namespace RRRPGLib
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
                 // check if more than one message was sent
                 if (lastCommand != sData)
-                    return (sData.Split((char)127));
-                else
+                {
                     lastCommand = sData;
+                    return (sData.Split((char)127));
+                }
             }
             return null;
         }

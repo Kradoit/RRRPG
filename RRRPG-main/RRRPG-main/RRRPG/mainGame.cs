@@ -419,6 +419,8 @@ namespace RRRPG
                     Network.sendCommand(0, "sayBoned");
                     playerAlive = false;
                     Network.sendCommand(0, "hide");
+                    picPlayer.Visible = false;
+
                     state = 1;
                 }
                 else if (state == 5)
