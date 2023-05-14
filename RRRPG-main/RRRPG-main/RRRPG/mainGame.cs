@@ -471,6 +471,7 @@ namespace RRRPG
                     if (opp2Alive == true)
                     {
                         opponent.Shutup();
+                        Network.sendCommand(2, "shutUp");
                         if (threePlayer)
                         {
                             opponent2.ShowReady();
@@ -485,37 +486,36 @@ namespace RRRPG
                 }
                 else if (state == 11)
                 {
-                    if (opponent2.PullTrigger())
+                    // tell user its their turn
+                    Network.sendCommand(2, "turn");
+                    // wait for the user to pull the trigger
+                    if (Network.pulledTrigger())
                     {
-                        state = 12;
-                    }
-                    else
-                    {
-                        state = 1;
+                        if (opponent2.PullTrigger(Network, 1))
+                        {
+                            state = 12;
+                        }
+                        else
+                        {
+                            state = 1;
+                        }
                     }
                 }
                 else if (state == 12)
                 {
                     opponent2.SayOw();
+                    Network.sendCommand(2, "sayOw");
                     state = 13;
                     tmrMultiplayer.Interval = 2500;
                 }
                 else if (state == 13)
                 {
                     opponent2.SayBoned();
+                    Network.sendCommand(2, "sayBonned");
                     opp2Alive = false;
                     picOpponent2.Visible = false;
                     state = 1;
                 }
-                if (!playerAlive && !multiPlayer)
-                {
-                    // end game and put button to return to main menue
-                }
-                else
-                {
-                    // end game and keep watching
-                }
-                // check if everyone is dead and end game
             }
             else
             {

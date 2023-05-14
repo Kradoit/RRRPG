@@ -211,7 +211,7 @@ public class Character {
         else
             Network.broadCast(id.ToString() + (char)127 + "takingTurn" + (char)127 + "false");
 
-        return false;
+        return rtnVal;
 
     }
 

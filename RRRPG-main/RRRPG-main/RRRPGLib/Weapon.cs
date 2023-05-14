@@ -127,7 +127,7 @@ public class Weapon {
   public PullTriggerResult PullTrigger(Character character) {
     PullTriggerResult result = PullTriggerResult.UNKNOWN;
 
-    float chance = RandNumber();
+        float chance = RandNumber();
     if (chance < 1 - character.Stats.Luck) {
       chance = RandNumber();
       if (chance >= ChanceOfMisfire) {
