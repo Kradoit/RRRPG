@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 
 namespace RRRPGLib
 { 
@@ -263,7 +264,8 @@ namespace RRRPGLib
         }
         string lastCommand="";
         public string[] getCurrentCommand()
-        { // check if you have recieved data
+        { 
+            // check if you have recieved data
             if (udpClient.Available > 0)
             {
                 // get the data and check it 
@@ -299,6 +301,20 @@ namespace RRRPGLib
                 return ref opponent2;
             }
             return ref player;
+        }
+        // check if a user has pulled the trigger
+        public bool pulledTrigger()
+        {
+            // check if you have recieved data
+            if (udpClient.Available > 0)
+            {
+                // get the data and check it 
+                byte[] data = udpClient.Receive(ref endPoint);
+                string sData = (System.Text.Encoding.ASCII.GetString(data));
+                if (sData == "go")
+                    return true;
+            }
+            return false;
         }
     }
 }

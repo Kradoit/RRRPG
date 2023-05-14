@@ -305,21 +305,28 @@ namespace RRRPG
 
         private void btnDoIt_Click(object sender, EventArgs e)
         {
-            if (player.PullTrigger())
+            //check if multiplayer
+            if (multiPlayer && !Network.isHost)
             {
-                state = 3;
-                tmrStateMachine.Interval = 2200;
-                tmrStateMachine.Enabled = true;
+                // send that you pulled the trigger
             }
             else
             {
-                state = 5;
-                tmrStateMachine.Interval = 1500;
-                tmrStateMachine.Enabled = true;
+                if (player.PullTrigger())
+                {
+                    state = 3;
+                    tmrStateMachine.Interval = 2200;
+                    tmrStateMachine.Enabled = true;
+                }
+                else
+                {
+                    state = 5;
+                    tmrStateMachine.Interval = 1500;
+                    tmrStateMachine.Enabled = true;
+                }
+                btnDoIt.Visible = false;
             }
-            btnDoIt.Visible = false;
         }
-
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormManager.openForms.Remove(this);
@@ -359,7 +366,7 @@ namespace RRRPG
                 }
                 else if (state == 1)
                 {
-                    if ((opp1Alive == false && opp2Alive == false) || playerAlive == false)
+                    if (playerAlive == false)
                     {
                         state = -1;
                         opponent.ShowIdle();
@@ -368,6 +375,7 @@ namespace RRRPG
                         {
                             opponent2.ShowNoWeapon();
                         }
+                        /*
                         picOpponent.Visible = true;
                         if (threePlayer)
                             picOpponent2.Visible = true;
@@ -376,9 +384,14 @@ namespace RRRPG
                             lblOpponent2.Visible = false;
                         btnStart.Visible = true;
                         tmrPlayMusicAfterGameOver.Enabled = true;
-                        tmrStateMachine.Enabled = false;
+                        tmrMultiplayer.Enabled = false;
+                        */
+                        state = 0; 
                     }
-                    else
+                    else if((opp1Alive == false && opp2Alive == false))
+                    {
+                        Network.sendCommand(-1, "endGame");
+                    }else
                     {
                         Network.sendCommand(-1, "shutUp");
                         Network.sendCommand(-2, "shutUp");
@@ -404,12 +417,14 @@ namespace RRRPG
                 else if (state == 3)
                 {
                     player.SayOw();
+                    Network.sendCommand(0, "sayOw");
                     state = 4;
-                    tmrStateMachine.Interval = 2500;
+                    tmrMultiplayer.Interval = 2500;
                 }
                 else if (state == 4)
                 {
                     player.SayBoned();
+                    Network.sendCommand(0, "sayBoned");
                     playerAlive = false;
                     state = 1;
                 }
@@ -418,7 +433,10 @@ namespace RRRPG
                     if (opp1Alive == true)
                     {
                         player.Shutup();
+                        Network.sendCommand(0, "shutUp");
+
                         opponent.ShowReady();
+                        Network.sendCommand(1, "showReady");
                         state = 6;
                     }
                     else
@@ -428,20 +446,26 @@ namespace RRRPG
                 }
                 else if (state == 6)
                 {
-                    if (opponent.PullTrigger())
+                    // tell user its their turn
+                    Network.sendCommand(1, "turn");
+                    // wait for the user to pull the trigger
+                    if (Network.pulledTrigger())
                     {
-                        state = 7;
-                    }
-                    else
-                    {
-                        state = 10;
+                        if (opponent.PullTrigger())
+                        {
+                            state = 7;
+                        }
+                        else
+                        {
+                            state = 10;
+                        }
                     }
                 }
                 else if (state == 7)
                 {
                     opponent.SayOw();
                     state = 8;
-                    tmrStateMachine.Interval = 2500;
+                    tmrMultiplayer.Interval = 2500;
                 }
                 else if (state == 8)
                 {
@@ -479,7 +503,7 @@ namespace RRRPG
                 {
                     opponent2.SayOw();
                     state = 13;
-                    tmrStateMachine.Interval = 2500;
+                    tmrMultiplayer.Interval = 2500;
                 }
                 else if (state == 13)
                 {
@@ -572,6 +596,18 @@ namespace RRRPG
                             }
                             break;
                         }
+                    case "sayOw":
+                        {
+                            if (player != null)
+                                player.SayOw();
+                            break;
+                        }
+                    case "sayBoned":
+                        {
+                            if (player != null)
+                                player.SayBoned();
+                            break;
+                        }
                     case "showReady":
                         {
                             if (player != null)
@@ -583,6 +619,15 @@ namespace RRRPG
                                 {
                                     opponent2.ShowReady();
                                 }
+                            }
+                            break;
+                        }
+                    case "turn":
+                        {
+                            if(player == this.player)
+                            {
+                                btnDoIt.Enabled = true;
+                                btnDoIt.Visible = true;
                             }
                             break;
                         }
