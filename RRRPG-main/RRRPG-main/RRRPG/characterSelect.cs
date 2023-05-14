@@ -217,7 +217,7 @@ namespace RRRPG
             {
                 // check that they have at least a player and a opponent
 
-                if (opponent == null)
+                if (opponent == null && opponent2 == null)
                 {
                     MessageBox.Show("You must choose an opponent");
                     return;
@@ -227,6 +227,8 @@ namespace RRRPG
                 // check if its one or two player
                 if (opponent2 == null)
                     MainGame = new mainGame(player, opponent);
+                else if (opponent == null)
+                    MainGame = new mainGame(player, opponent2);
                 else
                     MainGame = new mainGame(player, opponent, opponent2);
 

@@ -152,7 +152,7 @@ namespace RRRPGLib
                 // get the data and check it 
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
-                if (!(sData == lastMessage && lastIp == this.endPoint.Address.ToString()))
+                if (!(sData.Equals(lastMessage) && lastIp == this.endPoint.Address.ToString()))
                 {
                     // get the ip
                     string ip = endPoint.Address.ToString();
@@ -262,8 +262,7 @@ namespace RRRPGLib
             else
                 sendMessage(message);
         }
-        string lastCommand="";
-        public string[] getCurrentCommand()
+        public string getCurrentCommand()
         { 
             // check if you have recieved data
             if (udpClient.Available > 0)
@@ -272,11 +271,7 @@ namespace RRRPGLib
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
                 // check if more than one message was sent
-                if (lastCommand != sData)
-                {
-                    lastCommand = sData;
-                    return (sData.Split((char)127));
-                }
+                return sData;
             }
             return null;
         }

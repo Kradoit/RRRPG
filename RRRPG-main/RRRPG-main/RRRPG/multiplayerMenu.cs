@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -60,9 +61,15 @@ namespace RRRPG
             if(!Network.isHost)
             {
                 // check if they have selected an item
-                if (serverList.SelectedItem!=null)
+                var text = serverList.GetItemText(serverList.SelectedItem);
+                if (text.Length > 3)
                 {
-                    Network.join(serverList.GetItemText(serverList.SelectedItem));
+                    Network.join(text);
+                }
+                else
+                {
+                    MessageBox.Show("Please select a server");
+                    return;
                 }
             }
             // save the name

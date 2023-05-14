@@ -19,6 +19,7 @@ namespace RRRPG
         private bool opp2Alive = true;
         private bool playerAlive = true;
         private Dictionary<WeaponType, (PictureBox pic, Label lbl)> weaponSelectMap;
+        string lastCommand = "";
 
         private bool threePlayer = false;
         private bool multiPlayer = false;
@@ -196,6 +197,7 @@ namespace RRRPG
                     tmrPlayMusicAfterGameOver.Enabled = true;
                     tmrMultiplayer.Interval = 10;
                     tmrStateMachine.Enabled = false;
+                    MessageBox.Show("The game has ended");
                 }
                 else
                 {
@@ -318,7 +320,7 @@ namespace RRRPG
                 // send that you pulled the trigger
                 Network.sendMessage("go");
             }
-            else if (Network.isHost)
+            else if (multiPlayer && Network.isHost)
             {
                 if (player.PullTrigger(Network, 0))
                 {
@@ -331,6 +333,21 @@ namespace RRRPG
                     state = 5;
                     tmrMultiplayer.Interval = 1500;
                     tmrMultiplayer.Enabled = true;
+                }
+            }
+            else // single player
+            {
+                if (player.PullTrigger())
+                {
+                    state = 3;
+                    tmrStateMachine.Interval = 2200;
+                    tmrStateMachine.Enabled = true;
+                }
+                else
+                {
+                    state = 5;
+                    tmrStateMachine.Interval = 1500;
+                    tmrStateMachine.Enabled = true;
                 }
             }
             btnDoIt.Visible = false;
@@ -528,11 +545,16 @@ namespace RRRPG
             else
             {
                 // get a command from the server
-                var data = Network.getCurrentCommand();
-                if(data == null)
+                string rawData = Network.getCurrentCommand();
+
+                if (rawData == null || lastCommand.Equals(rawData))
                 {
                     return;
+                }else
+                {
+                    lastCommand = rawData;
                 }
+                var data = (rawData.Split((char)127));
                 // select the right player
                 Character player = this.player;
                 int playerId = int.Parse(data[0]);
