@@ -388,7 +388,7 @@ namespace RRRPG
                         */
                         state = 0; 
                     }
-                    else if((opp1Alive == false && opp2Alive == false))
+                    else if((opp1Alive == false && opp2Alive == false) || (playerAlive == false && opp2Alive == false) || (opp1Alive == false && playerAlive == false))
                     {
                         Network.sendCommand(-1, "endGame");
                     }else
@@ -451,7 +451,7 @@ namespace RRRPG
                     // wait for the user to pull the trigger
                     if (Network.pulledTrigger())
                     {
-                        if (opponent.PullTrigger())
+                        if (opponent.PullTrigger(Network, 1))
                         {
                             state = 7;
                         }
@@ -624,10 +624,25 @@ namespace RRRPG
                         }
                     case "turn":
                         {
-                            if(player == this.player)
+                            if (player == this.player)
                             {
                                 btnDoIt.Enabled = true;
                                 btnDoIt.Visible = true;
+                            }
+                            break;
+                        }
+                    case "takingTurn":
+                        {
+                            player.PullTrigger();
+                            if (data[2] == "true")
+                            {
+                                player.ShowKill();
+                                player.SayGunWentOff();
+                            }
+                            else
+                            {
+                                player.ShowNoWeapon();
+                                player.SaySurvived();
                             }
                             break;
                         }

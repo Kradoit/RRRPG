@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 using static RRRPGLib.ResourcesRef;
 using ImgState = RRRPGLib.CharacterImgStateType;
@@ -184,6 +185,37 @@ public class Character {
     }
     return false;
   }
+    public bool PullTrigger(MultiPlayer Network, int id)
+    {
+        bool rtnVal = false;
+        var result = weapon.PullTrigger(this);
+        //Say(result.ToString());
+        switch (result)
+        {
+            case PullTriggerResult.GOT_SHOT:
+                ShowKill();
+                SayGunWentOff();
+                rtnVal =  true;
+                ShowNoWeapon();
+                SaySurvived();
+                break;
+            case PullTriggerResult.MISFIRE:
+            case PullTriggerResult.WENT_OFF_BUT_DODGED:
+            case PullTriggerResult.DIDNT_GO_OFF:
+                ShowNoWeapon();
+                SaySurvived();
+                rtnVal = false;
+                break;
+        }
+        // send the result to the users
+        if (rtnVal)
+            Network.broadCast(id.ToString() + (char)127 + "takingTurn" + (char)127 + "true");
+        else
+            Network.broadCast(id.ToString() + (char)127 + "takingTurn" + (char)127 + "false");
+
+        return false;
+
+    }
 
   /// <summary>
   /// Allows the character to say the dialog that goes with the <see cref="TalkState.TALK_SMACK"/> state
