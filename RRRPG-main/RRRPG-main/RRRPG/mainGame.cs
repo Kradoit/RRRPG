@@ -64,8 +64,12 @@ namespace RRRPG
                 player.ShowIdle();
                 Network.sendCommand(1, "showIdle");
                 opponent.ShowIdle();
-                Network.sendCommand(-1, "saySmack");
 
+                // make opponents say smakc
+                Network.sendCommand(-1, "saySmack");
+                opponent.SaySmack();
+                if (this.threePlayer)
+                    opponent2.SaySmack();
 
                 tmrMultiplayer.Interval = 3500;
                 tmrMultiplayer.Enabled = true;
@@ -346,6 +350,7 @@ namespace RRRPG
                 {
                     Network.sendCommand(-1, "shutUp");
                     opponent.Shutup();
+                    if(threePlayer)
                         opponent2.Shutup();
                     // why not talk on second loop
                     player.SaySmack();
@@ -375,16 +380,24 @@ namespace RRRPG
                     }
                     else
                     {
+                        Network.sendCommand(-1, "shutUp");
+                        Network.sendCommand(-2, "shutUp");
                         opponent.Shutup();
                         if (threePlayer)
                             opponent2.Shutup();
                         player.Shutup();
+
                         player.ShowReady();
+                        Network.sendCommand(0, "showReady");
+
                         opponent.ShowNoWeapon();
                         if (threePlayer)
                             opponent2.ShowNoWeapon();
+                        Network.sendCommand(1, "showNoWeapon");
+                        Network.sendCommand(2, "showNoWeapon");
+
                         btnDoIt.Visible = true;
-                        tmrStateMachine.Enabled = false;
+                        tmrMultiplayer.Enabled = false;
                         state = 2;
                     }
                 }
@@ -557,6 +570,24 @@ namespace RRRPG
                                     opponent2.Shutup();
                                 }
                             }
+                            break;
+                        }
+                    case "showReady":
+                        {
+                            if (player != null)
+                                player.ShowReady();
+                            else
+                            {
+                                opponent.ShowReady();
+                                if (threePlayer)
+                                {
+                                    opponent2.ShowReady();
+                                }
+                            }
+                            break;
+                        }
+                    case "takeTurn":
+                        {
                             break;
                         }
                     case null: { break; }
