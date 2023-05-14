@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            PictureBox picOpponent;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGame));
             btnDoIt = new Button();
             label3 = new Label();
@@ -92,7 +93,7 @@
             // tmrMultiplayer
             // 
             tmrMultiplayer.Interval = 40;
-            tmrMultiplayer.Tick += checkForStart;
+            tmrMultiplayer.Tick += multiPlayerLoop;
             // 
             // tmrPlayMusicAfterGameOver
             // 
@@ -154,23 +155,13 @@
             picPlayer.TabIndex = 29;
             picPlayer.TabStop = false;
             // 
-            // picOpponent
-            // 
-            picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
-            picOpponent.Location = new Point(1398, 356);
-            picOpponent.Margin = new Padding(7, 8, 7, 8);
-            picOpponent.Name = "picOpponent";
-            picOpponent.Size = new Size(1071, 1156);
-            picOpponent.TabIndex = 28;
-            picOpponent.TabStop = false;
-            // 
             // name1
             // 
             name1.AutoSize = true;
             name1.BackColor = Color.White;
             name1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name1.ForeColor = Color.Black;
-            name1.Location = new Point(268, 21);
+            name1.Location = new Point(1768, 21);
             name1.Name = "name1";
             name1.Size = new Size(0, 89);
             name1.TabIndex = 34;
@@ -181,7 +172,7 @@
             playerName.BackColor = Color.White;
             playerName.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             playerName.ForeColor = Color.Black;
-            playerName.Location = new Point(1868, 21);
+            playerName.Location = new Point(489, 9);
             playerName.Name = "playerName";
             playerName.Size = new Size(146, 89);
             playerName.TabIndex = 35;
@@ -197,6 +188,16 @@
             name2.Name = "name2";
             name2.Size = new Size(0, 89);
             name2.TabIndex = 36;
+            // 
+            // picOpponent
+            // 
+            picOpponent.BackgroundImageLayout = ImageLayout.Stretch;
+            picOpponent.Location = new Point(1398, 356);
+            picOpponent.Margin = new Padding(7, 8, 7, 8);
+            picOpponent.Name = "picOpponent";
+            picOpponent.Size = new Size(1071, 1156);
+            picOpponent.TabIndex = 28;
+            picOpponent.TabStop = false;
             // 
             // mainGame
             // 

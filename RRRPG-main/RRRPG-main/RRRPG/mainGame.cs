@@ -68,11 +68,16 @@ namespace RRRPG
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
-
+            
+            // set variables
             this.Network = Network;
             this.player = player;
             this.opponent = opponent;
             this.opponent2 = opponent2;
+            playerName.Text = Network.name;
+            name1.Text = Network.opponentName;
+            name2.Text = Network.opponentName2;
+
             this.multiPlayer = true;
             this.threePlayer = true;
         }
@@ -81,10 +86,13 @@ namespace RRRPG
             InitializeComponent();
             FormManager.openForms.Add(this);
 
+            // set variables
             this.Network = Network;
             this.player = player;
             this.opponent = opponent;
             this.multiPlayer = true;
+            playerName.Text = Network.name;
+            name1.Text = Network.opponentName;
             this.threePlayer = false;
         }
         public mainGame(Character player, Character opponent, Character opponent2)
@@ -120,11 +128,11 @@ namespace RRRPG
                 this.opponent2.setPic(ref picOpponent2);
                 this.opponent2.setText(ref lblOpponent2);
             }
-            else
-            {
-                tmrMultiplayer.Interval = 1;
-                tmrMultiplayer.Enabled = true;
-            }
+
+            // start multiplayer loop
+            tmrMultiplayer.Interval = 1;
+            tmrMultiplayer.Enabled = true;
+
             start();
         }
 
@@ -307,10 +315,22 @@ namespace RRRPG
         {
 
         }
- 
-        private void checkForStart(object sender, EventArgs e)
+        // main game loop for multiplayer
+
+        public void multiPlayerLoop(object sender, EventArgs e)
         {
-            // check if there are any new users
+            // check for a new command
+            if (Network.isHost)
+            {
+
+            }
+            else
+            {
+                // get a state command from the server
+                var state = Network.getCurrentState();
+
+                // return 
+            }
 
         }
     }

@@ -261,5 +261,18 @@ namespace RRRPGLib
             else
                 sendMessage(message);
         }
+        public string[] getCurrentState()
+        { // check if you have recieved data
+            if (udpClient.Available > 0)
+            {
+                // get the data and check it 
+                byte[] data = udpClient.Receive(ref endPoint);
+                string sData = (System.Text.Encoding.ASCII.GetString(data));
+
+                return (sData.Split((char)127));
+            }
+            else return null;
+        }
+
     }
 }
