@@ -418,6 +418,7 @@ namespace RRRPG
                     player.SayBoned();
                     Network.sendCommand(0, "sayBoned");
                     playerAlive = false;
+                    Network.sendCommand(0, "hide");
                     state = 1;
                 }
                 else if (state == 5)
@@ -456,14 +457,17 @@ namespace RRRPG
                 else if (state == 7)
                 {
                     opponent.SayOw();
+                    Network.sendCommand(1, "sayOw");
                     state = 8;
                     tmrMultiplayer.Interval = 2500;
                 }
                 else if (state == 8)
                 {
                     opponent.SayBoned();
+                    Network.sendCommand(2, "sayBoned");
                     opp1Alive = false;
                     picOpponent.Visible = false;
+                    Network.sendCommand(1, "hide");
                     state = 10;
                 }
                 else if (state == 10)
@@ -514,6 +518,8 @@ namespace RRRPG
                     Network.sendCommand(2, "sayBonned");
                     opp2Alive = false;
                     picOpponent2.Visible = false;
+
+                    Network.sendCommand(2, "hide");
                     state = 1;
                 }
             }
@@ -651,6 +657,12 @@ namespace RRRPG
                             MessageBox.Show("The game has ended");
                             break;
                         }
+                    case "hide":
+                        {
+                            player.pic.Visible = false;
+                            break;
+                        }
+                        picOpponent.Visible = false;
                     case null: { break; }
                 }
             }

@@ -21,7 +21,7 @@ public class Character {
 
     #region Private Fields / Properties
   private FortitudeType fortitude;
-  private PictureBox pic;
+  public PictureBox pic;
   private Label lblTalk;
     private Weapon weapon;
   private Dictionary<ImgState, Bitmap> imgMap;
