@@ -31,10 +31,10 @@ namespace RRRPG
         }
         private void start()
         {
+            soundPlayer.Stop();
             // run if not multiplayer or if host said to go
             if (!multiPlayer || !Network.waiting)
             {
-                soundPlayer.Stop();
                 opp1Alive = true;
                 if (this.threePlayer)
                     opp2Alive = true;
@@ -51,6 +51,21 @@ namespace RRRPG
                 tmrStateMachine.Interval = 3500;
                 tmrStateMachine.Enabled = true;
                 state = 0;
+            }else if (Network.isHost)
+            {
+                opp1Alive = true;
+                if (this.threePlayer)
+                    opp2Alive = true;
+                else
+                    opp2Alive = false;
+                playerAlive = true;
+
+                Network.sendCommand(0, "showIdle");
+                Network.sendCommand(1, "showIdle");
+                Network.sendCommand(-1, "SaySmack");
+
+                tmrStateMachine.Interval = 3500;
+                tmrStateMachine.Enabled = true;
             }
         }
         public mainGame(Character player, Character opponent)
@@ -326,10 +341,24 @@ namespace RRRPG
             }
             else
             {
-                // get a state command from the server
-                var state = Network.getCurrentState();
-
-                // return 
+                // get a command from the server
+                var data = Network.getCurrentCommand();
+                
+                // do the command
+                switch (data[1])
+                {
+                    case "showIdle":
+                        {
+                            Network.SelectChatacter(int.Parse(data[0]), ref player, ref opponent, ref opponent2).ShowIdle();
+                            break;
+                        }
+                    case "saySmack":
+                        {
+                            Network.SelectChatacter(int.Parse(data[0]), ref player, ref opponent, ref opponent2).SaySmack();
+                            break;
+                        }
+                    case null: { break; }
+                }
             }
 
         }

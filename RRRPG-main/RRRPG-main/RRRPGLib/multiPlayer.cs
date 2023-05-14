@@ -261,18 +261,44 @@ namespace RRRPGLib
             else
                 sendMessage(message);
         }
-        public string[] getCurrentState()
+        string lastCommand="";
+        public string[] getCurrentCommand()
         { // check if you have recieved data
             if (udpClient.Available > 0)
             {
                 // get the data and check it 
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
-
-                return (sData.Split((char)127));
+                // check if more than one message was sent
+                if (lastCommand != sData)
+                    return (sData.Split((char)127));
+                else
+                    lastCommand = sData;
             }
-            else return null;
+            return null;
         }
 
+        // function to send a command to a user
+        public void sendCommand(int id, string Command)
+        {
+            // send a command to the user
+            broadCast(id.ToString() + (char)127 + Command);
+        }
+        // function to select a character by id
+        public ref Character SelectChatacter(int id, ref Character player, ref Character opponent, ref Character opponent2)
+        {
+            // return the correct refrence
+            if(id == this.id)
+            {
+                return ref player; 
+            }else if(id == OpponentId)
+            {
+                return ref opponent;
+            }else if(id == OpponentId2)
+            {
+                return ref opponent2;
+            }
+            return ref player;
+        }
     }
 }
