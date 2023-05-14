@@ -211,17 +211,6 @@ namespace RRRPG
 
             if (multiplayer)
             {
-                if (player == null)
-                {
-                    MessageBox.Show("You must choose a character");
-                    return;
-                }
-                // check if you are host
-                if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
-                {
-                    MessageBox.Show("You must wait for all users to choose a character");
-                    return;
-                }
                 Network.sendUserData(weaponType);
             }
             else
@@ -288,28 +277,38 @@ namespace RRRPG
         private void multiStart_Click(object sender, EventArgs e)
         {
             // check that everyone is ready
-            if(player != null && opponent != null && (opponent2 != null || Network.ips.Count == 1))
+            if (player == null)
             {
-                // notify the users
-                Network.broadCast("GOGOGO");
-
-                mainGame MainGame;
-
-                // start the game
-                // check if its one or two player
-                if (opponent2 == null)
-                    MainGame = new mainGame(player, opponent);
-                else
-                    MainGame = new mainGame(player, opponent, opponent2);
-
-                MainGame.setMultiplayer(Network);
-
-                Hide();
-
-                soundPlayer.Stop();
-                MainGame.ShowDialog();
-                FormManager.openForms.Add(MainGame);
+                MessageBox.Show("You must choose a character");
+                return;
             }
+            // check if you are host
+            if (Network.isHost && (opponent != null || (opponent2 != null && Network.ips.Count == 2)))
+            {
+                MessageBox.Show("You must wait for all users to choose a character");
+                return;
+            }
+
+            // notify the users
+            Network.broadCast("GOGOGO");
+
+            mainGame MainGame;
+
+            // start the game
+            // check if its one or two player
+            if (opponent2 == null)
+                MainGame = new mainGame(player, opponent);
+            else
+                MainGame = new mainGame(player, opponent, opponent2);
+
+            MainGame.setMultiplayer(Network);
+
+            Hide();
+
+            soundPlayer.Stop();
+            MainGame.ShowDialog();
+            FormManager.openForms.Add(MainGame);
+            
         }
     }
 
