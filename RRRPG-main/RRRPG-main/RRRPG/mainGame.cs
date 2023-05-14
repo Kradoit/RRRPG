@@ -136,9 +136,8 @@ namespace RRRPG
 
             // start multiplayer loop
             tmrMultiplayer.Interval = 1;
-            tmrMultiplayer.Enabled = true;
-
-            start();
+            if (multiPlayer)
+                tmrMultiplayer.Enabled = true;
 
             // set player objects
             this.player.setText(ref lblPlayer);
@@ -152,6 +151,8 @@ namespace RRRPG
                 this.opponent2.setPic(ref picOpponent2);
                 this.opponent2.setText(ref lblOpponent2);
             }
+
+            start();
         }
 
         private void tmrDialog_Tick(object sender, EventArgs e)
@@ -362,7 +363,9 @@ namespace RRRPG
                         opponent.ShowIdle();
                         Network.sendCommand(1, "showIdle");
                         if (threePlayer)
+                        {
                             opponent2.ShowNoWeapon();
+                        }
                         picOpponent.Visible = true;
                         if (threePlayer)
                             picOpponent2.Visible = true;
@@ -494,19 +497,66 @@ namespace RRRPG
                 {
                     return;
                 }
-                Character Test = opponent;
-                Test.SaySmack();
+                // select the right player
+                Character player = this.player;
+                int playerId = int.Parse(data[0]);
+                if (playerId == -1)
+                {
+                    player = null;
+                }else if (playerId == Network.id)
+                {
+                    player = this.player;
+                }else if (playerId == Network.OpponentId)
+                {
+                    player = opponent;
+                }else if (playerId == Network.OpponentId2)
+                {
+                    player = opponent2;
+                }
+                
                 // do the command
                 switch (data[1])
                 {
                     case "showIdle":
                         {
-                            Network.SelectChatacter(int.Parse(data[0]), ref player, ref opponent, ref opponent2).ShowIdle();
+                            if(player != null)
+                               player.ShowIdle();
+                            else
+                            {
+                                opponent.ShowIdle();
+                                if (threePlayer)
+                                {
+                                    opponent2.ShowIdle();
+                                }
+                            }
                             break;
                         }
                     case "saySmack":
                         {
-                            Network.SelectChatacter(int.Parse(data[0]), ref player, ref opponent, ref opponent2).SaySmack();
+                            if (player != null)
+                                player.SaySmack();
+                            else
+                            {
+                                opponent.SaySmack();
+                                if (threePlayer)
+                                {
+                                    opponent2.SaySmack();
+                                }
+                            }
+                            break;
+                        }
+                    case "shutUp":
+                        {
+                            if (player != null)
+                                player.Shutup();
+                            else
+                            {
+                                opponent.Shutup();
+                                if (threePlayer)
+                                {
+                                    opponent2.Shutup();
+                                }
+                            }
                             break;
                         }
                     case null: { break; }
