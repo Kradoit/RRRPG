@@ -256,8 +256,10 @@ namespace RRRPG
         {
             // check for data
             Network.checkForData(ref player1, ref text3, ref opponent, ref opponent2);
-            
+
             // set the labels
+            opponent.setPic(ref picOpponent);
+            opponent2.setPic(ref picOpponent2);
 
         }
     }

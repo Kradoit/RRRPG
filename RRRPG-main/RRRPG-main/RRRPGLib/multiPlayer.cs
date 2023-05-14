@@ -30,6 +30,7 @@ namespace RRRPGLib
         // init function
         public listener(ref MultiPlayer Network, ref PictureBox Opponent, ref PictureBox Opponent2, ref Label OpponentText, ref Label Opponent2Text)
         {
+            /*
             List<Object> variables = new List<Object> {
                 Network,
                 Opponent,
@@ -39,7 +40,7 @@ namespace RRRPGLib
             };
             // make and start the thread
             hostThread = new Thread(new ParameterizedThreadStart(listen));
-            hostThread.Start(variables);
+            hostThread.Start(variables);*/
         }
         // function to start the loby thread
         /*
@@ -60,6 +61,7 @@ namespace RRRPGLib
     }*/
 
         // function for the listenerthred
+        /*
         public static void listen(object objects)
         {
             // cast  objects
@@ -74,7 +76,7 @@ namespace RRRPGLib
             while (true)
             {
                 // loop for a few seconds waiting for a response
-                for (int x = 0; x < 5 && Network.ips.Length < 2; x++)
+                for (int x = 0; x < 5 && Network.ips.Count < 2; x++)
                 {
                     // check if you have recieved data
                     if (Network.udpClient.Available > 0)
@@ -98,9 +100,9 @@ namespace RRRPGLib
                         if (message[0] == "join")
                         {
                             // save the ip address to the list
-                            Network.ips[Network.ips.Length - 1] = ip;
+                            Network.ips[Network.ips.Count - 1] = ip;
                             // set their name
-                            if (Network.ips.Length == 1)
+                            if (Network.ips.Count == 1)
                             {
                                 // set and save the name
                                 setText(OpponentText, message[1]);
@@ -108,7 +110,7 @@ namespace RRRPGLib
                                 // send your name
                                 Network.sendMessage(Network.name, ip);
                             }
-                            else if (Network.ips.Length == 2)
+                            else if (Network.ips.Count == 2)
                             {
                                 // set and save the name
                                 setText(Opponent2Text, message[1]);
@@ -128,6 +130,7 @@ namespace RRRPGLib
                 }
             }
         }
+        */
         // function to handel the lobby
         /*
         public static void lobbyListener(object objects)
@@ -160,7 +163,7 @@ namespace RRRPGLib
         public string opponentName2;
 
         public bool waiting = true;
-        public String[] ips = new string[1];
+        public List<String> ips = new List<string>();
         public int test = 0;
         // store the name of the user
         public string name = "host";
@@ -273,16 +276,16 @@ namespace RRRPGLib
                 // check they sent a name
                 if (message.Length < 2 || message[1] == "")
                 {
-                    message = new string[] { message[0], "player " + (ips.Length + 1).ToString() };
+                    message = new string[] { message[0], "player " + (this.ips.Count + 1).ToString() };
                 }
 
                 // check that you recieved the correct confirmation message
                 if (message[0] == "join")
                 {
                     // save the ip address to the list
-                    ips[ips.Length - 1] = ip;
+                    ips.Add(ip);
                     // set their name
-                    if (ips.Length == 1)
+                    if (ips.Count == 1)
                     {
                         // set and save the name
                         OpponentText.Text = message[1];
@@ -290,7 +293,7 @@ namespace RRRPGLib
                         // send your name
                         sendMessage(name, ip);
                     }
-                    else if (ips.Length == 2)
+                    else if (ips.Count == 2)
                     {
                         // set and save the name
                         Opponent2Text.Text = message[1];
