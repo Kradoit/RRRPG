@@ -67,8 +67,9 @@ namespace RRRPG
                 Network.sendCommand(-1, "saySmack");
 
 
-                tmrStateMachine.Interval = 3500;
-                tmrStateMachine.Enabled = true;
+                tmrMultiplayer.Interval = 3500;
+                tmrMultiplayer.Enabled = true;
+                state = 0;
             }
         }
         public mainGame(Character player, Character opponent)
@@ -343,16 +344,12 @@ namespace RRRPG
             {
                 if (state == 0)
                 {
-                    Network.sendCommand(1, "shutUp");
+                    Network.sendCommand(-1, "shutUp");
                     opponent.Shutup();
-                    if (threePlayer)
-                    {
                         opponent2.Shutup();
-                        Network.sendCommand(2, "shutUp");
-                    }
                     // why not talk on second loop
                     player.SaySmack();
-                    Network.sendCommand(0, "saySmack");
+                    Network.sendCommand(-2, "saySmack");
                     state = 1;
                 }
                 else if (state == 1)
@@ -374,7 +371,6 @@ namespace RRRPG
                             lblOpponent2.Visible = false;
                         btnStart.Visible = true;
                         tmrPlayMusicAfterGameOver.Enabled = true;
-                        tmrMultiplayer.Interval = 10;
                         tmrStateMachine.Enabled = false;
                     }
                     else
@@ -503,7 +499,11 @@ namespace RRRPG
                 if (playerId == -1)
                 {
                     player = null;
-                }else if (playerId == Network.id)
+                }else if (playerId == -2)
+                {
+                    player = this.player;
+                }
+                else if (playerId == Network.id)
                 {
                     player = this.player;
                 }else if (playerId == Network.OpponentId)
