@@ -99,6 +99,7 @@ namespace RRRPG
             InitializeComponent();
             FormManager.openForms.Add(this);
 
+            picOpponent2.Visible = false;
             this.player = player;
             this.opponent = opponent;
             //this.opponent2 = opponent2;;
@@ -126,6 +127,8 @@ namespace RRRPG
         {
             InitializeComponent();
             FormManager.openForms.Add(this);
+
+            picOpponent2.Visible = false;
 
             // set variables
             this.Network = Network;

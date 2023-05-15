@@ -326,8 +326,8 @@ namespace RRRPG
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            Network.udpClient.Close();
+            if(multiplayer)
+                Network.udpClient.Close();
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
             FrmTitle frmTitle = new FrmTitle();
