@@ -420,11 +420,7 @@ namespace RRRPG
                         btnDoIt.Visible = true;
                         tmrMultiplayer.Enabled = false;
 
-                        // check if the player died
-                        if (playerAlive == false)
-                            state = 5;
-                        else
-                            state = 2;
+                        state = 2;
                     }
                 }
                 else if (state == 3)
@@ -442,7 +438,7 @@ namespace RRRPG
                     Network.sendCommand(0, "hide");
                     picPlayer.Visible = false;
 
-                    state = 1;
+                    state = 5;
                 }
                 else if (state == 5)
                 {
@@ -524,7 +520,11 @@ namespace RRRPG
                         }
                         else
                         {
-                            state = 1;
+                            // check if the player died
+                            if (playerAlive == false)
+                                state = 5;
+                            else
+                                state = 1;
                         }
                     }
                 }
