@@ -115,7 +115,7 @@
             lblOpponent.AutoSize = true;
             lblOpponent.BackColor = Color.White;
             lblOpponent.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponent.Location = new Point(1490, 306);
+            lblOpponent.Location = new Point(1259, 253);
             lblOpponent.Margin = new Padding(5, 0, 5, 0);
             lblOpponent.Name = "lblOpponent";
             lblOpponent.Size = new Size(0, 81);
@@ -127,7 +127,7 @@
             name1.BackColor = Color.White;
             name1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name1.ForeColor = Color.Black;
-            name1.Location = new Point(1478, 56);
+            name1.Location = new Point(1455, 56);
             name1.Name = "name1";
             name1.Size = new Size(0, 89);
             name1.TabIndex = 34;
@@ -158,7 +158,7 @@
             // picOpponent2
             // 
             picOpponent2.BackgroundImageLayout = ImageLayout.Center;
-            picOpponent2.Location = new Point(2188, 395);
+            picOpponent2.Location = new Point(2121, 395);
             picOpponent2.Margin = new Padding(7, 8, 7, 8);
             picOpponent2.Name = "picOpponent2";
             picOpponent2.Size = new Size(696, 622);
@@ -180,7 +180,7 @@
             // picOpponent
             // 
             picOpponent.BackgroundImageLayout = ImageLayout.Center;
-            picOpponent.Location = new Point(1143, 395);
+            picOpponent.Location = new Point(1114, 395);
             picOpponent.Margin = new Padding(7, 8, 7, 8);
             picOpponent.Name = "picOpponent";
             picOpponent.Size = new Size(678, 639);
@@ -194,7 +194,7 @@
             lblOpponent2.BackColor = Color.White;
             lblOpponent2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             lblOpponent2.ForeColor = Color.Black;
-            lblOpponent2.Location = new Point(2250, 188);
+            lblOpponent2.Location = new Point(2051, 362);
             lblOpponent2.Name = "lblOpponent2";
             lblOpponent2.Size = new Size(0, 89);
             lblOpponent2.TabIndex = 40;
