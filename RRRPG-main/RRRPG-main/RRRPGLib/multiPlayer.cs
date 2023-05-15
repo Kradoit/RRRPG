@@ -19,23 +19,20 @@ namespace RRRPGLib
     {
         public String[] rawUserData = new String[3];
 
-        public WeaponType Opponent;
-        public WeaponType Opponent2;
+        // users names
         public string opponentName;
         public string opponentName2;
+        public string name = "host";
 
-        public bool waiting = true;
+        // users ips and ids
         public List<String> ips = new List<string>();
         public int[] ids = new int[2];
-        public int test = 0;
         public int id = 0;
-
-        // store the name of the user
-        public string name = "host";
-        public string hostIp = "none";
-        public int ip = 0;
         public int OpponentId = -1;
         public int OpponentId2 = -1;
+
+        // shost ip
+        public string hostIp = "none";
 
         // open a udp socket 
         public UdpClient udpClient = new UdpClient(25565);
@@ -48,7 +45,7 @@ namespace RRRPGLib
         // function to host a game
         public void hostGame()
         {
-            // make a thread to listen for new players
+            // set is host to true
             isHost = true;
         }
 
@@ -61,7 +58,7 @@ namespace RRRPGLib
             udpClient.Send(Encoding.ASCII.GetBytes(message), message.Length, ip, 25565);
         }
 
-        // function to send a string to an ip
+        // function to send a message to the host
         public void sendMessage(string message)
         {
             // convert the message intop bytes
@@ -122,17 +119,7 @@ namespace RRRPGLib
             }
 
         }
-
-        // function to wait to start
-        public void waitForStart()
-        {
-            while (this.waiting)
-            {
-                Thread.Sleep(100);
-            }
-        }
-
-        // function to broadcast a message
+        // function to broadcast a message to all ips in game
         public void broadCast(string message)
         {
             // loop through the ip addresses
@@ -143,7 +130,7 @@ namespace RRRPGLib
         }
         private string lastMessage = "";
         private string lastIp = "";
-        // function to check for users
+        // function to check for users in lobby
         public void checkForUsers(ref Label OpponentText, ref Label Opponent2Text, ref Character Opponent, ref Character Opponent2)
         {
             // check if you have recieved data
@@ -247,6 +234,7 @@ namespace RRRPGLib
             }
             return 0;
         }
+        // function to send the user data to the server
         public void sendUserData(WeaponType character)
         {
             if (name == "")
@@ -282,7 +270,8 @@ namespace RRRPGLib
             // send a command to the user
             broadCast(id.ToString() + (char)127 + Command);
         }
-        // function to select a character by id
+
+        // function to select a character by id for command recieving
         public ref Character SelectChatacter(int id, ref Character player, ref Character opponent, ref Character opponent2)
         {
             // return the correct refrence
@@ -298,7 +287,8 @@ namespace RRRPGLib
             }
             return ref player;
         }
-        // check if a user has pulled the trigger
+
+        // function check if a user has pulled the trigger
         public bool pulledTrigger()
         {
             // check if you have recieved data

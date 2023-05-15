@@ -57,6 +57,9 @@ namespace RRRPG
         }
         private void FrmMain2_Load(object sender, EventArgs e)
         {
+            soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
+            soundPlayer.PlayLooping();
+
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             weaponSelectMap = new() {
             {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
@@ -273,7 +276,7 @@ namespace RRRPG
                 opponent2.setPic(ref picOpponent2);
 
             // check if ready
-            if(ready == 1)
+            if (ready == 1)
             {
                 multiStart_Click(null, null);
             }
