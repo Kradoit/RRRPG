@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGame));
             btnDoIt = new Button();
             label3 = new Label();
-            btnStart = new Button();
             tmrStateMachine = new System.Windows.Forms.Timer(components);
             tmrMultiplayer = new System.Windows.Forms.Timer(components);
             tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
@@ -75,14 +74,6 @@
             label3.TabIndex = 11;
             label3.Text = "Weapon Select";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btnStart
-            // 
-            btnStart.Location = new Point(0, 0);
-            btnStart.Margin = new Padding(5);
-            btnStart.Name = "btnStart";
-            btnStart.Size = new Size(128, 38);
-            btnStart.TabIndex = 11;
             // 
             // tmrStateMachine
             // 
@@ -214,7 +205,6 @@
             Controls.Add(name1);
             Controls.Add(lblPlayer);
             Controls.Add(lblOpponent);
-            Controls.Add(btnStart);
             Controls.Add(btnDoIt);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(7, 8, 7, 8);
@@ -231,7 +221,6 @@
 
         #endregion
         private Button btnDoIt;
-        private Button btnStart;
         private System.Windows.Forms.Timer tmrStateMachine;
         private System.Windows.Forms.Timer tmrMultiplayer;
         private Label label3;
