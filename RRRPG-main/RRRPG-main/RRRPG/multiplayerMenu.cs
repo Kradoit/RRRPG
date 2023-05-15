@@ -46,6 +46,8 @@ namespace RRRPG
         {
             soundPlayer = new SoundPlayer(Resources.Mus_Title_Bg_Music);
             soundPlayer.PlayLooping();
+
+            reload(null, null);
         }
 
         private void FrmMain2_FormClosed(object sender, FormClosedEventArgs e)
