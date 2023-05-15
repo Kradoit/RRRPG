@@ -2,6 +2,7 @@ using Microsoft.VisualBasic.Devices;
 using RRRPG.Properties;
 using RRRPGLib;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Media;
 using System.Numerics;
 using System.Windows.Forms;
@@ -332,7 +333,7 @@ namespace RRRPG
                 }
                 else
                 {
-                    state = 3;//5;
+                    state = 5;
                     tmrMultiplayer.Interval = 1500;
                     tmrMultiplayer.Enabled = true;
                 }
@@ -437,8 +438,10 @@ namespace RRRPG
                     playerAlive = false;
                     Network.sendCommand(0, "hide");
                     picPlayer.Visible = false;
-
-                    state = 5;
+                    if (!opp1Alive || !opp2Alive)
+                        state = 1;
+                    else
+                        state = 5;
                 }
                 else if (state == 5)
                 {
@@ -446,6 +449,10 @@ namespace RRRPG
                     {
                         player.Shutup();
                         Network.sendCommand(0, "shutUp");
+                        
+                        opponent2.Shutup();
+                        Network.sendCommand(2, "shutUp");
+                        
 
                         opponent.ShowReady();
                         Network.sendCommand(1, "showReady");
@@ -483,18 +490,21 @@ namespace RRRPG
                 else if (state == 8)
                 {
                     opponent.SayBoned();
-                    Network.sendCommand(2, "sayBoned");
+                    Network.sendCommand(1, "sayBoned");
                     opp1Alive = false;
                     picOpponent.Visible = false;
                     Network.sendCommand(1, "hide");
-                    state = 10;
+                    if (!playerAlive || !opp2Alive)
+                        state = 1;
+                    else
+                        state = 10;
                 }
                 else if (state == 10)
                 {
                     if (opp2Alive == true)
                     {
                         opponent.Shutup();
-                        Network.sendCommand(2, "shutUp");
+                        Network.sendCommand(1, "shutUp");
                         if (threePlayer)
                         {
                             opponent2.ShowReady();
@@ -514,7 +524,7 @@ namespace RRRPG
                     // wait for the user to pull the trigger
                     if (Network.pulledTrigger())
                     {
-                        if (opponent2.PullTrigger(Network, 1))
+                        if (opponent2.PullTrigger(Network, 2))
                         {
                             state = 12;
                         }
@@ -671,7 +681,7 @@ namespace RRRPG
                     case "takingTurn":
                         {
                             player.PullTrigger();
-                            if (data[2] == "true")
+                            if (data[2].Equals("true"))
                             {
                                 player.ShowKill();
                                 player.SayGunWentOff();
@@ -681,10 +691,6 @@ namespace RRRPG
                                 player.ShowNoWeapon();
                                 player.SaySurvived();
                             }
-                            break;
-                        }
-                    case "takeTurn":
-                        {
                             break;
                         }
                     case "endGame":
