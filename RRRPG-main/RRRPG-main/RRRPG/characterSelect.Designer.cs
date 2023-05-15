@@ -54,6 +54,7 @@ namespace RRRPG
             lblOpponentSpeak = new Label();
             text3 = new Label();
             multiStart = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectBow).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectMagicWand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picWeaponSelectNerfRev).BeginInit();
@@ -318,7 +319,7 @@ namespace RRRPG
             // 
             multiStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             multiStart.Location = new Point(118, 612);
-            multiStart.Margin = new Padding(6, 6, 6, 6);
+            multiStart.Margin = new Padding(6);
             multiStart.Name = "multiStart";
             multiStart.Size = new Size(257, 94);
             multiStart.TabIndex = 22;
@@ -327,12 +328,24 @@ namespace RRRPG
             multiStart.Visible = false;
             multiStart.Click += multiStart_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(169, 67);
+            button1.TabIndex = 16;
+            button1.Text = "Back";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // CharacterSelect
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(1784, 983);
+            Controls.Add(button1);
             Controls.Add(multiStart);
             Controls.Add(text3);
             Controls.Add(picOpponent2);
@@ -344,7 +357,7 @@ namespace RRRPG
             Controls.Add(lblPlayer);
             Controls.Add(picOpponent);
             Controls.Add(picPlayer);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "CharacterSelect";
             Text = "Form1";
             FormClosed += FrmMain2_FormClosed;
@@ -388,5 +401,6 @@ namespace RRRPG
         private Label lblOpponentSpeak;
         private Label text3;
         private Button multiStart;
+        private Button button1;
     }
 }

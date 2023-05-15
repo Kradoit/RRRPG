@@ -58,7 +58,7 @@ namespace RRRPG
         private void btnStart_Click(object sender, EventArgs e)
         {
             // if youre not the host then tell the host youre joining
-            if(!Network.isHost)
+            if (!Network.isHost)
             {
                 // check if they have selected an item
                 var text = serverList.GetItemText(serverList.SelectedItem);
@@ -103,7 +103,8 @@ namespace RRRPG
             serverList.Items.Clear();
 
             // loop through and add the ips to the list
-            foreach (string ip in ips) {
+            foreach (string ip in ips)
+            {
                 serverList.Items.Add(ip);
             }
         }
@@ -119,6 +120,15 @@ namespace RRRPG
 
             // open the chracter select page with networking
             characterSelect();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ResourcesRef.Resources = Resources.ResourceManager;
+            Hide();
+            FrmTitle frmTitle = new FrmTitle();
+            frmTitle.ShowDialog();
+            FormManager.openForms.Add(frmTitle);
         }
     }
 

@@ -323,6 +323,15 @@ namespace RRRPG
             MainGame.ShowDialog();
             FormManager.openForms.Add(MainGame);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ResourcesRef.Resources = Resources.ResourceManager;
+            Hide();
+            FrmTitle frmTitle = new FrmTitle();
+            frmTitle.ShowDialog();
+            FormManager.openForms.Add(frmTitle);
+        }
     }
 
 }
