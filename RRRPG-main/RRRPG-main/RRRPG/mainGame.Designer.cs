@@ -151,7 +151,7 @@
             // 
             // picOpponent2
             // 
-            picOpponent2.BackColor = Color.Black;
+            picOpponent2.BackColor = Color.Transparent;
             picOpponent2.BackgroundImageLayout = ImageLayout.Center;
             picOpponent2.Location = new Point(2121, 396);
             picOpponent2.Margin = new Padding(6, 8, 6, 8);
@@ -163,7 +163,7 @@
             // 
             // picPlayer
             // 
-            picPlayer.BackColor = Color.Black;
+            picPlayer.BackColor = Color.Transparent;
             picPlayer.BackgroundImageLayout = ImageLayout.Center;
             picPlayer.Location = new Point(115, 396);
             picPlayer.Margin = new Padding(6, 8, 6, 8);
@@ -175,7 +175,7 @@
             // 
             // picOpponent
             // 
-            picOpponent.BackColor = Color.Black;
+            picOpponent.BackColor = Color.Transparent;
             picOpponent.BackgroundImageLayout = ImageLayout.Center;
             picOpponent.Location = new Point(1114, 396);
             picOpponent.Margin = new Padding(6, 8, 6, 8);
