@@ -43,10 +43,10 @@
             btnPlay.FlatStyle = FlatStyle.Popup;
             btnPlay.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnPlay.ForeColor = Color.Black;
-            btnPlay.Location = new Point(73, 749);
-            btnPlay.Margin = new Padding(4, 5, 4, 5);
+            btnPlay.Location = new Point(124, 1228);
+            btnPlay.Margin = new Padding(7, 8, 7, 8);
             btnPlay.Name = "btnPlay";
-            btnPlay.Size = new Size(395, 127);
+            btnPlay.Size = new Size(672, 208);
             btnPlay.TabIndex = 0;
             btnPlay.Text = "Singleplayer";
             btnPlay.UseVisualStyleBackColor = false;
@@ -60,10 +60,10 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 27.75F, FontStyle.Bold, GraphicsUnit.Point);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(111, 886);
-            button1.Margin = new Padding(4, 5, 4, 5);
+            button1.Location = new Point(189, 1453);
+            button1.Margin = new Padding(7, 8, 7, 8);
             button1.Name = "button1";
-            button1.Size = new Size(357, 127);
+            button1.Size = new Size(607, 208);
             button1.TabIndex = 1;
             button1.Text = "Multiplayer";
             button1.UseVisualStyleBackColor = false;
@@ -72,28 +72,30 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.IndianRed;
-            pictureBox1.Image = Properties.Resources.gears;
-            pictureBox1.Location = new Point(73, 1039);
+            pictureBox1.BackgroundImage = Properties.Resources.gears;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.Location = new Point(2334, 136);
+            pictureBox1.Margin = new Padding(5, 5, 5, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(216, 237);
+            pictureBox1.Size = new Size(259, 282);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             pictureBox1.Click += buttonSettings_Click;
             // 
             // FrmTitle
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BackgroundImage = Properties.Resources.Img_Title;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1599, 1311);
+            ClientSize = new Size(2718, 2108);
             Controls.Add(pictureBox1);
             Controls.Add(button1);
             Controls.Add(btnPlay);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 5, 4, 5);
+            Margin = new Padding(7, 8, 7, 8);
             Name = "FrmTitle";
             Text = "Russian Roulette RPG";
             FormClosed += FrmTitle_FormClosed;

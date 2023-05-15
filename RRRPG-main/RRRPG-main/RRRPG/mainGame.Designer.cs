@@ -127,7 +127,7 @@
             name1.BackColor = Color.White;
             name1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name1.ForeColor = Color.Black;
-            name1.Location = new Point(1326, 27);
+            name1.Location = new Point(1478, 56);
             name1.Name = "name1";
             name1.Size = new Size(0, 89);
             name1.TabIndex = 34;
@@ -150,7 +150,7 @@
             name2.BackColor = Color.White;
             name2.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             name2.ForeColor = Color.Black;
-            name2.Location = new Point(2458, 27);
+            name2.Location = new Point(2520, 36);
             name2.Name = "name2";
             name2.Size = new Size(0, 89);
             name2.TabIndex = 36;
