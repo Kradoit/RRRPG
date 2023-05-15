@@ -62,6 +62,7 @@ namespace RRRPG
             {
                 // check if they have selected an item
                 var text = serverList.GetItemText(serverList.SelectedItem);
+
                 if (text.Length > 3)
                 {
                     Network.join(text);

@@ -4,6 +4,7 @@ using RRRPGLib;
 using System.ComponentModel;
 using System.Media;
 using System.Numerics;
+using System.Windows.Forms;
 
 namespace RRRPG
 {
@@ -30,6 +31,13 @@ namespace RRRPG
             this.Network = Network;
             this.multiPlayer = true;
         }
+        // function to close game
+        public void closeGame()
+        {
+            MessageBox.Show("The game has ended");
+            Application.Exit();
+
+        }
         private void start()
         {
             //soundPlayer.Stop();
@@ -52,12 +60,6 @@ namespace RRRPG
                 tmrStateMachine.Interval = 3500;
                 tmrStateMachine.Enabled = true;
                 state = 0;
-                opp1Alive = true;
-                if (this.threePlayer)
-                    opp2Alive = true;
-                else
-                    opp2Alive = false;
-                playerAlive = true;
             }
             else if (Network.isHost)
             {
@@ -198,7 +200,7 @@ namespace RRRPG
                     opponent.ShowIdle();
                     if (threePlayer)
                         opponent2.ShowNoWeapon();
-                    picOpponent.Visible = true;
+                    picPlayer.Visible = true;
                     if (threePlayer)
                         picOpponent2.Visible = true;
                     lblOpponent.Visible = false;
@@ -208,7 +210,7 @@ namespace RRRPG
                     tmrPlayMusicAfterGameOver.Enabled = true;
                     tmrMultiplayer.Interval = 10;
                     tmrStateMachine.Enabled = false;
-                    MessageBox.Show("The game has ended");
+                    closeGame();
                 }
                 else
                 {
@@ -312,15 +314,6 @@ namespace RRRPG
                 picOpponent2.Visible = false;
                 state = 1;
             }
-            if (!playerAlive && !multiPlayer)
-            {
-                // end game and put button to return to main menue
-            }
-            else
-            {
-                // end game and keep watching
-            }
-            // check if everyone is dead and end game
         }
 
         private void btnDoIt_Click(object sender, EventArgs e)
@@ -409,7 +402,7 @@ namespace RRRPG
 
                         tmrMultiplayer.Enabled = false;
 
-                        MessageBox.Show("The game has ended");
+                        closeGame();
                     }
                     else
                     {
@@ -693,7 +686,7 @@ namespace RRRPG
                     case "endGame":
                         {
 
-                            MessageBox.Show("The game has ended");
+                            closeGame();
                             break;
                         }
                     case "hide":
@@ -701,7 +694,6 @@ namespace RRRPG
                             player.pic.Visible = false;
                             break;
                         }
-                        picOpponent.Visible = false;
                     case null: { break; }
                 }
             }
