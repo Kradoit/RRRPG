@@ -449,10 +449,10 @@ namespace RRRPG
                     {
                         player.Shutup();
                         Network.sendCommand(0, "shutUp");
-                        
+
                         opponent2.Shutup();
                         Network.sendCommand(2, "shutUp");
-                        
+
 
                         opponent.ShowReady();
                         Network.sendCommand(1, "showReady");
@@ -671,7 +671,8 @@ namespace RRRPG
                             {
                                 btnDoIt.Enabled = true;
                                 btnDoIt.Visible = true;
-                            }else
+                            }
+                            else
                             {
                                 btnDoIt.Enabled = false;
                                 btnDoIt.Visible = false;

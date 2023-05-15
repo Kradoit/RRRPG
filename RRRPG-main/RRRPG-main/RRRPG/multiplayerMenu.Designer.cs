@@ -31,6 +31,7 @@ namespace RRRPG
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(multiplayerMenu));
             tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
             player1 = new Label();
             btnStart = new Button();
@@ -120,7 +121,7 @@ namespace RRRPG
             // 
             nameBox.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             nameBox.Location = new Point(124, 127);
-            nameBox.Margin = new Padding(1, 1, 1, 1);
+            nameBox.Margin = new Padding(1);
             nameBox.Name = "nameBox";
             nameBox.Size = new Size(232, 52);
             nameBox.TabIndex = 22;
@@ -145,7 +146,7 @@ namespace RRRPG
             serverList.FormattingEnabled = true;
             serverList.ItemHeight = 45;
             serverList.Location = new Point(464, 175);
-            serverList.Margin = new Padding(1, 1, 1, 1);
+            serverList.Margin = new Padding(1);
             serverList.Name = "serverList";
             serverList.Size = new Size(273, 184);
             serverList.TabIndex = 24;
@@ -194,6 +195,8 @@ namespace RRRPG
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(905, 515);
             Controls.Add(button3);
             Controls.Add(button1);
@@ -208,7 +211,7 @@ namespace RRRPG
             Controls.Add(btnStart);
             Controls.Add(lblOpponent);
             Controls.Add(lblPlayer);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "multiplayerMenu";
             Text = "Form1";
             FormClosed += FrmMain2_FormClosed;

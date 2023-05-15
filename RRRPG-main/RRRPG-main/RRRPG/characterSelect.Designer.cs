@@ -31,6 +31,7 @@ namespace RRRPG
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CharacterSelect));
             tmrPlayMusicAfterGameOver = new System.Windows.Forms.Timer(components);
             player1 = new Label();
             btnStart = new Button();
@@ -344,6 +345,8 @@ namespace RRRPG
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1784, 983);
             Controls.Add(button1);
             Controls.Add(multiStart);

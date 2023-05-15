@@ -61,11 +61,31 @@ namespace RRRPG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arena {
+            get {
+                object obj = ResourceManager.GetObject("arena", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream BabyShark {
             get {
                 return ResourceManager.GetStream("BabyShark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap character_select {
+            get {
+                object obj = ResourceManager.GetObject("character_select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -409,6 +429,16 @@ namespace RRRPG.Properties {
         internal static System.Drawing.Bitmap Img_Yoshi_NoWeapon {
             get {
                 object obj = ResourceManager.GetObject("Img_Yoshi_NoWeapon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mult {
+            get {
+                object obj = ResourceManager.GetObject("mult", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
