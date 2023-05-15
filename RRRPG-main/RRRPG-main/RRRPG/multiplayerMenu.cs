@@ -129,6 +129,8 @@ namespace RRRPG
             Network.udpClient.Close();
             //Network.udpClient = null;
 
+            
+
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
             FrmTitle frmTitle = new FrmTitle();

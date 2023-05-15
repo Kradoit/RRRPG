@@ -326,14 +326,19 @@ namespace RRRPG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(multiplayer)
+            if (multiplayer)
+            {
+                hostStateMachine.Enabled = false;
+                userStateMachine.Enabled = false;
+                Thread.Sleep(1000);
                 Network.udpClient.Close();
+            }
+
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
             FrmTitle frmTitle = new FrmTitle();
             frmTitle.ShowDialog();
             FormManager.openForms.Add(frmTitle);
-            userStateMachine.Enabled = false;
         }
     }
 
