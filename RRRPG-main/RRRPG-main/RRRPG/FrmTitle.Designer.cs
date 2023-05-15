@@ -73,11 +73,11 @@
             // 
             pictureBox1.BackColor = Color.IndianRed;
             pictureBox1.BackgroundImage = Properties.Resources.gears;
-            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(2334, 136);
-            pictureBox1.Margin = new Padding(5, 5, 5, 5);
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(2359, 155);
+            pictureBox1.Margin = new Padding(5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(259, 282);
+            pictureBox1.Size = new Size(201, 195);
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             pictureBox1.Click += buttonSettings_Click;
