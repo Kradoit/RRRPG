@@ -63,7 +63,6 @@ namespace RRRPG
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             weaponSelectMap = new() {
             {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
-            {WeaponType.CORK_GUN, (picWeaponSelectCorkGun,lblWeaponSelectCorkGun) },
             {WeaponType.WATER_GUN, (picWeaponSelectWaterGun, lblWeaponSelectWaterGun) },
             {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand, lblWeaponSelectMagicWand) },
             {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev, lblWeaponSelectNerfRev) },

@@ -282,11 +282,11 @@ public class Character {
     };
     // create dialog map
     c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("Why did I choose a water gun?", null) },
-      {TalkState.SAY_OW, ("Ow", null) },
-      {TalkState.BONED, ("So cold!", null) },
-      {TalkState.GUN_WENT_OFF, ("Oh noes", null) },
-      {TalkState.SURVIVED, ("My fire continues to roar!", null) },
+      {TalkState.TALK_SMACK, ("Why did I choose a water gun?", Resources.GetStream("Dagoth_Talk_Smack")) },
+      {TalkState.SAY_OW, ("Ow", Resources.GetStream("Dagoth_Say_Ow")) },
+      {TalkState.BONED, ("This is so unbelievably cold, help!!", Resources.GetStream("Dagoth_This_Is_Cold")) },
+      {TalkState.GUN_WENT_OFF, ("Oh hail noes, Dagoth Down!", Resources.GetStream("Dagoth_Gun_Goes_Off")) },
+      {TalkState.SURVIVED, ("My great fire continues to roar forevermore!", Resources.GetStream("Dagoth_Survives")) },
     };
     return c;
   }
@@ -319,11 +319,11 @@ public class Character {
       {ImgState.KILL, Resources.GetObject("Img_Yoshi_Kill") as Bitmap },
     };
     c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("", null) },
-      {TalkState.SAY_OW, ("", null) },
-      {TalkState.BONED, ("", null) },
-      {TalkState.GUN_WENT_OFF, ("", null) },
-      {TalkState.SURVIVED, ("", null) },
+      {TalkState.TALK_SMACK, ("I'll Give you some Tooth!", Resources.GetStream("Yoshi_Taunt")) },
+      {TalkState.SAY_OW, ("Das an L", Resources.GetStream("Yoshi_Die")) },
+      {TalkState.BONED, ("Boned and Buggard I am!", Resources.GetStream("Yoshi_Hurt")) },
+      {TalkState.GUN_WENT_OFF, ("Unfortunate this is", Resources.GetStream("Yoshi_Gun_Off")) },
+      {TalkState.SURVIVED, ("I am Eternity!", Resources.GetStream("Yoshi_Survive")) },
     };
     return c;
   }
@@ -355,11 +355,11 @@ public class Character {
       {ImgState.KILL, Resources.GetObject("Img_Wizard_Kill") as Bitmap },
     };
     c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("I will outlast you!", null) },
-      {TalkState.SAY_OW, ("This hurts more than I thought!", null) },
-      {TalkState.BONED, ("That didn't go as planned", null) },
-      {TalkState.GUN_WENT_OFF, ("Well, that sucks!", null) },
-      {TalkState.SURVIVED, ("I knew I would live!", null) },
+      {TalkState.TALK_SMACK, ("I will outlast you, for I am a great magician!", Resources.GetStream("Trump_Talk_Smack")) },
+      {TalkState.SAY_OW, ("I will be honest, this hurts quite a lot more than I thought!", Resources.GetStream("Trump_Say_Ow")) },
+      {TalkState.BONED, ("That didn't go as planned", Resources.GetStream("Trump_Boned")) },
+      {TalkState.GUN_WENT_OFF, ("Well, that sucks!", Resources.GetStream("Trump_Gun")) },
+      {TalkState.SURVIVED, ("I knew I would live!", Resources.GetStream("Trump_Survive")) },
     };
     return c;
   }

@@ -235,4 +235,49 @@
   <data name="gears" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gears.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Dagoth_Gun_Goes_Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dagoth_Gun_Goes_Off.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dagoth_Say_Ow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dagoth_Say_Ow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dagoth_Survives" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dagoth_Survives.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dagoth_Talk_Smack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dagoth_Talk_Smack.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Dagoth_This_Is_Cold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dagoth_This_Is_Cold.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Trump_Boned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trump_Boned.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Trump_Gun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trump_Gun.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Trump_Say_Ow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trump_Say_Ow.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Trump_Survive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trump_Survive.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Trump_Talk_Smack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trump_Talk_Smack.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Yoshi_Die" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yoshi_Die.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Yoshi_Gun_Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yoshi_Gun_Off.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Yoshi_Hurt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yoshi_Hurt.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Yoshi_Survive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yoshi_Survive.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Yoshi_Taunt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Yoshi_Taunt.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

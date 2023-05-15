@@ -79,6 +79,51 @@ namespace RRRPG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Dagoth_Gun_Goes_Off {
+            get {
+                return ResourceManager.GetStream("Dagoth_Gun_Goes_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Dagoth_Say_Ow {
+            get {
+                return ResourceManager.GetStream("Dagoth_Say_Ow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Dagoth_Survives {
+            get {
+                return ResourceManager.GetStream("Dagoth_Survives", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Dagoth_Talk_Smack {
+            get {
+                return ResourceManager.GetStream("Dagoth_Talk_Smack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Dagoth_This_Is_Cold {
+            get {
+                return ResourceManager.GetStream("Dagoth_This_Is_Cold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap gears {
@@ -438,6 +483,96 @@ namespace RRRPG.Properties {
         internal static System.IO.UnmanagedMemoryStream Snd_Bender_OhMyGod {
             get {
                 return ResourceManager.GetStream("Snd_Bender_OhMyGod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Trump_Boned {
+            get {
+                return ResourceManager.GetStream("Trump_Boned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Trump_Gun {
+            get {
+                return ResourceManager.GetStream("Trump_Gun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Trump_Say_Ow {
+            get {
+                return ResourceManager.GetStream("Trump_Say_Ow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Trump_Survive {
+            get {
+                return ResourceManager.GetStream("Trump_Survive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Trump_Talk_Smack {
+            get {
+                return ResourceManager.GetStream("Trump_Talk_Smack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Yoshi_Die {
+            get {
+                return ResourceManager.GetStream("Yoshi_Die", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Yoshi_Gun_Off {
+            get {
+                return ResourceManager.GetStream("Yoshi_Gun_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Yoshi_Hurt {
+            get {
+                return ResourceManager.GetStream("Yoshi_Hurt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Yoshi_Survive {
+            get {
+                return ResourceManager.GetStream("Yoshi_Survive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Yoshi_Taunt {
+            get {
+                return ResourceManager.GetStream("Yoshi_Taunt", resourceCulture);
             }
         }
     }
