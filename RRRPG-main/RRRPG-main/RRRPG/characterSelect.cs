@@ -63,7 +63,6 @@ namespace RRRPG
             weapon = Weapon.MakeWeapon(WeaponType.MAGIC_WAND);
             weaponSelectMap = new() {
             {WeaponType.BOW, (picWeaponSelectBow, lblWeaponSelectBow) },
-            {WeaponType.CORK_GUN, (picWeaponSelectCorkGun,lblWeaponSelectCorkGun) },
             {WeaponType.WATER_GUN, (picWeaponSelectWaterGun, lblWeaponSelectWaterGun) },
             {WeaponType.MAGIC_WAND, (picWeaponSelectMagicWand, lblWeaponSelectMagicWand) },
             {WeaponType.NERF_REVOLVER, (picWeaponSelectNerfRev, lblWeaponSelectNerfRev) },
@@ -323,6 +322,15 @@ namespace RRRPG
             soundPlayer.Stop();
             MainGame.ShowDialog();
             FormManager.openForms.Add(MainGame);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ResourcesRef.Resources = Resources.ResourceManager;
+            Hide();
+            FrmTitle frmTitle = new FrmTitle();
+            frmTitle.ShowDialog();
+            FormManager.openForms.Add(frmTitle);
         }
     }
 
