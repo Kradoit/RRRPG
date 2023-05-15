@@ -126,11 +126,15 @@ namespace RRRPG
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Network.udpClient.Close();
+            //Network.udpClient = null;
+
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
             FrmTitle frmTitle = new FrmTitle();
             frmTitle.ShowDialog();
             FormManager.openForms.Add(frmTitle);
+
         }
     }
 
