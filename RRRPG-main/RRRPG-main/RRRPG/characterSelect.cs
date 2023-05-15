@@ -333,6 +333,7 @@ namespace RRRPG
             FrmTitle frmTitle = new FrmTitle();
             frmTitle.ShowDialog();
             FormManager.openForms.Add(frmTitle);
+            userStateMachine.Enabled = false;
         }
     }
 

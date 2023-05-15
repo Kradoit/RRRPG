@@ -76,7 +76,7 @@ namespace RRRPGLib
 
             List<string> ips = new List<string>();
             // loop for a few seconds waiting for a response
-            for (int x = 0; x < 5; x++)
+            for (int x = 0; x < 50; x++)
             {
                 // check if you have recieved data
                 if (this.udpClient.Available > 0)
@@ -84,7 +84,7 @@ namespace RRRPGLib
                     // get the data and check it 
                     byte[] data = this.udpClient.Receive(ref this.endPoint);
                     string sData = (System.Text.Encoding.ASCII.GetString(data));
-                    Console.Write(sData);
+
                     // check that you recieved the correct confirmation message
                     if (sData == "hola")
                     {
@@ -93,7 +93,7 @@ namespace RRRPGLib
                         break;
                     }
                 }
-                Thread.Sleep(100);
+                Thread.Sleep(10);
             }
             return ips;
         }
@@ -115,7 +115,7 @@ namespace RRRPGLib
                     if("hola" != sData && sData.Length == 1)
                         id = int.Parse(sData);
                 }
-                Thread.Sleep(20);
+                Thread.Sleep(100);
             }
 
         }

@@ -75,9 +75,10 @@ namespace RRRPG
             player1.AutoSize = true;
             player1.BackColor = Color.White;
             player1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            player1.Location = new Point(151, 95);
+            player1.Location = new Point(321, 195);
+            player1.Margin = new Padding(6, 0, 6, 0);
             player1.Name = "player1";
-            player1.Size = new Size(186, 41);
+            player1.Size = new Size(370, 81);
             player1.TabIndex = 19;
             player1.Text = "Opponent 1";
             player1.Click += lblPlayerSpeak_Click;
@@ -85,10 +86,10 @@ namespace RRRPG
             // btnStart
             // 
             btnStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            btnStart.Location = new Point(118, 762);
-            btnStart.Margin = new Padding(3, 4, 3, 4);
+            btnStart.Location = new Point(251, 1562);
+            btnStart.Margin = new Padding(6, 8, 6, 8);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(257, 94);
+            btnStart.Size = new Size(546, 193);
             btnStart.TabIndex = 17;
             btnStart.Text = "START";
             btnStart.UseVisualStyleBackColor = true;
@@ -110,9 +111,10 @@ namespace RRRPG
             lblWeaponSelectBow.BackColor = Color.Black;
             lblWeaponSelectBow.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblWeaponSelectBow.ForeColor = Color.White;
-            lblWeaponSelectBow.Location = new Point(555, 221);
+            lblWeaponSelectBow.Location = new Point(1179, 453);
+            lblWeaponSelectBow.Margin = new Padding(6, 0, 6, 0);
             lblWeaponSelectBow.Name = "lblWeaponSelectBow";
-            lblWeaponSelectBow.Size = new Size(53, 28);
+            lblWeaponSelectBow.Size = new Size(105, 54);
             lblWeaponSelectBow.TabIndex = 15;
             lblWeaponSelectBow.Text = "Bow";
             // 
@@ -121,10 +123,10 @@ namespace RRRPG
             picWeaponSelectBow.BackColor = Color.Black;
             picWeaponSelectBow.BackgroundImage = Resources.Img_Bow;
             picWeaponSelectBow.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectBow.Location = new Point(525, 15);
-            picWeaponSelectBow.Margin = new Padding(3, 4, 3, 4);
+            picWeaponSelectBow.Location = new Point(1116, 31);
+            picWeaponSelectBow.Margin = new Padding(6, 8, 6, 8);
             picWeaponSelectBow.Name = "picWeaponSelectBow";
-            picWeaponSelectBow.Size = new Size(114, 202);
+            picWeaponSelectBow.Size = new Size(242, 414);
             picWeaponSelectBow.TabIndex = 14;
             picWeaponSelectBow.TabStop = false;
             picWeaponSelectBow.Click += picWeaponSelectBow_Click;
@@ -135,9 +137,10 @@ namespace RRRPG
             lblWeaponSelectNerfRev.BackColor = Color.Black;
             lblWeaponSelectNerfRev.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblWeaponSelectNerfRev.ForeColor = Color.White;
-            lblWeaponSelectNerfRev.Location = new Point(366, 220);
+            lblWeaponSelectNerfRev.Location = new Point(778, 451);
+            lblWeaponSelectNerfRev.Margin = new Padding(6, 0, 6, 0);
             lblWeaponSelectNerfRev.Name = "lblWeaponSelectNerfRev";
-            lblWeaponSelectNerfRev.Size = new Size(144, 28);
+            lblWeaponSelectNerfRev.Size = new Size(284, 54);
             lblWeaponSelectNerfRev.TabIndex = 13;
             lblWeaponSelectNerfRev.Text = "Nerf Revolver";
             // 
@@ -146,10 +149,10 @@ namespace RRRPG
             picWeaponSelectMagicWand.BackColor = Color.Black;
             picWeaponSelectMagicWand.BackgroundImage = Resources.Img_Magic_Wand;
             picWeaponSelectMagicWand.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectMagicWand.Location = new Point(53, 12);
-            picWeaponSelectMagicWand.Margin = new Padding(3, 4, 3, 4);
+            picWeaponSelectMagicWand.Location = new Point(113, 25);
+            picWeaponSelectMagicWand.Margin = new Padding(6, 8, 6, 8);
             picWeaponSelectMagicWand.Name = "picWeaponSelectMagicWand";
-            picWeaponSelectMagicWand.Size = new Size(146, 204);
+            picWeaponSelectMagicWand.Size = new Size(310, 418);
             picWeaponSelectMagicWand.TabIndex = 5;
             picWeaponSelectMagicWand.TabStop = false;
             picWeaponSelectMagicWand.Click += picWeaponSelectMagicWand_Click;
@@ -160,9 +163,10 @@ namespace RRRPG
             lblWeaponSelectMagicWand.BackColor = Color.Black;
             lblWeaponSelectMagicWand.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblWeaponSelectMagicWand.ForeColor = Color.White;
-            lblWeaponSelectMagicWand.Location = new Point(94, 221);
+            lblWeaponSelectMagicWand.Location = new Point(200, 453);
+            lblWeaponSelectMagicWand.Margin = new Padding(6, 0, 6, 0);
             lblWeaponSelectMagicWand.Name = "lblWeaponSelectMagicWand";
-            lblWeaponSelectMagicWand.Size = new Size(70, 28);
+            lblWeaponSelectMagicWand.Size = new Size(138, 54);
             lblWeaponSelectMagicWand.TabIndex = 6;
             lblWeaponSelectMagicWand.Text = "Magic";
             // 
@@ -171,9 +175,10 @@ namespace RRRPG
             lblOpponent.AutoSize = true;
             lblOpponent.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblOpponent.ForeColor = Color.White;
-            lblOpponent.Location = new Point(919, -101);
+            lblOpponent.Location = new Point(1953, -207);
+            lblOpponent.Margin = new Padding(6, 0, 6, 0);
             lblOpponent.Name = "lblOpponent";
-            lblOpponent.Size = new Size(161, 41);
+            lblOpponent.Size = new Size(318, 81);
             lblOpponent.TabIndex = 15;
             lblOpponent.Text = "Opponent";
             // 
@@ -182,10 +187,10 @@ namespace RRRPG
             picWeaponSelectNerfRev.BackColor = Color.Black;
             picWeaponSelectNerfRev.BackgroundImage = Resources.Img_Nerf_Revolver;
             picWeaponSelectNerfRev.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectNerfRev.Location = new Point(377, 15);
-            picWeaponSelectNerfRev.Margin = new Padding(3, 4, 3, 4);
+            picWeaponSelectNerfRev.Location = new Point(801, 31);
+            picWeaponSelectNerfRev.Margin = new Padding(6, 8, 6, 8);
             picWeaponSelectNerfRev.Name = "picWeaponSelectNerfRev";
-            picWeaponSelectNerfRev.Size = new Size(114, 202);
+            picWeaponSelectNerfRev.Size = new Size(242, 414);
             picWeaponSelectNerfRev.TabIndex = 12;
             picWeaponSelectNerfRev.TabStop = false;
             picWeaponSelectNerfRev.Click += picWeaponSelectNerfRev_Click;
@@ -195,9 +200,10 @@ namespace RRRPG
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.Silver;
-            label3.Location = new Point(235, 260);
+            label3.Location = new Point(499, 533);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(207, 37);
+            label3.Size = new Size(401, 71);
             label3.TabIndex = 11;
             label3.Text = "Weapon Select";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -208,9 +214,10 @@ namespace RRRPG
             lblWeaponSelectWaterGun.BackColor = Color.Black;
             lblWeaponSelectWaterGun.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblWeaponSelectWaterGun.ForeColor = Color.White;
-            lblWeaponSelectWaterGun.Location = new Point(236, 220);
+            lblWeaponSelectWaterGun.Location = new Point(502, 451);
+            lblWeaponSelectWaterGun.Margin = new Padding(6, 0, 6, 0);
             lblWeaponSelectWaterGun.Name = "lblWeaponSelectWaterGun";
-            lblWeaponSelectWaterGun.Size = new Size(113, 28);
+            lblWeaponSelectWaterGun.Size = new Size(224, 54);
             lblWeaponSelectWaterGun.TabIndex = 10;
             lblWeaponSelectWaterGun.Text = "Water Gun";
             // 
@@ -219,10 +226,10 @@ namespace RRRPG
             picWeaponSelectWaterGun.BackColor = Color.Black;
             picWeaponSelectWaterGun.BackgroundImage = Resources.Img_Water_Gun;
             picWeaponSelectWaterGun.BackgroundImageLayout = ImageLayout.Zoom;
-            picWeaponSelectWaterGun.Location = new Point(235, 14);
-            picWeaponSelectWaterGun.Margin = new Padding(3, 4, 3, 4);
+            picWeaponSelectWaterGun.Location = new Point(499, 29);
+            picWeaponSelectWaterGun.Margin = new Padding(6, 8, 6, 8);
             picWeaponSelectWaterGun.Name = "picWeaponSelectWaterGun";
-            picWeaponSelectWaterGun.Size = new Size(114, 202);
+            picWeaponSelectWaterGun.Size = new Size(242, 414);
             picWeaponSelectWaterGun.TabIndex = 8;
             picWeaponSelectWaterGun.TabStop = false;
             picWeaponSelectWaterGun.Click += picWeaponSelectWaterGun_Click;
@@ -239,10 +246,10 @@ namespace RRRPG
             panWeaponSelect.Controls.Add(picWeaponSelectWaterGun);
             panWeaponSelect.Controls.Add(picWeaponSelectMagicWand);
             panWeaponSelect.Controls.Add(lblWeaponSelectMagicWand);
-            panWeaponSelect.Location = new Point(433, 597);
-            panWeaponSelect.Margin = new Padding(3, 4, 3, 4);
+            panWeaponSelect.Location = new Point(920, 1224);
+            panWeaponSelect.Margin = new Padding(6, 8, 6, 8);
             panWeaponSelect.Name = "panWeaponSelect";
-            panWeaponSelect.Size = new Size(664, 305);
+            panWeaponSelect.Size = new Size(1411, 625);
             panWeaponSelect.TabIndex = 16;
             // 
             // lblPlayer
@@ -250,44 +257,48 @@ namespace RRRPG
             lblPlayer.AutoSize = true;
             lblPlayer.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             lblPlayer.ForeColor = Color.White;
-            lblPlayer.Location = new Point(292, -104);
+            lblPlayer.Location = new Point(620, -213);
+            lblPlayer.Margin = new Padding(6, 0, 6, 0);
             lblPlayer.Name = "lblPlayer";
-            lblPlayer.Size = new Size(105, 41);
+            lblPlayer.Size = new Size(208, 81);
             lblPlayer.TabIndex = 14;
             lblPlayer.Text = "Player";
             // 
             // picOpponent
             // 
+            picOpponent.BackColor = SystemColors.ActiveCaptionText;
             picOpponent.BackgroundImageLayout = ImageLayout.Center;
             picOpponent.Image = Resources.Img_Shadow_Idle;
-            picOpponent.Location = new Point(74, 162);
-            picOpponent.Margin = new Padding(3, 4, 3, 4);
+            picOpponent.Location = new Point(157, 332);
+            picOpponent.Margin = new Padding(6, 8, 6, 8);
             picOpponent.Name = "picOpponent";
-            picOpponent.Size = new Size(319, 312);
+            picOpponent.Size = new Size(678, 640);
             picOpponent.SizeMode = PictureBoxSizeMode.StretchImage;
             picOpponent.TabIndex = 12;
             picOpponent.TabStop = false;
             // 
             // picOpponent2
             // 
+            picOpponent2.BackColor = SystemColors.ActiveCaptionText;
             picOpponent2.BackgroundImageLayout = ImageLayout.Center;
             picOpponent2.Image = Resources.Img_Shadow_Idle;
-            picOpponent2.Location = new Point(1099, 162);
-            picOpponent2.Margin = new Padding(3, 4, 3, 4);
+            picOpponent2.Location = new Point(2335, 332);
+            picOpponent2.Margin = new Padding(6, 8, 6, 8);
             picOpponent2.Name = "picOpponent2";
-            picOpponent2.Size = new Size(319, 312);
+            picOpponent2.Size = new Size(678, 640);
             picOpponent2.SizeMode = PictureBoxSizeMode.StretchImage;
             picOpponent2.TabIndex = 20;
             picOpponent2.TabStop = false;
             // 
             // picPlayer
             // 
+            picPlayer.BackColor = SystemColors.ActiveCaptionText;
             picPlayer.BackgroundImageLayout = ImageLayout.Center;
             picPlayer.Image = Resources.Img_Shadow_Idle;
-            picPlayer.Location = new Point(553, 136);
-            picPlayer.Margin = new Padding(3, 4, 3, 4);
+            picPlayer.Location = new Point(1175, 279);
+            picPlayer.Margin = new Padding(6, 8, 6, 8);
             picPlayer.Name = "picPlayer";
-            picPlayer.Size = new Size(381, 391);
+            picPlayer.Size = new Size(810, 802);
             picPlayer.SizeMode = PictureBoxSizeMode.StretchImage;
             picPlayer.TabIndex = 11;
             picPlayer.TabStop = false;
@@ -297,10 +308,10 @@ namespace RRRPG
             lblOpponentSpeak.AutoSize = true;
             lblOpponentSpeak.BackColor = Color.White;
             lblOpponentSpeak.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOpponentSpeak.Location = new Point(705, 51);
-            lblOpponentSpeak.Margin = new Padding(2, 0, 2, 0);
+            lblOpponentSpeak.Location = new Point(1498, 105);
+            lblOpponentSpeak.Margin = new Padding(4, 0, 4, 0);
             lblOpponentSpeak.Name = "lblOpponentSpeak";
-            lblOpponentSpeak.Size = new Size(69, 41);
+            lblOpponentSpeak.Size = new Size(139, 81);
             lblOpponentSpeak.TabIndex = 18;
             lblOpponentSpeak.Text = "You";
             // 
@@ -309,20 +320,20 @@ namespace RRRPG
             text3.AutoSize = true;
             text3.BackColor = Color.White;
             text3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            text3.Location = new Point(1183, 95);
-            text3.Margin = new Padding(2, 0, 2, 0);
+            text3.Location = new Point(2514, 195);
+            text3.Margin = new Padding(4, 0, 4, 0);
             text3.Name = "text3";
-            text3.Size = new Size(181, 41);
+            text3.Size = new Size(362, 81);
             text3.TabIndex = 21;
             text3.Text = "opponent 2";
             // 
             // multiStart
             // 
             multiStart.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
-            multiStart.Location = new Point(118, 612);
-            multiStart.Margin = new Padding(6);
+            multiStart.Location = new Point(251, 1255);
+            multiStart.Margin = new Padding(13, 12, 13, 12);
             multiStart.Name = "multiStart";
-            multiStart.Size = new Size(257, 94);
+            multiStart.Size = new Size(546, 193);
             multiStart.TabIndex = 22;
             multiStart.Text = "START";
             multiStart.UseVisualStyleBackColor = true;
@@ -332,9 +343,10 @@ namespace RRRPG
             // button1
             // 
             button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(26, 25);
+            button1.Margin = new Padding(6, 6, 6, 6);
             button1.Name = "button1";
-            button1.Size = new Size(169, 67);
+            button1.Size = new Size(359, 137);
             button1.TabIndex = 16;
             button1.Text = "Back";
             button1.UseVisualStyleBackColor = true;
@@ -342,12 +354,12 @@ namespace RRRPG
             // 
             // CharacterSelect
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1784, 983);
+            ClientSize = new Size(3244, 2015);
             Controls.Add(button1);
             Controls.Add(multiStart);
             Controls.Add(text3);
@@ -360,7 +372,7 @@ namespace RRRPG
             Controls.Add(lblPlayer);
             Controls.Add(picOpponent);
             Controls.Add(picPlayer);
-            Margin = new Padding(2);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "CharacterSelect";
             Text = "Form1";
             FormClosed += FrmMain2_FormClosed;

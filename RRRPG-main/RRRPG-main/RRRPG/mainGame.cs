@@ -36,8 +36,9 @@ namespace RRRPG
         public void closeGame()
         {
             MessageBox.Show("The game has ended");
-            if(multiPlayer)
+            if (multiPlayer)
                 Network.udpClient.Close();
+            tmrMultiplayer.Enabled = false;
             ResourcesRef.Resources = Resources.ResourceManager;
             Hide();
             FrmTitle frmTitle = new FrmTitle();
@@ -457,9 +458,11 @@ namespace RRRPG
                         player.Shutup();
                         Network.sendCommand(0, "shutUp");
 
-                        opponent2.Shutup();
-                        if(opp2Alive)
+                        if (opp2Alive)
+                        {
                             opponent2.Shutup();
+                            opponent2.Shutup();
+                        }
                         Network.sendCommand(2, "shutUp");
 
 
