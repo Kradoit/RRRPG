@@ -53,7 +53,6 @@ namespace RRRPG
                 player.Shutup();
                 player.ShowIdle();
                 opponent.ShowIdle();
-                btnStart.Visible = false;
                 opponent.SaySmack();
                 if (this.threePlayer)
                     opponent2.SaySmack();
@@ -206,7 +205,6 @@ namespace RRRPG
                     lblOpponent.Visible = false;
                     if (threePlayer)
                         lblOpponent2.Visible = false;
-                    btnStart.Visible = true;
                     tmrPlayMusicAfterGameOver.Enabled = true;
                     tmrMultiplayer.Interval = 10;
                     tmrStateMachine.Enabled = false;
@@ -334,7 +332,7 @@ namespace RRRPG
                 }
                 else
                 {
-                    state = 5;
+                    state = 3;//5;
                     tmrMultiplayer.Interval = 1500;
                     tmrMultiplayer.Enabled = true;
                 }
@@ -364,10 +362,7 @@ namespace RRRPG
 
         private void tmrPlayMusicAfterGameOver_Tick(object sender, EventArgs e)
         {
-            if (btnStart.Visible)
-            {
-                soundPlayer.PlayLooping();
-            }
+            //soundPlayer.PlayLooping();
             tmrPlayMusicAfterGameOver.Enabled = false;
         }
 
@@ -424,6 +419,7 @@ namespace RRRPG
 
                         btnDoIt.Visible = true;
                         tmrMultiplayer.Enabled = false;
+
                         state = 2;
                     }
                 }
@@ -442,7 +438,7 @@ namespace RRRPG
                     Network.sendCommand(0, "hide");
                     picPlayer.Visible = false;
 
-                    state = 1;
+                    state = 5;
                 }
                 else if (state == 5)
                 {
@@ -524,7 +520,11 @@ namespace RRRPG
                         }
                         else
                         {
-                            state = 1;
+                            // check if the player died
+                            if (playerAlive == false)
+                                state = 5;
+                            else
+                                state = 1;
                         }
                     }
                 }
@@ -661,6 +661,10 @@ namespace RRRPG
                             {
                                 btnDoIt.Enabled = true;
                                 btnDoIt.Visible = true;
+                            }else
+                            {
+                                btnDoIt.Enabled = false;
+                                btnDoIt.Visible = false;
                             }
                             break;
                         }

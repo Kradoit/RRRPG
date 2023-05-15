@@ -139,7 +139,7 @@ namespace RRRPGLib
                 // get the data and check it 
                 byte[] data = udpClient.Receive(ref endPoint);
                 string sData = (System.Text.Encoding.ASCII.GetString(data));
-                if (!(sData.Equals(lastMessage) && lastIp == this.endPoint.Address.ToString()))
+                if (true)//!(sData.Equals(lastMessage) && lastIp == this.endPoint.Address.ToString()))
                 {
                     // get the ip
                     string ip = endPoint.Address.ToString();
@@ -169,7 +169,7 @@ namespace RRRPGLib
                         sendMessage("hola", ip);
                         // they are sending their user data and requesting an id
                     }
-                    else // they are ending character information
+                    else // they are sending character information
                     {
                         // split up the message
                         string[] message = sData.Split((char)127);
@@ -179,17 +179,15 @@ namespace RRRPGLib
                         {
                             Opponent = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                             opponentName = message[2];
-                            if(ips.Count>1)
-                                sendMessage("1" + (char)127 + sData, ips[1]);
-                                rawUserData[1] = sData;
+                            rawUserData[1] = sData;
+                            if(ips.Count > 1)
+                                sendMessage(sData, ips[1]);
                         }
                         else if (message[0] == "2")
                         {
-                            var test22 = message[0];
-                            var test2 = message[1];
                             Opponent2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                             opponentName2 = message[2];
-                            sendMessage("2" + (char)127 + sData, ips[0]);
+                            sendMessage(sData, ips[0]);
                             rawUserData[2] = sData;
                         }
                     }
@@ -225,7 +223,7 @@ namespace RRRPGLib
                     op1 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName = message[2];
                     OpponentId = int.Parse(message[0]);
-                } else if (message[0] == "2" || message[0] == "3")
+                } else if (message[0] == "1" || message[0] == "2")
                 {
                     op2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName2 = message[2];

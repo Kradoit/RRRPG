@@ -300,11 +300,11 @@ public class Character {
       {ImgState.KILL, Resources.GetObject("Img_Shadow_Idle") as Bitmap },
     };
     c.dialogMap = new() {
-      {TalkState.TALK_SMACK, ("I'll Give you some Tooth!", null) },
-      {TalkState.SAY_OW, ("Das an L", null) },
-      {TalkState.BONED, ("Boned and Buggard I am!", null) },
-      {TalkState.GUN_WENT_OFF, ("Unfortunate this is", null) },
-      {TalkState.SURVIVED, ("I am Eternity!", null) },
+      {TalkState.TALK_SMACK, ("", null) },
+      {TalkState.SAY_OW, ("", null) },
+      {TalkState.BONED, ("", null) },
+      {TalkState.GUN_WENT_OFF, ("", null) },
+      {TalkState.SURVIVED, ("", null) },
     };
     return c;
   }
@@ -324,6 +324,7 @@ public class Character {
       {TalkState.BONED, ("Boned and Buggard I am!", Resources.GetStream("Yoshi_Hurt")) },
       {TalkState.GUN_WENT_OFF, ("Unfortunate this is", Resources.GetStream("Yoshi_Gun_Off")) },
       {TalkState.SURVIVED, ("I am Eternity!", Resources.GetStream("Yoshi_Survive")) },
+
     };
     return c;
   }
