@@ -36,7 +36,14 @@ namespace RRRPG
         public void closeGame()
         {
             MessageBox.Show("The game has ended");
-            Application.Exit();
+            if(multiPlayer)
+                Network.udpClient.Close();
+            ResourcesRef.Resources = Resources.ResourceManager;
+            Hide();
+            FrmTitle frmTitle = new FrmTitle();
+            frmTitle.ShowDialog();
+            FormManager.openForms.Add(frmTitle);
+            //Application.Exit();
 
         }
         private void start()
