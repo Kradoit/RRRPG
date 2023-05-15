@@ -32,7 +32,7 @@ namespace RRRPG
         }
         private void start()
         {
-            soundPlayer.Stop();
+            //soundPlayer.Stop();
             // run if not multiplayer or if host said to go
             if (!multiPlayer)
             {
