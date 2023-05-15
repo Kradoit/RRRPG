@@ -449,8 +449,8 @@ namespace RRRPG
                     {
                         player.Shutup();
                         Network.sendCommand(0, "shutUp");
-                        
-                        opponent2.Shutup();
+                        if(opp2Alive)
+                            opponent2.Shutup();
                         Network.sendCommand(2, "shutUp");
                         
 
