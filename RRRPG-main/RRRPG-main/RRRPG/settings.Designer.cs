@@ -40,18 +40,20 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ButtonHighlight;
             label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(446, 97);
+            label1.Location = new Point(148, 155);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(195, 67);
+            label1.Size = new Size(237, 112);
             label1.TabIndex = 0;
-            label1.Text = "Volume";
+            label1.Text = "Track";
             // 
             // buttonBack
             // 
             buttonBack.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonBack.Location = new Point(128, 579);
+            buttonBack.Location = new Point(168, 738);
+            buttonBack.Margin = new Padding(5, 5, 5, 5);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(207, 118);
+            buttonBack.Size = new Size(352, 194);
             buttonBack.TabIndex = 3;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = true;
@@ -59,9 +61,10 @@
             // 
             // buttonTrack1
             // 
-            buttonTrack1.Location = new Point(478, 189);
+            buttonTrack1.Location = new Point(168, 302);
+            buttonTrack1.Margin = new Padding(5, 5, 5, 5);
             buttonTrack1.Name = "buttonTrack1";
-            buttonTrack1.Size = new Size(112, 34);
+            buttonTrack1.Size = new Size(190, 56);
             buttonTrack1.TabIndex = 4;
             buttonTrack1.Text = "Track1";
             buttonTrack1.UseVisualStyleBackColor = true;
@@ -69,9 +72,10 @@
             // 
             // buttonTrack2
             // 
-            buttonTrack2.Location = new Point(478, 243);
+            buttonTrack2.Location = new Point(168, 391);
+            buttonTrack2.Margin = new Padding(5, 5, 5, 5);
             buttonTrack2.Name = "buttonTrack2";
-            buttonTrack2.Size = new Size(112, 34);
+            buttonTrack2.Size = new Size(190, 56);
             buttonTrack2.TabIndex = 5;
             buttonTrack2.Text = "Track2";
             buttonTrack2.UseVisualStyleBackColor = true;
@@ -79,9 +83,10 @@
             // 
             // buttonTrack3
             // 
-            buttonTrack3.Location = new Point(478, 294);
+            buttonTrack3.Location = new Point(168, 474);
+            buttonTrack3.Margin = new Padding(5, 5, 5, 5);
             buttonTrack3.Name = "buttonTrack3";
-            buttonTrack3.Size = new Size(112, 34);
+            buttonTrack3.Size = new Size(190, 56);
             buttonTrack3.TabIndex = 6;
             buttonTrack3.Text = "Track3";
             buttonTrack3.UseVisualStyleBackColor = true;
@@ -89,15 +94,16 @@
             // 
             // settings
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
-            ClientSize = new Size(1489, 801);
+            ClientSize = new Size(2531, 1314);
             Controls.Add(buttonTrack3);
             Controls.Add(buttonTrack2);
             Controls.Add(buttonTrack1);
             Controls.Add(buttonBack);
             Controls.Add(label1);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "settings";
             Text = "Form1";
             ResumeLayout(false);
