@@ -223,7 +223,7 @@ namespace RRRPGLib
                     op1 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName = message[2];
                     OpponentId = int.Parse(message[0]);
-                } else if (message[0] == "2" || message[0] == "3")
+                } else if (message[0] == "1" || message[0] == "2")
                 {
                     op2 = Character.MakeOpponent(convertType.convertToWeapon(int.Parse(message[1])));
                     opponentName2 = message[2];

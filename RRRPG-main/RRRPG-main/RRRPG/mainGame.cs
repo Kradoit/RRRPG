@@ -332,7 +332,7 @@ namespace RRRPG
                 }
                 else
                 {
-                    state = 5;
+                    state = 3;//5;
                     tmrMultiplayer.Interval = 1500;
                     tmrMultiplayer.Enabled = true;
                 }
@@ -419,7 +419,12 @@ namespace RRRPG
 
                         btnDoIt.Visible = true;
                         tmrMultiplayer.Enabled = false;
-                        state = 2;
+
+                        // check if the player died
+                        if (playerAlive == false)
+                            state = 5;
+                        else
+                            state = 2;
                     }
                 }
                 else if (state == 3)
@@ -656,6 +661,10 @@ namespace RRRPG
                             {
                                 btnDoIt.Enabled = true;
                                 btnDoIt.Visible = true;
+                            }else
+                            {
+                                btnDoIt.Enabled = false;
+                                btnDoIt.Visible = false;
                             }
                             break;
                         }
